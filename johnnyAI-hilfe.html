@@ -308,6 +308,19 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
 
 <h2>Wie Sprecher-Erkennung funktioniert</h2>
 <p style="padding:4px 12px 8px;font-size:13px;color:#444;line-height:1.6">JohnnyAI verwendet standardm&#228;&#223;ig <strong>pyannote</strong> zur Diarisierung (Segmentierung nach Sprechern) und <strong>ECAPA-TDNN</strong>-Einbettungen als Stimmvektoren. Diese Vektoren werden mit gespeicherten Profilen abgeglichen &#8212; so lernt JohnnyAI, wer wer ist.</p>
+<table>
+  <tr><th style="width:160px">Komponente</th><th>St&#228;rke</th><th>Schw&#228;che</th></tr>
+  <tr>
+    <td><strong>pyannote</strong><br><span style="font-size:11px;color:#888">Segmentierung &#8212; wer spricht wann</span></td>
+    <td>Erkennt Sprecherwechsel sehr pr&#228;zise, auch bei &#252;berlappender Sprache oder unbekannter Sprecheranzahl &#8212; etablierter Industriestandard f&#252;r Diarisierung.</td>
+    <td>Braucht Python + HuggingFace-Token + einmalige Lizenzzustimmung, gr&#246;&#223;erer Modell-Download, auf CPU sp&#252;rbar langsamer als reine Embedding-Verfahren.</td>
+  </tr>
+  <tr>
+    <td><strong>ECAPA-TDNN</strong><br><span style="font-size:11px;color:#888">Stimm-Embedding &#8212; wer ist das</span></td>
+    <td>State-of-the-art beim Wiedererkennen bereits bekannter Stimmen &#252;ber mehrere Meetings hinweg &#8212; deutlich zuverl&#228;ssiger als einfachere Verfahren wie MFCC, dabei kompakt und schnell.</td>
+    <td>Erkennt selbst keine Sprecherwechsel &#8212; dient nur dem Abgleich &#8222;wer ist das&#8220;, nicht dem &#8222;wer spricht wann&#8220;; bei sehr &#228;hnlichen Stimmen (z.&nbsp;B. nahen Verwandten) weniger trennscharf.</td>
+  </tr>
+</table>
 <div class="info">&#8505; <strong>Alternative ohne Python:</strong> Unter Einstellungen &#8594; Sprechererkennung &#8594; Backend steht zus&#228;tzlich <strong>sherpa-onnx</strong> zur Verf&#252;gung &#8212; l&#228;uft komplett in .NET ohne Python-Installation und ohne HuggingFace-Token (nur ein einmaliger ~32&nbsp;MB-Modell-Download &#252;ber den Button in den Einstellungen). Noch experimentell: die automatische Sprecheranzahl-Erkennung trifft nicht bei jedem Meeting exakt. &#9888; Beim Wechsel zu oder von sherpa-onnx werden bereits bekannte Sprecher einmalig nicht mehr automatisch erkannt (anderes Stimm-Embedding) &#8212; danach lernt das jeweilige Backend sie wie gewohnt neu.</div>
 <table>
   <tr><th style="width:200px">Schritt</th><th>Was passiert</th></tr>
