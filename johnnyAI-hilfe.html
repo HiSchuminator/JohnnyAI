@@ -415,7 +415,7 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
 <h2>2 &middot; Meeting-Ordner (Pflicht)</h2>
 <p style="padding:4px 12px 4px;color:#333">Einstellungen &#8594; Speicher &#8594; <strong>Meeting-Ordner</strong></p>
 <p style="padding:0 12px 6px;font-size:12px;color:#555">Standard-Pfad (wird automatisch erkannt):</p>
-<div class="path">%OneDrive%Meetings</div>
+<div class="path">%OneDrive%\Meetings</div>
 <div class="tip">&#128161; Empfehlung: OneDrive- oder Netzwerkpfad w&#228;hlen, damit Meetings auf mehreren Rechnern sichtbar sind.</div>
 <div class="warn">&#9888; Auf einem neuen Rechner denselben Pfad wie auf dem alten einstellen &#8212; sonst sieht JohnnyAI keine vorhandenen Meetings.</div>
 
@@ -523,7 +523,7 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
     <td>Minimales Modell f&#252;r schwache Hardware. Deutlich niedrigere Erkennungsqualit&#228;t &#8212; nur empfohlen wenn RAM oder Speicher sehr begrenzt sind.</td>
   </tr>
 </table>
-<div class="info">&#8505; Lokale Modelle werden beim ersten Start automatisch heruntergeladen nach: <code>%LOCALAPPDATA%JohnnyAIWhisperModels</code></div>
+<div class="info">&#8505; Lokale Modelle werden beim ersten Start automatisch heruntergeladen nach: <code>%LOCALAPPDATA%\JohnnyAI\WhisperModels</code></div>
 
 <h2>Transkription &#8594; Auto (schnellstes Backend)</h2>
 <p style="padding:4px 12px 8px;color:#333">Einstellungen &#8594; Modelle &#8594; <strong>Auto (empfohlen)</strong></p>
@@ -995,13 +995,13 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
 
 <h2>Dateipfade</h2>
 <p style="padding:4px 12px 2px;font-size:12px;font-weight:600;color:#555">Einstellungen</p>
-<div class="path">%LOCALAPPDATA%JohnnyAIsettings.json</div>
+<div class="path">%LOCALAPPDATA%\JohnnyAI\settings.json</div>
 <p style="padding:6px 12px 2px;font-size:12px;font-weight:600;color:#555">Whisper-Modelle</p>
-<div class="path">%LOCALAPPDATA%JohnnyAIWhisperModels</div>
+<div class="path">%LOCALAPPDATA%\JohnnyAI\WhisperModels</div>
 <p style="padding:6px 12px 2px;font-size:12px;font-weight:600;color:#555">API-Keys (Mistral, OpenAI)</p>
-<div class="path">%LOCALAPPDATA%JohnnyAI (z. B. mistral.key, openai.key, groq.key)</div>
+<div class="path">%LOCALAPPDATA%\JohnnyAI (z. B. mistral.key, openai.key, groq.key)</div>
 <p style="padding:6px 12px 2px;font-size:12px;font-weight:600;color:#555">Log-Dateien</p>
-<div class="path">%LOCALAPPDATA%JohnnyAIlogs</div>
+<div class="path">%LOCALAPPDATA%\JohnnyAI\logs</div>
 <div class="tip">&#128161; Umzug auf neuen Rechner: <code>settings.json</code> kopieren, danach Meeting-Ordner-Pfad pr&#252;fen (falls Laufwerksbuchstaben ge&#228;ndert).</div>
 
 </div>
@@ -1120,7 +1120,7 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
     <tr><td><strong>Warnhinweis bei Zusammenfassung durch Notfall-Modell</strong></td><td>Mussten wegen ausgefallener Cloud-Anbieter alle Textabschnitte &#252;ber das kleine lokale Notfall-Modell zusammengefasst werden, konnte dieses bei Feldern wie Gespr&#228;chspartner-Name/Firma frei erfundene, aber plausibel klingende Angaben liefern statt ehrlich &#8222;nicht erkennbar&#8220; zu schreiben &#8212; ohne jeden Hinweis darauf in der Ansicht. Die Zusammenfassung zeigt jetzt einen deutlichen Warnhinweis, wenn sie auf diese Weise entstanden ist.</td></tr>
     <tr><td><strong>Telefonnummer bei Anrufen ohne Kalendertermin zuverl&#228;ssiger erkennbar</strong></td><td>Fand JohnnyAI zu einem Anruf keinen passenden Outlook-Termin und konnte aus dem Teams-Fenstertitel nur eine Telefonnummer statt eines Namens ablesen, wurde das der KI bisher als &#8222;laut Kalendereinladung eingeladener Teilnehmer&#8220; &#252;bergeben &#8212; missverst&#228;ndlich formuliert, wodurch die KI die Nummer teils ignorierte oder durch einen frei erfundenen Namen ersetzte. Die Nummer wird jetzt als das benannt, was sie ist (unbest&#228;tigte Rufnummer aus dem Fenstertitel), und in der Teilnehmer-Anzeige zus&#228;tzlich mit einem &#9742;-Symbol gekennzeichnet.</td></tr>
     <tr><td><strong>Aussetzer bei der Systemton-Aufnahme verschoben Mikrofon- und Gegenseite-Spur gegeneinander</strong></td><td>Brach die Aufnahme der Gegenseite kurz ab (z.&nbsp;B. Headset-Verbindung kurz weg) und JohnnyAI verband automatisch neu, fehlte f&#252;r die Aussetzerdauer bisher jede Stille-Kompensation &#8212; die Mikrofonspur lief unterdessen durchgehend weiter. Dadurch verschoben sich beide Spuren zunehmend gegeneinander: Stimmen &#252;berlagerten sich an falschen Stellen, und die Sprechererkennung konnte durch den h&#246;rbaren Bruch an der Wiederverbindungsstelle eine einzelne Gegenperson f&#228;lschlich als mehrere Sprecher einstufen. Ein Aussetzer wird jetzt beim Wiederverbinden durch die exakt fehlende Stille-Dauer ausgeglichen, damit beide Spuren synchron bleiben.</td></tr>
-    <tr><td><strong>Anrufer-Titel nannte f&#228;lschlich den eigenen Namen statt der Gegenperson</strong></td><td>Bei einem Telefonat mit getrennten Audiospuren (Dual-Channel) wird der eigene Mikrofon-Sprecher im Transkript automatisch mit dem hinterlegten eigenen Namen beschriftet &#8212; die KI wusste davon aber nichts und konnte diesen Namen f&#228;lschlich als &#8222;Gespr&#228;chspartner&#8220; f&#252;r Titel und Zusammenfassung &#252;bernehmen (z.&nbsp;B. &#8222;Anruf mit Heiko Schumann&#8220;, obwohl Heiko selbst aufgenommen hat). Die KI bekommt jetzt explizit mitgeteilt, dass dieser Name die aufnehmende Person ist und nie als externer Kontakt gelten darf.</td></tr>
+    <tr><td><strong>Anrufer-Titel nannte f&#228;lschlich den eigenen Namen statt der Gegenperson</strong></td><td>Bei einem Telefonat mit getrennten Audiospuren (Dual-Channel) wird der eigene Mikrofon-Sprecher im Transkript automatisch mit dem hinterlegten eigenen Namen beschriftet &#8212; die KI wusste davon aber nichts und konnte diesen Namen f&#228;lschlich als &#8222;Gespr&#228;chspartner&#8220; f&#252;r Titel und Zusammenfassung &#252;bernehmen (z.&nbsp;B. &#8222;Anruf mit Max Mustermann&#8220;, obwohl Max selbst aufgenommen hat). Die KI bekommt jetzt explizit mitgeteilt, dass dieser Name die aufnehmende Person ist und nie als externer Kontakt gelten darf.</td></tr>
     <tr><td><strong>Bekannte Stimmen werden jetzt auch bei Telefonaten erkannt</strong></td><td>Die Stimmerkennung anhand bereits bekannter Sprecherprofile lief bisher ausschlie&#223;lich bei normalen Meeting-Aufnahmen &#8212; bei Telefonaten mit getrennten Audiospuren wurde die Gegenseite immer nur pauschal als &#8222;Remote&#8220; bzw. &#8222;Remote 1/2/&#8230;&#8220; bezeichnet, selbst wenn die Person aus fr&#252;heren Aufnahmen l&#228;ngst bekannt war. Der Abgleich mit den gespeicherten Stimmprofilen l&#228;uft jetzt auch bei Telefonaten &#8212; erkennt JohnnyAI die Stimme wieder, erscheint direkt der echte Name statt &#8222;Remote&#8220;. Rein lokale Verarbeitung, keine Cloud-Anfrage.</td></tr>
     <tr><td><strong>Bevorzugtes Headset einstellbar, Standardwert korrigiert</strong></td><td>Der fest im Code hinterlegte Name des bevorzugten Headsets f&#252;r Mikrofon- und Systemton-Aufnahme war auf ein falsches Modell eingestellt (Verwechslung der Modellnummer) &#8212; dadurch griff die Bevorzugung nie, und JohnnyAI nahm statt des Headset-Mikrofons z.&nbsp;B. das eingebaute Laptop-Mikrofon, was Umgebungsger&#228;usche oder &#252;bersprechenden Ton aufnehmen und f&#228;lschlich der eigenen Person zuordnen konnte. Der Standardwert wurde korrigiert (matcht jetzt jede Modellvariante) und ist unter Einstellungen &#8594; Speicher jetzt auch selbst editierbar.</td></tr>
   </table>
