@@ -1,5 +1,5 @@
 {
-  "Version": "2.0.0",
-  "DownloadUrl": "https://github.com/HiSchuminator/JohnnyAI/releases/download/2.0/JohnnyAI-2.0.0-build.20260917-portable.zip",
-  "ReleaseNotes": "Erste Version mit automatischem Update-Check."
+  "version": "2.1.0",
+  "downloadUrl": "https://github.com/HiSchuminator/JohnnyAI/releases/download/2.1.0/JohnnyAI-2.1.0-portable.zip",
+  "releaseNotes": "Mehrere Zuverlässigkeits-Fixes: Aufnahme-Aussetzer/-Synchronisation, Wiedergabe bei komprimierten Aufnahmen, Groq-Zusammenfassung, Stimm-Erkennung jetzt auch bei Telefonaten, Warnhinweis bei Notfall-Modell — plus einstellbare Mindest-Aufnahmelänge und Headset-Bevorzugung."
 }
