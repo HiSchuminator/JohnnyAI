@@ -1,0 +1,1333 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JohnnyAI Hilfe &amp; Einrichtung v2.2.0</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;line-height:1.6;color:#1a1a1a;background:#fff;max-width:860px;margin:0 auto;padding:24px 20px 60px}
+h1{font-size:22px;font-weight:700;margin-bottom:4px}
+.subtitle{color:#888;font-size:12px;margin-bottom:28px}
+.tabs{display:flex;border-bottom:2px solid #e0e0e0;margin-bottom:24px}
+.tab{padding:10px 22px;cursor:pointer;font-weight:500;color:#666;border-bottom:3px solid transparent;margin-bottom:-2px;user-select:none}
+.tab.active{color:#0078D4;border-bottom-color:#0078D4}
+.tab-content{display:none}.tab-content.active{display:block}
+h2{font-size:13px;font-weight:600;background:#f0f0f0;padding:8px 12px;border-radius:4px;margin:20px 0 8px}
+h2:first-child{margin-top:0}
+.row{display:grid;grid-template-columns:240px 1fr;gap:8px;padding:4px 12px;align-items:start}
+.label{font-weight:500;color:#0078D4;word-break:break-word}
+.value{color:#444}
+.tip{background:#f0fbf0;border-left:3px solid #66bb6a;padding:8px 12px;margin:6px 12px 10px;border-radius:0 4px 4px 0;font-size:12px;color:#1a4a1a}
+.warn{background:#fff8e1;border-left:3px solid #ffd54f;padding:8px 12px;margin:6px 12px 10px;border-radius:0 4px 4px 0;font-size:12px;color:#5a3a00}
+.info{background:#f0f7ff;border-left:3px solid #90caf9;padding:8px 12px;margin:6px 12px 10px;border-radius:0 4px 4px 0;font-size:12px;color:#00366a}
+.path{font-family:'Consolas','Courier New',monospace;background:#f8f8f8;border:1px solid #e0e0e0;padding:6px 10px;margin:4px 12px 8px;border-radius:3px;font-size:12px;word-break:break-all}
+code{font-family:'Consolas','Courier New',monospace;background:#f8f0f3;color:#c7254e;padding:1px 5px;border-radius:3px;font-size:12px}
+table{width:100%;border-collapse:collapse;margin:6px 12px 12px;font-size:12px;max-width:calc(100% - 24px)}
+th{background:#f0f0f0;padding:5px 8px;text-align:left;font-weight:600}
+td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wrap:break-word}
+.checklist{margin:8px 12px 20px;list-style:none}
+.checklist li{padding:4px 0 4px 28px;position:relative}
+.checklist li::before{content:'☐';position:absolute;left:0;color:#0078D4}
+.badge{display:inline-block;background:#107C10;color:#fff;padding:2px 10px;border-radius:12px;font-size:11px;font-weight:600;margin-left:6px;vertical-align:middle}
+.footer{margin-top:40px;padding-top:16px;border-top:1px solid #e0e0e0;font-size:11px;color:#aaa}
+</style>
+</head>
+<body>
+<h1>JohnnyAI Hilfe &amp; Einrichtung <span style="font-size:13px;font-weight:400;color:#888">v2.2.0</span></h1>
+<div class="subtitle">Bedienungshinweise und Schritt-f&#252;r-Schritt-Einrichtung</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="switchTab('bedienung',this)">Bedienung</div>
+  <div class="tab" onclick="switchTab('sprecher',this)">Sprecher</div>
+  <div class="tab" onclick="switchTab('einrichtung',this)">Einrichtung</div>
+  <div class="tab" onclick="switchTab('konfiguration',this)">Konfiguration</div>
+  <div class="tab" onclick="switchTab('start',this)">Erste Schritte</div>
+  <div class="tab" onclick="switchTab('neuerungen',this)">Neuerungen</div>
+</div>
+
+<!-- BEDIENUNG -->
+<div id="tab-bedienung" class="tab-content active">
+
+<h2>Aufnahme</h2>
+<div class="row"><span class="label">Aufnahme starten (blauer Knopf)</span><span class="value">Startet Mikrofon + System-Audio gleichzeitig</span></div>
+<div class="row"><span class="label">Win + Shift + R</span><span class="value">Globaler Hotkey: Aufnahme starten/stoppen, auch wenn App minimiert</span></div>
+<div class="row"><span class="label">Aufnahme stoppen</span><span class="value">Beendet die Aufnahme und startet automatisch Transkription &#8594; Diarisierung &#8594; Zusammenfassung</span></div>
+
+<h2>Kopfleiste (oberhalb der Meeting-Liste)</h2>
+<div class="row"><span class="label">&#9826; Obsidian &#246;ffnen</span><span class="value">&#214;ffnet den konfigurierten Obsidian-Vault, ohne einen Export auszul&#246;sen</span></div>
+<div class="row"><span class="label">&#128193; Meeting importieren</span><span class="value">&#214;ffnet einen Dateidialog f&#252;r Audio/Video (<code>mp4, wav, flac, m4a, mp3</code>) oder Transkripte (<code>vtt, docx, txt, msg</code>) &#8212; Mehrfachauswahl m&#246;glich. W&#228;hrend einer laufenden Aufnahme ausgeblendet.</span></div>
+<div class="row"><span class="label">&#128202; Meeting-Statistiken</span><span class="value">&#214;ffnet eine &#220;bersicht: Gesamtanzahl Meetings, Gesamtdauer, Durchschnittsdauer, h&#228;ufigste Sprecher und Meetings je Monat</span></div>
+<div class="row"><span class="label">&#128197; Wochen-/Monatsbericht</span><span class="value">&#214;ffnet den Berichts-Dialog &#8212; siehe Abschnitt &#8222;Obsidian-Integration&#8220; weiter unten</span></div>
+<div class="row"><span class="label">? Hilfe</span><span class="value">&#214;ffnet dieses Hilfefenster direkt in der App (Alternative zum Tray-Men&#252;-Eintrag, der die HTML-Version im Browser &#246;ffnet)</span></div>
+
+<h2>Overlay &#8212; Aufnahme &amp; Verarbeitung</h2>
+<p style="padding:4px 12px 8px;font-size:13px;color:#444;line-height:1.6">Ein einziges schwarzes Overlay-Fenster blendet sich automatisch ein und bleibt immer im Vordergrund. Es gliedert sich in zwei unabhängig ein-/ausblendbare Bereiche: der <strong>Aufnahme-Bereich</strong> erscheint, sobald eine Aufnahme läuft oder ein Gerätetest aktiv ist; der <strong>Verarbeitungs-Bereich</strong> erscheint, wenn Meetings transkribiert, diarisiert oder zusammengefasst werden. Das Fenster lässt sich frei verschieben.</p>
+
+<p style="padding:4px 12px 2px;font-size:13px;font-weight:600;color:#333">Aufnahme-Bereich (erscheint w&#228;hrend Aufnahme oder Ger&#228;tetest)</p>
+<div class="row"><span class="label">&#9679; Blinkender Punkt</span><span class="value">Aufnahme l&#228;uft &#8212; Punkt blinkt rot</span></div>
+<div class="row"><span class="label">&#9632; Stop</span><span class="value">Aufnahme beenden &#8212; startet automatisch die Verarbeitungspipeline</span></div>
+<div class="row"><span class="label">&#8599; App</span><span class="value">JohnnyAI-Hauptfenster in den Vordergrund holen</span></div>
+<div class="row"><span class="label">&#127908; Mic</span><span class="value">Mikrofon stummschalten &#8212; Systemton wird weiter aufgenommen, eigene Stimme nicht. &#8222;STUMM&#8220;-Badge erscheint im Overlay.</span></div>
+<div class="row"><span class="label">&#9654; Test</span><span class="value">Ger&#228;tetest: pr&#252;ft Mikrofon und System-Audio ohne Aufnahme zu starten</span></div>
+<div class="row"><span class="label">Mic wechseln</span><span class="value">Dropdown-Button &#8222;&#8644; Wechseln&#8220; &#8212; Mikrofon w&#228;hrend laufender Aufnahme umschalten</span></div>
+<div class="row"><span class="label">&#9888; Gegenseite wird nicht aufgenommen</span><span class="value">Erscheint automatisch, wenn die System-Audio-Spur bei einem erkennbaren Call (Kalendertermin mit mehreren Teilnehmern oder Aufnahme l&#228;uft schon &#252;ber 2&nbsp;Minuten) rund 30&nbsp;Sekunden lang kein Signal liefert &#8212; typischerweise weil Teams/Zoom auf ein anderes Ausgabeger&#228;t als den Windows-Standard umgeschaltet hat (z.&nbsp;B. nach einem Bluetooth-Headset-Wechsel). Ausgabeger&#228;t zur&#252;ck auf Windows-Standard stellen, um den Ton der Gegenseite wieder mit aufzuzeichnen.</span></div>
+
+<p style="padding:12px 12px 2px;font-size:13px;font-weight:600;color:#333">Verarbeitungs-Bereich (erscheint bei aktiven Pipeline-Jobs)</p>
+<div class="row"><span class="label">Aktiver Job (wei&#223;)</span><span class="value">Meeting wird gerade verarbeitet &#8212; aktueller Schritt (Transkription, Diarisierung, Zusammenfassung&#8230;) wird angezeigt</span></div>
+<div class="row"><span class="label">Modell-Label</span><span class="value">Kleiner gedimmter Text zeigt, welches Modell gerade aktiv ist &#8212; z.&nbsp;B. &#8222;faster-whisper large-v3&#8220;, &#8222;Ollama llama3.2:3b&#8220;, &#8222;pyannote&#8220;</span></div>
+<div class="row"><span class="label">Gesch&#228;tzte Restzeit</span><span class="value">Hellblaue Zeitangabe &#8222;~2m&nbsp;34s&#8220; &#8212; erscheint bei jedem Verarbeitungsschritt (Konvertierung, Transkription, Diarisierung, Zusammenfassung), sobald aus fr&#252;heren L&#228;ufen genug Kalibrierungsdaten f&#252;r eine zuverl&#228;ssige Sch&#228;tzung vorliegen</span></div>
+<div class="row"><span class="label">Wartender Job (gedimmt)</span><span class="value">Meeting wartet in der Verarbeitungswarteschlange &#8212; wird nach dem aktiven Job automatisch gestartet. Anzeige abgeschwächt (halbe Deckkraft).</span></div>
+<div class="row"><span class="label">Fehlgeschlagener Job (rot)</span><span class="value">Verarbeitung fehlgeschlagen &#8212; roter Rahmen, Schritt-Farbe rot, &#8222;Fehler&#8220; statt Laufzeit. Zwei Buttons erscheinen: <strong>&#8634;&nbsp;Neu starten</strong> (startet ab dem fehlgeschlagenen Schritt) und <strong>&#10005;</strong> (Eintrag aus der Liste entfernen).</span></div>
+<div class="row"><span class="label">Fortschrittsbalken</span><span class="value">Erscheint bei Transkriptionen, die Fortschrittsdaten liefern (faster-whisper) &#8212; zeigt den Prozentwert der verarbeiteten Audiodauer</span></div>
+<div class="row"><span class="label">Verstrichene Zeit</span><span class="value">Grauer Zeitstempel oben rechts je Job &#8212; aktualisiert sich sekund&#228;nlich</span></div>
+
+<p style="padding:12px 12px 2px;font-size:13px;font-weight:600;color:#333">Allgemein</p>
+<div class="row"><span class="label">&#8212; (je Bereich)</span><span class="value">Blendet nur diesen Bereich aus (&#8222;Overlay ausblenden&#8220; bzw. &#8222;Verarbeitungsbereich ausblenden&#8220;) &#8212; das Fenster selbst verschwindet erst, wenn beide Bereiche ausgeblendet oder inaktiv sind. Erscheint automatisch wieder, sobald eine neue Aufnahme startet oder ein Verarbeitungsjob beginnt.</span></div>
+<div class="row"><span class="label">Verschieben</span><span class="value">Overlay an beliebige Stelle ziehen &#8212; Position bleibt bis zum Neustart erhalten</span></div>
+<div class="tip">&#128161; Das Overlay verschwindet automatisch, wenn weder eine Aufnahme l&#228;uft noch Jobs in der Pipeline sind. Manuell wiederherstellbar &#252;ber Tray-Men&#252; &#8594; <strong>Overlay einblenden</strong> (aktiv, sobald Aufnahme oder Verarbeitung l&#228;uft).</div>
+
+<h2>Meeting-Liste &#8212; Symbole &amp; Favoriten</h2>
+<div class="row"><span class="label">&#9733; Favorit</span><span class="value">Stern-Symbol links im Meeting-Eintrag &#8212; markiert ein Meeting als Favorit (gelb hervorgehoben). Filter-Leiste oben: <strong>Alle</strong> / <strong>&#9733; Favoriten</strong> blendet auf Favoriten ein.</span></div>
+<div class="row"><span class="label">&#128308; / &#9203; / &#128101; / &#9888;&#65039;</span><span class="value">Status-Icon: &#128308; Aufnahme l&#228;uft, &#9203; wird konvertiert/transkribiert/&#252;bersetzt/diarisiert/zusammengefasst, &#128101; Sprecher m&#252;ssen zugeordnet werden, &#9888;&#65039; Verarbeitung fehlgeschlagen</span></div>
+<div class="row"><span class="label">&#127908; / &#127925; / &#127916; / &#128196; / &#128193;</span><span class="value">Ohne aktiven Job zeigt das Icon stattdessen die Quelle: &#127908; Live-Aufnahme, &#127925; importierte Audiodatei, &#127916; importiertes Video, &#128196; importiertes Transkript, &#128193; sonstige Quelle</span></div>
+<div class="row"><span class="label">&#9654; Wiedergabe-Symbol</span><span class="value">Erscheint neben Datum/Dauer, solange die Audiodatei dieses Meetings gerade abgespielt wird</span></div>
+<div class="row"><span class="label">Tags-Zeile</span><span class="value">Chips unterhalb des Titels. Klick auf ein Chip-Label filtert die Suche nach diesem Tag; <strong>&#215;</strong> entfernt einen Tag; <strong>+ Tag</strong> &#246;ffnet ein Eingabefeld mit Vorschl&#228;gen aus dem Tag-Vokabular (nach H&#228;ufigkeit sortiert). Nach manueller &#196;nderung erscheint <strong>&#8630; Automatisch</strong>, um die Tags wieder aus Meeting-Typ, Teilnehmer-Domain und KI ableiten zu lassen.</span></div>
+
+<h2>Meeting-Liste &amp; Suche</h2>
+<div class="row"><span class="label">Suchfeld (&#8222;Suche&#8230;&#8220;)</span><span class="value">Volltext-Suche &#252;ber alle Meetings: Titel, Zusammenfassung, Transkript, Teilnehmer. Suche spannen alle Monate &#8212; der Monats-Filter wird dabei automatisch deaktiviert.</span></div>
+<div class="row"><span class="label">&#10005; Suche l&#246;schen</span><span class="value">Kleines &#10005;-Symbol rechts im Suchfeld &#8212; erscheint sobald Text eingegeben wurde. Klick leert das Suchfeld und zeigt wieder alle Meetings an.</span></div>
+<div class="row"><span class="label">Monats-Filter</span><span class="value">Schr&#228;nkt die Liste auf einen Monat ein &#8212; nur aktiv wenn das Suchfeld leer ist</span></div>
+<div class="row"><span class="label">Titel bearbeiten</span><span class="value">Mauszeiger &#252;ber den Titel halten &#8594; Stift-Symbol klicken oder direkt im Feld tippen</span></div>
+
+<h2>Schnellsuche &#8212; Ctrl+K</h2>
+<p style="padding:4px 12px 8px;font-size:13px;color:#444;line-height:1.6">Die Schnellsuche &#246;ffnet ein schwebende Such-Overlay &#252;ber dem Hauptfenster &#8212; direkt per Tastatur bedienbar, ohne die Maus zu brauchen.</p>
+<div class="row"><span class="label">Ctrl + K</span><span class="value">&#214;ffnet das Schnellsuche-Overlay von &#252;berall im Hauptfenster</span></div>
+<div class="row"><span class="label">Suche</span><span class="value">Durchsucht Titel, Zusammenfassung, Action Items und Transkript-Abschnitte aller Meetings gleichzeitig &#8212; Ergebnisse erscheinen sofort beim Tippen</span></div>
+<div class="row"><span class="label">&#x2193; / &#x2191; Pfeiltasten</span><span class="value">Zwischen den Suchergebnissen navigieren</span></div>
+<div class="row"><span class="label">Enter</span><span class="value">Gew&#228;hltes Meeting ausw&#228;hlen und im Hauptfenster &#246;ffnen</span></div>
+<div class="row"><span class="label">Escape</span><span class="value">Schnellsuche schlie&#223;en</span></div>
+<div class="tip">&#128161; Meetings werden nach Datum sortiert (neueste zuerst). Die Schnellsuche findet auch Meetings &#228;lterer Monate &#8212; ohne den Monats-Filter ver&#228;ndern zu m&#252;ssen.</div>
+
+<h2>Tray-Men&#252; (Infobereich der Taskleiste)</h2>
+<p style="padding:4px 12px 8px;font-size:13px;color:#444;line-height:1.6">JohnnyAI l&#228;uft im Hintergrund und ist &#252;ber das Tray-Symbol in der Taskleiste erreichbar. Rechtsklick &#246;ffnet das Kontextmen&#252;.</p>
+<div class="row"><span class="label">Aufnahme starten / beenden</span><span class="value">Startet oder stoppt die aktive Aufnahme direkt aus dem Tray-Men&#252; &#8212; ohne das Fenster zu &#246;ffnen</span></div>
+<div class="row"><span class="label">Overlay einblenden / ausblenden</span><span class="value">Zeigt oder verbirgt das Aufnahme-/Verarbeitungs-Overlay &#8212; nur aktiv, solange eine Aufnahme l&#228;uft oder mindestens ein Verarbeitungsjob l&#228;uft/wartet. Sinnvoll, wenn das Overlay manuell ausgeblendet wurde.</span></div>
+<div class="row"><span class="label">Einstellungen&#8230;</span><span class="value">&#214;ffnet das Einstellungsfenster direkt</span></div>
+<div class="row"><span class="label">Abh&#228;ngigkeiten pr&#252;fen&nbsp;&#8230;</span><span class="value">&#214;ffnet den Einrichtungs-Dialog mit Status aller ben&#246;tigten Komponenten (Python, Whisper, Diarisierung&#8230;) &#8212; jederzeit erneut aufrufbar</span></div>
+<div class="row"><span class="label">Hilfe &#246;ffnen&#8230;</span><span class="value">&#214;ffnet diese Hilfeseite im Standardbrowser</span></div>
+<div class="row"><span class="label">&#214;ffnen</span><span class="value">Holt das Hauptfenster in den Vordergrund &#8212; dasselbe wie ein Doppelklick auf das Tray-Symbol</span></div>
+<div class="row"><span class="label">Beenden</span><span class="value">Schlie&#223;t JohnnyAI vollst&#228;ndig &#8212; laufende Verarbeitung wird dabei abgebrochen</span></div>
+<div class="row"><span class="label">Einzelinstanz-Schutz</span><span class="value">Wird JohnnyAI ein zweites Mal gestartet, erscheint eine Meldung und die neue Instanz schlie&#223;t sich automatisch &#8212; es l&#228;uft immer nur eine Instanz gleichzeitig.</span></div>
+<div class="tip">&#128161; Fenster-Schlie&#223;en (&#10005;) minimiert JohnnyAI nur in den Tray &#8212; die App l&#228;uft weiter und reagiert auf den globalen Hotkey Win+Shift+R.</div>
+
+<h2>Toolbar (erscheint wenn Meeting ausgew&#228;hlt)</h2>
+<div class="row"><span class="label">&#128203; Summary</span><span class="value">Kopiert die KI-Zusammenfassung in die Zwischenablage</span></div>
+<div class="row"><span class="label">&#128196; Transkript</span><span class="value">Kopiert das vollst&#228;ndige Gespr&#228;chsprotokoll in die Zwischenablage</span></div>
+<div class="row"><span class="label">&#127925; Audio</span><span class="value">&#214;ffnet die Audiodatei im Standard-Mediaplayer</span></div>
+<div class="row"><span class="label">&#128228; Export &#9660;</span><span class="value">&#214;ffnet ein Men&#252; mit zwei Optionen: <strong>Markdown exportieren</strong> (Textdatei, auch in Obsidian sichtbar) und <strong>Word-Dokument (DOCX)</strong> (formatiert mit Zusammenfassung, Action Items und vollst&#228;ndigem Transkript)</span></div>
+<div class="row"><span class="label">&#127903; Ticket</span><span class="value">Erstellt automatisch einen Ticket-Entwurf f&#252;r <strong>Freshdesk</strong> und <strong>Azure DevOps</strong> auf Basis der Meeting-Zusammenfassung. Der konfigurierte LLM (Auto / Mistral / OpenAI / Ollama) generiert Betreff, Beschreibung, Typ und Priorit&#228;t. Entwurf kann vor dem Absenden manuell angepasst werden. Schaltfl&#228;che ist nur sichtbar, wenn eine Zusammenfassung vorhanden ist.</span></div>
+<div class="row"><span class="label">&#128260; Retry</span><span class="value">Verarbeitung ab dem fehlgeschlagenen Schritt neu starten &#8212; nur bei Fehler sichtbar. Setzt die Fehlermeldung zur&#252;ck und startet die Pipeline erneut (Konvertierung / Transkription / Zusammenfassung je nach Zustand).</span></div>
+<div class="row"><span class="label">&#128260; Neu verarbeiten &#9660;</span><span class="value">Dropdown mit f&#252;nf Optionen zur Wiederverarbeitung &#8212; nur bei fertigen Meetings sichtbar:<br>
+&nbsp;&nbsp;<strong>&#10022; Zusammenfassung neu erstellen</strong> &#8212; Transkript bleibt, nur die KI-Zusammenfassung wird neu generiert<br>
+&nbsp;&nbsp;<strong>&#127908; Transkript neu erstellen</strong> &#8212; Audio erneut transkribieren + vollst&#228;ndige Pipeline neu starten<br>
+&nbsp;&nbsp;<strong>&#128101; Sprecher neu erkennen</strong> &#8212; Diarisierung wird wiederholt, Transkripttext bleibt unver&#228;ndert<br>
+&nbsp;&nbsp;<strong>&#127919; Sprecher anhand Korrekturen zuordnen</strong> &#8212; re-diarisiert mit manuell korrigierten Abschnitten als Ankerpunkte (n&#252;tzlich nach Chip-Korrekturen)<br>
+&nbsp;&nbsp;<strong>&#128260; Alles neu verarbeiten</strong> &#8212; vollst&#228;ndiger Neustart von Konvertierung bis Zusammenfassung</span></div>
+<div class="row"><span class="label">&#128275; Sperren / &#128274; Gesperrt</span><span class="value">Sch&#252;tzt das Meeting gegen Bearbeitung. Erneuter Klick entsperrt.</span></div>
+<div class="row"><span class="label">&#128465; L&#246;schen</span><span class="value">L&#246;scht Meeting dauerhaft inkl. Audio, Transkript und Zusammenfassung. Sicherheitsabfrage erforderlich.</span></div>
+
+<h2>Zusammenfassung (Tab)</h2>
+<div class="row"><span class="label">Agenda</span><span class="value">Automatisch erkannte Themen-Struktur des Meetings (erscheint nach &#8222;&#10022;&nbsp;Agenda erkennen&#8220;) &#8212; mit Zeitstempel und Kurzzusammenfassung je Thema</span></div>
+<div class="row"><span class="label">Entscheidungen</span><span class="value">Im Meeting getroffene Entscheidungen (gr&#252;ner Bereich, &#10003;). Klick auf <strong>&#128203;&nbsp;Kopieren</strong> im Bereichs-Header kopiert alle Entscheidungen als Aufz&#228;hlungsliste in die Zwischenablage.</span></div>
+<div class="row"><span class="label">Zusammenfassung</span><span class="value">KI-generierter Gesamt&#252;berblick mit Modell und Zeitstempel. Klick auf <strong>&#128203;&nbsp;Kopieren</strong> im Bereichs-Header kopiert den vollst&#228;ndigen Text in die Zwischenablage.</span></div>
+<div class="row"><span class="label">Offene Fragen</span><span class="value">Ungekl&#228;rte Punkte aus dem Meeting (gelber Bereich, ?). Klick auf <strong>&#128203;&nbsp;Kopieren</strong> im Bereichs-Header kopiert alle offenen Fragen als Aufz&#228;hlungsliste in die Zwischenablage.</span></div>
+<div class="row"><span class="label">&#9993; Per E-Mail senden</span><span class="value">&#214;ffnet einen Outlook-Entwurf mit Zusammenfassung, Entscheidungen und Action Items &#8212; an alle Kalender-Teilnehmer vorausgef&#252;llt. Entwurf pr&#252;fen, dann manuell absenden. W&#228;hrend Outlook &#246;ffnet, zeigt der Button einen R&#252;ckw&#228;rtsz&#228;hler (&#8222;&#8986; &#214;ffne Outlook&#8230; 2s&#8220;) &#8212; danach ist er wieder aktiv.</span></div>
+<div class="row"><span class="label">&#128197; Folge-Meeting</span><span class="value">Erstellt einen Outlook-Termin in 7 Tagen mit den Action Items im Body &#8212; Datum und Teilnehmer k&#246;nnen im Outlook-Dialog angepasst werden, bevor gespeichert wird.</span></div>
+<div class="row"><span class="label">&#8599; Exportieren</span><span class="value">&#214;ffnet ein Dropdown mit vier Export-Optionen: <strong>Obsidian</strong> (Action Items), <strong>Outlook-Aufgaben</strong> (Action Items als Outlook-Tasks), <strong>Teams</strong> (Action Items in Teams-Kanal), <strong>Confluence</strong> (vollst&#228;ndige Zusammenfassung). Confluence erfordert die API-Tokens in den Einstellungen.</span></div>
+<div class="row"><span class="label">&#8635; Neu erkennen (Agenda)</span><span class="value">Kleiner Ghost-Button im Agenda-Bereich &#8212; startet die KI-Agenda-Erkennung erneut, ohne das Meeting neu zusammenzufassen. N&#252;tzlich nach nachtr&#228;glichen Transkript-Korrekturen.</span></div>
+<div class="row"><span class="label">Teilnehmer</span><span class="value">Wenn ein Outlook-Kalender-Event verkn&#252;pft ist, zeigt die Zusammenfassung alle Eingeladenen als farbige Chips. Erscheint automatisch &#8212; keine Aktion n&#246;tig.</span></div>
+<div class="row"><span class="label">Statistik-Leiste (unten)</span><span class="value">Unterhalb der Zusammenfassung: Dauer, Anzahl Segmente und Action Items, verwendete Transkriptions- und Zusammenfassungsmodelle, Aufnahmequelle und Erstellungszeitstempel &#8212; auf einen Blick.</span></div>
+
+<h2>Typ-Erkennung &amp; Meeting-Typ &#228;ndern</h2>
+<p style="padding:4px 12px 8px;font-size:13px;color:#444;line-height:1.6">JohnnyAI erkennt den Meeting-Typ automatisch aus dem Titel. Das Ergebnis erscheint als blaues Badge direkt im Meeting-Header.</p>
+<div class="row"><span class="label">&#128161; Erkannt: [Typ] &#8212; &#196;ndern &#9660;</span><span class="value">Blaues Badge erscheint wenn der Typ automatisch erkannt wurde. Klick auf <strong>&#196;ndern &#9660;</strong> &#246;ffnet ein Dropdown zur manuellen &#220;berschreibung &#8212; direkt im Header, ohne in die Einstellungen zu gehen.</span></div>
+<div class="row"><span class="label">&#10022; Neu zusammenfassen</span><span class="value">Nach einem Typ-Wechsel erscheint ein Ghost-Button &#8222;&#10022; Neu zusammenfassen&#8220; &#8212; einmal klicken, um die Zusammenfassung mit dem neuen Prompt-Profil zu regenerieren.</span></div>
+<div class="tip">&#128161; Ein manuell gesetzter Typ wird f&#252;r dieses Meeting gespeichert &#8212; die automatische Erkennung greift erst wieder bei neuen Meetings.</div>
+
+<h2>Volltextsuche in der Zusammenfassung</h2>
+<p style="padding:4px 12px 8px;font-size:13px;color:#444;line-height:1.6">Im Zusammenfassung-Tab gibt es eine eigene Suchzeile &#8212; unabh&#228;ngig von der globalen Schnellsuche (Ctrl+K) oder der Meeting-Listen-Suche.</p>
+<div class="row"><span class="label">Suchfeld</span><span class="value">Suchfeld &#8222;In Zusammenfassung suchen&#8230;&#8220; &#252;ber dem Zusammenfassungstext &#8212; Treffer werden sofort hervorgehoben</span></div>
+<div class="row"><span class="label">Match-Z&#228;hler</span><span class="value">Zeigt z.&nbsp;B. &#8222;7 Treffer&#8220; &#8212; Gesamtzahl der Fundstellen im aktuellen Text (keine Weiter/Zur&#252;ck-Navigation zwischen Treffern)</span></div>
+<div class="row"><span class="label">&#10005; L&#246;schen</span><span class="value">Leert das Suchfeld und hebt die Markierungen auf</span></div>
+
+<h2>Action Items exportieren</h2>
+<p style="padding:4px 12px 8px;font-size:13px;color:#444;line-height:1.6">Action Items k&#246;nnen direkt aus JohnnyAI in externe Systeme exportiert werden. Der <strong>&#8599; Exportieren</strong>-Button im Summary-Tab (neben &#8222;Action Items&#8220;) &#246;ffnet ein Dropdown mit allen Optionen.</p>
+<div class="row"><span class="label">&#128203; In Zwischenablage</span><span class="value">Alle Action Items als <code>- [ ] …</code>-Checkliste in die Zwischenablage kopieren &#8212; bereit zum Einf&#252;gen in jede Anwendung</span></div>
+<div class="row"><span class="label">&#128194; In Obsidian &#246;ffnen</span><span class="value">Alle Action Items aller Meetings werden in <code>ToDos/todos-all.md</code> geschrieben und direkt in Obsidian ge&#246;ffnet &#8212; Vault-Name muss in den Einstellungen hinterlegt sein</span></div>
+<div class="row"><span class="label">&#9989; Als Outlook-Aufgaben erstellen</span><span class="value">Legt jeden Action Item als separaten Outlook-Task an (Aufgaben-Ordner). Passiert im Hintergrund ohne Fenster &#8212; Balloon-Meldung best&#228;tigt die Anzahl. Sichtbar in Outlook unter <strong>Aufgaben</strong> (Strg+4) und Microsoft To-Do. Ben&#246;tigt klassisches Outlook (COM), nicht New Outlook.</span></div>
+<div class="row"><span class="label">&#128172; In Teams posten</span><span class="value">Sendet alle Action Items als Adaptive Card an einen Teams-Kanal per Incoming Webhook. Einrichtung: Webhook-URL in Einstellungen &#8594; <strong>Teams &#8212; Action Items posten</strong> hinterlegen (ausgegraut wenn keine URL eingetragen). Einrichtungsanleitung: Teams &#8594; Kanal &#8594; &#183;&#183;&#183; &#8594; Connectors &#8594; Incoming Webhook.</span></div>
+<div class="tip">&#128161; Outlook-Aufgaben werden per COM direkt an den lokalen Outlook-Prozess &#252;bergeben &#8212; kein Netzwerkzugriff, keine API, kein Fenster. Outlook muss installiert sein (klassisch, nicht New Outlook).</div>
+
+<h2>Meeting-Vergleich &#8212; was hat sich ver&#228;ndert?</h2>
+<p style="padding:4px 12px 8px;font-size:13px;color:#444;line-height:1.6">Zwei &#228;hnliche Meetings nebeneinander stellen und auf einen Blick sehen, was sich ver&#228;ndert hat &#8212; ideal f&#252;r Weeklys, Alignment-Runden und alle wiederkehrenden Gespr&#228;che, bei denen die Ver&#228;nderung von Woche zu Woche wichtig ist.</p>
+<div class="row"><span class="label">&#8669; Vergleichen</span><span class="value">Schaltfl&#228;che in der Toolbar, sichtbar sobald das aktuelle Meeting eine Zusammenfassung hat. Ein Klick &#246;ffnet die Vergleichsansicht mit einer Auswahlliste anderer Meetings &#8212; ist noch kein weiteres passendes Meeting vorhanden, bleibt diese Liste leer.</span></div>
+<div class="row"><span class="label">Linke Seite</span><span class="value">Zeigt immer das aktuell gew&#228;hlte Meeting &#8212; Zusammenfassung, Action Items, Entscheidungen, offene Fragen. Die linke Seite ist die <em>Referenz</em>: Punkte, die nur hier stehen, sind weggefallen.</span></div>
+<div class="row"><span class="label">Picker (rechts)</span><span class="value">Beim &#214;ffnen erscheint rechts zun&#228;chst ein Picker: eine durchsuchbare Liste aller anderen fertigen Meetings, neueste zuerst, mit Datum und Dauer. Tipp eingeben filtert die Liste in Echtzeit (nach Titel und Zusammenfassungstext). Ein Klick auf ein Meeting startet den Vergleich sofort.</span></div>
+<div class="row"><span class="label">Rechte Seite</span><span class="value">Zeigt das gew&#228;hlte Vergleichs-Meeting. Punkte, die nur rechts stehen, sind <strong>neu dazugekommen</strong>. In der Kopfzeile steht <code>TT.MM. &#8596; TT.MM.JJJJ</code> als schneller Zeitraum-&#220;berblick.</span></div>
+<div class="row"><span class="label">Farb-Diff</span><span class="value">
+  Action Items, Entscheidungen und offene Fragen werden zeilenweise verglichen:<br>
+  <span style="display:inline-block;margin-top:4px;background:#2043B58122;border-radius:4px;padding:2px 8px;color:#107C10;font-weight:600">+ gr&#252;n &#8213; neu dazugekommen</span> &#8201; Punkt existiert im Vergleichs-Meeting, nicht im Referenz-Meeting<br>
+  <span style="display:inline-block;margin-top:4px;background:#20D1343822;border-radius:4px;padding:2px 8px;color:#C42B2E;font-weight:600;text-decoration:line-through">&#8722; rot durchgestrichen &#8213; weggefallen</span> &#8201; Punkt stand im Referenz-Meeting, fehlt jetzt<br>
+  <span style="display:inline-block;margin-top:4px;padding:2px 8px">&#8226; normal &#8213; unver&#228;ndert</span> &#8201; Punkt ist in beiden Meetings vorhanden<br>
+  <span style="display:inline-block;margin-top:4px;padding:2px 8px;opacity:0.4">&#8226; ausgegraut &#8213; Geist-Platzhalter</span> &#8201; Weggefallene Punkte erscheinen auf der rechten Seite blass, damit die Zeilen zueinander passen
+</span></div>
+<div class="row"><span class="label">Vergleichslogik</span><span class="value">Der Abgleich erfolgt <strong>textbasiert mit Normalisierung</strong>: Gro&#223;-/Kleinschreibung, Leerzeichen und Satzzeichen am Ende (Punkt, Ausrufezeichen, Fragezeichen, Doppelpunkt) werden ignoriert. Kleine Umformulierungen k&#246;nnen daher als &#8222;neu&#8220; erscheinen.</span></div>
+<div class="row"><span class="label">&#8592; Zur&#252;ck</span><span class="value">Schlie&#223;t den Vergleich und kehrt zur normalen Meeting-Ansicht zur&#252;ck. Das ausgew&#228;hlte Vergleichs-Meeting bleibt unver&#228;ndert.</span></div>
+<div class="tip">&#128161; <strong>Tipp:</strong> Den Vergleich am besten f&#252;r Meetings mit &#228;hnlichem Thema nutzen &#8212; z.&nbsp;B. das Weekly vom Dienstag mit dem Weekly der Vorwoche. Je &#228;hnlicher die Struktur, desto aussagekr&#228;ftiger der Diff.</div>
+
+<h2>Transkript &#8212; Filter &amp; Ansicht</h2>
+<p style="padding:4px 12px 8px;font-size:13px;color:#444;line-height:1.6">Oberhalb des Transkripts gibt es eine eigene Suchleiste sowie eine Filter-Leiste. Alle Filter k&#246;nnen gleichzeitig aktiv sein.</p>
+<div class="row"><span class="label">Suchfeld (&#8222;In Transkript suchen&#8230;&#8220;)</span><span class="value">Filtert die Segmentliste auf Abschnitte, die den Suchbegriff enthalten &#8212; Gro&#223;-/Kleinschreibung wird ignoriert. Die Trefferanzahl erscheint rechts neben dem Suchfeld.</span></div>
+<div class="row"><span class="label">&#10005; Suche l&#246;schen</span><span class="value">Kleines &#10005;-Symbol rechts im Suchfeld &#8212; erscheint sobald Text eingegeben wurde. Klick leert das Suchfeld und zeigt alle Segmente wieder an.</span></div>
+<div class="row"><span class="label">Stille ausblenden</span><span class="value">Blendet Abschnitte ohne Sprache aus (leerer Text oder K&#252;rzer als 0,3&nbsp;Sek.) &#8212; n&#252;tzlich bei langen Pausen oder Hintergrundger&#228;uschen</span></div>
+<div class="row"><span class="label">F&#252;llw&#246;rter entfernen</span><span class="value">Entfernt &#8222;&#228;hm&#8220;, &#8222;&#228;h&#8220;, &#8222;halt&#8220;, &#8222;mhm&#8220; usw. aus der Anzeige &#8212; das Original-Transkript bleibt unver&#228;ndert gespeichert</span></div>
+<div class="row"><span class="label">Nach Themen gruppieren</span><span class="value">F&#252;gt Agenda-&#220;berschriften zwischen den Abschnitten ein &#8212; nur aktiv wenn eine Agenda erkannt wurde (&#8222;&#10022;&nbsp;Agenda erkennen&#8220; zuerst klicken)</span></div>
+<div class="row"><span class="label">&#10022; Agenda erkennen</span><span class="value">Sendet das Transkript an den gew&#228;hlten LLM-Provider und erkennt automatisch die besprochenen Themen mit Zeitstempel und Kurzzusammenfassung. Ergebnis erscheint im Summary-Tab und erm&#246;glicht &#8222;Nach Themen gruppieren&#8220;.</span></div>
+
+<h2>Sprecher-Lernfunktion</h2>
+<p style="padding:4px 12px 8px;font-size:13px;color:#444;line-height:1.6">Wenn ein Sprecher im Transkript korrigiert wird (&#8222;Alle von &#8230;&#8220; via Chip oder Segment-Button), speichert JohnnyAI den Stimmabdruck automatisch im globalen Profil &#8212; die Erkennung wird mit jedem Meeting pr&#228;ziser.</p>
+
+<h2>Sprecher-Chips (Transkript-Tab)</h2>
+<div class="row"><span class="label">Farbige Chips</span><span class="value">Alle erkannten Sprecher &#8212; unbenannte erscheinen als 'Sprecher 1', 'Sprecher 2' &#8230;</span></div>
+<div class="row"><span class="label">Klick auf Chip</span><span class="value">Umbenennen: Namen eingeben oder aus bekannten Sprechern w&#228;hlen</span></div>
+<div class="row"><span class="label">&#9654; Probe 1 / 2 / 3</span><span class="value">Spielt bis zu 3 verschiedene Audio-Ausschnitte des Sprechers ab zur Identifikation (je 10 Sekunden) &#8212; n&#252;tzlich wenn der erste Ausschnitt nicht eindeutig ist</span></div>
+<div class="row"><span class="label">&#128100; Nicht erkennbar</span><span class="value">Markiert den Sprecher als nicht identifizierbar und l&#246;scht eine bestehende Zuweisung &#8212; Chip wird wieder zur&#252;ckgesetzt auf &#8222;Speaker N&#8220;</span></div>
+<div class="row"><span class="label">&#10005; Zuweisung l&#246;schen</span><span class="value">Entfernt den zugewiesenen Namen &#8212; Chip wird wieder zur&#252;ckgesetzt auf &#8222;Speaker N&#8220;</span></div>
+<div class="row"><span class="label">&#128683; Aus Zusammenfassung ausblenden</span><span class="value">Blendet diesen Sprecher aus der KI-Zusammenfassung aus (z.&nbsp;B. Hintergrundger&#228;usche oder Fehlerkennungen) &#8212; reversibel, das Transkript bleibt unver&#228;ndert</span></div>
+<div class="row"><span class="label">&#128465; Speaker l&#246;schen</span><span class="value">Entfernt nach R&#252;ckfrage alle Transkript-Abschnitte dieses Sprechers vollst&#228;ndig &#8212; nicht r&#252;ckg&#228;ngig zu machen</span></div>
+<div class="tip">&#128161; Einzelne Abschnitte k&#246;nnen auch direkt im Transkript umbenannt werden &#8212; Sprecher-Button links neben jedem Abschnitt. Details im Tab <strong>Sprecher</strong>.</div>
+
+<h2>Transkript importieren (VTT / DOCX / TXT / MSG)</h2>
+<p style="padding:4px 12px 8px;font-size:13px;color:#444;line-height:1.6">Wer keine Aufnahme macht, kann ein vorhandenes Transkript importieren &#8212; z.&#8239;B. eine Teams-Untertiteldatei, ein Word-Protokoll oder eine E-Mail. JohnnyAI &#252;bernimmt den Text und erstellt daraus die KI-Zusammenfassung.</p>
+<div class="row"><span class="label">Unterst&#252;tzte Formate</span><span class="value">VTT (Teams-Untertitel), DOCX (Word), TXT (Plaintext), MSG (Outlook-E-Mail)</span></div>
+<div class="row"><span class="label">VTT mit Sprecher-Tags</span><span class="value">Teams-VTT-Dateien enthalten Sprecher-Informationen (<code>&lt;v Name&gt;</code>) &#8212; JohnnyAI liest sie automatisch aus und bef&#252;llt die Sprecher-Chips</span></div>
+<div class="row"><span class="label">VTT ohne Sprecher-Tags</span><span class="value">Transkript wird als Flie&#223;text importiert &#8212; Sprecher-Chips bleiben leer</span></div>
+<div class="row"><span class="label">Kein Transkript vorhanden</span><span class="value">Solange kein Transkript importiert oder aufgenommen wurde, erscheint im Transkript-Tab der Hinweis &#8222;Kein Transkript vorhanden&#8220; &#8212; &#252;ber die Toolbar-Schaltfl&#228;che Import starten</span></div>
+<div class="tip">&#128161; Nach dem Import l&#228;uft die KI-Zusammenfassung automatisch durch &#8212; kein weiterer Schritt n&#246;tig.</div>
+
+<h2>Verarbeitungs-Status (Sidebar)</h2>
+<div class="row"><span class="label">Aufnahme l&#228;uft</span><span class="value">Aufnahme aktiv</span></div>
+<div class="row"><span class="label">Konvertierung / Transkription &#8230;</span><span class="value">Verarbeitungspipeline l&#228;uft &#8212; Warte-Donut erscheint im Detail-Bereich</span></div>
+<div class="row"><span class="label">&#10005; Abbrechen</span><span class="value">Bricht die laufende Verarbeitung ab &#8212; erscheint w&#228;hrend Konvertierung, Transkription, Diarisierung oder Zusammenfassung. Das Meeting kann danach per Retry-Knopf erneut gestartet werden.</span></div>
+<div class="row"><span class="label">Sprecher zuordnen</span><span class="value">Sprecher m&#252;ssen manuell benannt werden &#8212; gelbes Banner erscheint im Meeting-Detail mit zwei Schaltfl&#228;chen: <strong>Sprecher zuordnen</strong> (springt direkt zum Transkript-Tab) und <strong>Trotzdem zusammenfassen</strong> (&#252;berspringt die Zuweisung und startet die Zusammenfassung sofort)</span></div>
+<div class="row"><span class="label">&#10003; Fertig</span><span class="value">Meeting vollst&#228;ndig verarbeitet</span></div>
+<div class="row"><span class="label">Fehler / Abgebrochen</span><span class="value">Verarbeitung fehlgeschlagen oder abgebrochen &#8594; Retry-Knopf erscheint</span></div>
+
+<h2>Meeting-Typen &amp; Prompt-Profile</h2>
+<p style="padding:4px 12px 8px;color:#444;font-size:13px;line-height:1.6">JohnnyAI erkennt 11 Meeting-Typen automatisch aus dem Titel und wendet den passenden KI-Prompt an. Jeder Typ hat einen eigenen Prompt, der unter <strong>Einstellungen &#8594; Prompt</strong> individuell angepasst werden kann.</p>
+<table>
+  <tr><th style="width:200px">Meeting-Typ</th><th>Erkannte Schl&#252;sselw&#246;rter (Beispiele)</th><th>Prompt-Schwerpunkt</th></tr>
+  <tr><td>Company All-Hands</td><td>all-hands, allhands</td><td>Gliederung nach KMS-Circles mit Highlights &amp; Lowlights</td></tr>
+  <tr><td>Produkt-Review</td><td>product review, joint product, product demo</td><td>Features je Team, Demo-Feedback, Entscheidungen</td></tr>
+  <tr><td>Team-Weekly</td><td>weekly, cs-weekly</td><td>Status je Person, Blocker, n&#228;chste Schritte</td></tr>
+  <tr><td>1:1</td><td>1:1, one on one</td><td>Feedback, Ziele, Maßnahmen vertraulich</td></tr>
+  <tr><td>MEG / Mitarbeitergespr&#228;ch</td><td>meg, mitarbeitergespr&#228;ch, jahresgespr&#228;ch</td><td>R&#252;ckblick, Ziele, Entwicklung, Maßnahmen</td></tr>
+  <tr><td>Alignment / Abstimmung</td><td>alignment, abstimmung</td><td>Beitr&#228;ge je Team, Entscheidungen, SW-Auswirkungen</td></tr>
+  <tr><td>Kundenger&#228;ch / Beratung</td><td>beratung, customer call, client call</td><td>CRM-Notiz: Bedarf, L&#246;sung, Reaktion, Follow-up</td></tr>
+  <tr><td>Workshop</td><td>workshop, retro, retrospektive</td><td>Phasenprotokoll, Ergebnisse, Action Items</td></tr>
+  <tr><td>Kick-Off / Event</td><td>kick-off, kickoff, annual kick</td><td>Rollen, Meilensteine, Entscheidungen, offene Fragen</td></tr>
+  <tr><td>Management-Zusammenfassung</td><td>management-zusammenfassung, mgmt-summary, mgmt zusammenfassung</td><td>Kompakt, entscheidungsorientiert: Kunde &amp; Kontext, Bedarf, L&#246;sung, n&#228;chste Schritte</td></tr>
+  <tr><td>Telefonat / Anruf</td><td>telefonat, telefongespräch, anruf mit</td><td>Gesprächspartner, Kernaussagen, Vereinbarungen, intern weiterleiten an</td></tr>
+</table>
+<div class="tip">&#128161; Prompts k&#246;nnen f&#252;r jeden Typ einzeln gespeichert werden. &#8220;Zur&#252;cksetzen&#8221; stellt den Standard-Prompt wieder her. Ein globaler Prompt &#252;berschreibt alle Typ-spezifischen Prompts.</div>
+
+<h2>Kalender-Integration &amp; automatische Aufnahme</h2>
+<div class="row"><span class="label">Outlook COM-Integration</span><span class="value">Liest lokal installierten Outlook direkt &#8212; kein Azure AD n&#246;tig. Funktioniert nur mit klassischem Outlook, nicht mit &#8222;New Outlook&#8220;.</span></div>
+<div class="row"><span class="label">Microsoft Graph API (Alternative)</span><span class="value">Liest den Kalender &#252;ber die Cloud statt lokal &#8212; einzige Option f&#252;r &#8222;New Outlook&#8220;. Ben&#246;tigt eine einmalige Azure-AD-App-Registrierung durch die IT. Details im Tab <strong>Konfiguration</strong> &#8594; &#8222;Microsoft Graph API &#8212; Kalenderintegration&#8220;.</span></div>
+<div class="row"><span class="label">ICS-Kalenderlink</span><span class="value">Ver&#246;ffentlichter Outlook-Kalender als Quelle &#8212; funktioniert auch mit dem neuen Outlook, ohne Azure AD. Einrichtung unter Konfiguration &#8594; &#8222;ICS-Kalenderlink&#8220;.</span></div>
+<div class="row"><span class="label">Teilnahme-Pr&#252;fung</span><span class="value">Abgesagte und von Ihnen abgelehnte Termine werden nicht mit Aufnahmen verkn&#252;pft und l&#246;sen keine Auto-Aufnahme aus. Im manuellen Dialog &#8222;Termin zuordnen&#8220; sind sie sichtbar und als &#8222;abgesagt&#8220; bzw. &#8222;abgelehnt&#8220; gekennzeichnet.</span></div>
+<div class="row"><span class="label">Teams-Pr&#252;fung</span><span class="value">Bei Teams-Terminen startet die Auto-Aufnahme erst, wenn der Termin in Teams ge&#246;ffnet ist (Teams-Fenster mit dem Terminnamen oder aktive Teams-Mikrofonsitzung). Bei &#252;berlappenden Terminen entscheidet das ge&#246;ffnete Teams-Fenster.</span></div>
+<div class="row"><span class="label">Automatische Aufnahme (Kalender)</span><span class="value">JohnnyAI startet die Aufnahme automatisch zum Meetingbeginn laut Kalender (&#8805;&nbsp;2 Teilnehmer, Status &#8222;Besch&#228;ftigt&#8220;)</span></div>
+<div class="row"><span class="label">Automatische Aufnahme (Teams-Anruf)</span><span class="value">JohnnyAI erkennt &#252;ber die Windows-Audio-Session, wenn Teams das Mikrofon &#246;ffnet &#8212; startet dann nach ~9&nbsp;Sek. automatisch. Funktioniert auch f&#252;r PSTN-Anrufe (Anrufe an Telefonnummern), nicht nur Teams-to-Teams.</span></div>
+<div class="row"><span class="label">Meeting-Erinnerung</span><span class="value">Windows-Benachrichtigung X Minuten vor Beginn (konfigurierbar)</span></div>
+<div class="row"><span class="label">Ausnahmen</span><span class="value">Termine mit Stichworten (Blocker, Lunch &#8230;) werden &#252;bersprungen</span></div>
+
+<h2>Obsidian-Integration</h2>
+<p style="padding:4px 12px 10px;font-size:13px;color:#444;line-height:1.6">Obsidian ist die pers&#246;nliche Wissensbank &#8212; JohnnyAI schreibt automatisch dorthin. Zusammen mit Claude entstehen vollst&#228;ndige Tagesroutinen, ohne manuellen Aufwand.</p>
+
+<div class="row"><span class="label">&#128228; Meeting exportieren</span><span class="value">Schreibt Zusammenfassung, Aktionspunkte und Transkript als Markdown in den Vault &#8212; direkt im Ordner <code>Meetings/</code> sichtbar</span></div>
+<div class="row"><span class="label">todos-all.md</span><span class="value">JohnnyAI generiert automatisch eine Checkbox-Liste aller Aktionspunkte aus allen Meetings &#8212; nach Person gruppiert. Abhaken in Obsidian wird beim n&#228;chsten Start &#252;bernommen.</span></div>
+<div class="row"><span class="label">&#128197; Wochen-/Monatsbericht</span><span class="value">Button oben in der Werkzeugleiste &#246;ffnet ein Fenster, das alle Meetings der gew&#228;hlten Woche oder des gew&#228;hlten Monats per KI zu einem Bericht nach Themen konsolidiert (nicht meetingweise) &#8212; inkl. Beschl&#252;ssen und offenen Fragen &#252;ber den gesamten Zeitraum. Export als Markdown landet in <code>Wochenbericht/</code> bzw. <code>Monatsbericht/</code>, jeweils neben <code>Meetings/</code> im selben Vault. Ben&#246;tigt bereits erstellte Zusammenfassungen der einzelnen Meetings im Zeitraum.</span></div>
+<div class="row"><span class="label">Vault automatisch &#246;ffnen</span><span class="value">Einstellungen &#8594; ObsidianAutoOpen &#8212; &#246;ffnet den Vault automatisch beim JohnnyAI-Start</span></div>
+<div class="row"><span class="label">Deep-Links</span><span class="value">JohnnyAI &#246;ffnet exportierte Meetings direkt in Obsidian per <code>obsidian://open</code>-Link &#8212; ein Klick, kein Suchen</span></div>
+
+<h2>Confluence Export</h2>
+<p style="padding:4px 12px 8px;font-size:13px;color:#444;line-height:1.6">Meeting-Zusammenfassungen k&#246;nnen direkt in Confluence ver&#246;ffentlicht werden &#8212; inklusive Agenda, Entscheidungen, Action Items und offener Fragen. Der Export &#246;ffnet die erstellte Seite automatisch im Browser.</p>
+<div class="row"><span class="label">Confluence Export</span><span class="value">Erstellt eine neue Seite im gew&#228;hlten Space. Requires: Base URL + Benutzer-E-Mail + Space Key + API Token (Einstellungen &#8594; Speicher &#8594; <strong>Confluence Export</strong>). API Token auf <a href="https://id.atlassian.com/manage-profile/security/api-tokens">id.atlassian.com</a> erstellen.</span></div>
+<div class="tip">&#128161; Exportieren via <strong>&#8599; Exportieren &#8964;</strong>-Button im Summary-Tab. Confluence ist ausgegraut, solange die API-Zugangsdaten in den Einstellungen fehlen.</div>
+
+<h2>Claude-Automationen mit Obsidian</h2>
+<p style="padding:4px 12px 10px;font-size:13px;color:#444;line-height:1.6">Claude kann den Vault lesen und schreiben. Alle Beispiele unten sind als <code>/Slash-Befehl</code> in <code>.claude/commands/</code> ablegbar &#8212; einmal erstellt, immer wiederverwendbar.</p>
+
+<table>
+  <tr><th style="width:200px">Automation</th><th>Was passiert</th></tr>
+  <tr>
+    <td><code>/daily-todos</code></td>
+    <td>Liest <code>todos-all.md</code> und zeigt alle offenen Aktionspunkte als Tages&#252;bersicht &#8212; inkl. welche Meetings noch offen sind und wer die meisten Todos hat. Hinweis wenn die Datei &#228;lter als 24 h ist.</td>
+  </tr>
+  <tr>
+    <td>Daily Notes</td>
+    <td>Claude liest den Outlook-Kalender und erstellt t&#228;glich eine Note mit Tagesplan, Terminen (Uhrzeit, Teilnehmer, Typ), freien Bl&#246;cken und Terminkollusionen &#8212; landet automatisch in <code>&#128197; Daily Notes/YYYY-MM-DD.md</code></td>
+  </tr>
+  <tr>
+    <td>Wochenbericht</td>
+    <td>Jetzt in JohnnyAI selbst eingebaut &#8212; Button &#128197; in der Werkzeugleiste (siehe Abschnitt &#8222;Obsidian-Integration&#8220; oben), kein Claude-Slash-Befehl mehr n&#246;tig</td>
+  </tr>
+  <tr>
+    <td>Meeting analysieren</td>
+    <td>Claude (oder Obsidian Copilot) liest die exportierte Meeting-Markdown und liefert: Top-3-Entscheidungen, alle Aktionspunkte, Key Insights, offene Fragen, Risiken und n&#228;chste Schritte</td>
+  </tr>
+  <tr>
+    <td>Mitarbeiter-Steckbriefe</td>
+    <td>Claude erstellt aus Meeting-Transkripten Profile der h&#228;ufigsten Gespr&#228;chspartner &#8212; Themen, Aufgaben, Kommunikationsstil</td>
+  </tr>
+  <tr>
+    <td>DevOps-Prozess</td>
+    <td>Claude liest Prozessbeschreibungen aus dem Vault und gibt kontextbezogene Antworten zu Status, Abl&#228;ufen und Zust&#228;ndigkeiten &#8212; z.&#8239;B. was bedeuten die Work-Item-Status in Azure DevOps</td>
+  </tr>
+  <tr>
+    <td>Notizen f&#252;r Claude</td>
+    <td>Eine Markdown-Datei im Vault (<code>Notizenblatt f&#252;r Claude.md</code>) als pers&#246;nliches Briefing &#8212; Claude liest sie und kennt den aktuellen Kontext ohne R&#252;ckfragen</td>
+  </tr>
+</table>
+
+<div class="tip">&#128161; <strong>Vault-Struktur empfohlen:</strong> <code>&#128197; Daily Notes/</code> &middot; <code>Meetings/</code> &middot; <code>ToDos/</code> &middot; <code>Wochenbericht/</code> &middot; <code>Monatsbericht/</code> &middot; <code>Notizen/</code> &#8212; JohnnyAI schreibt in <code>Meetings/</code>, <code>ToDos/</code>, <code>Wochenbericht/</code> und <code>Monatsbericht/</code>, Claude in alle anderen.</div>
+
+</div>
+
+<!-- SPRECHER -->
+<div id="tab-sprecher" class="tab-content">
+
+<h2>Wie Sprecher-Erkennung funktioniert</h2>
+<p style="padding:4px 12px 8px;font-size:13px;color:#444;line-height:1.6">JohnnyAI verwendet standardm&#228;&#223;ig <strong>pyannote</strong> zur Diarisierung (Segmentierung nach Sprechern) und <strong>ECAPA-TDNN</strong>-Einbettungen als Stimmvektoren. Diese Vektoren werden mit gespeicherten Profilen abgeglichen &#8212; so lernt JohnnyAI, wer wer ist.</p>
+<table>
+  <tr><th style="width:160px">Komponente</th><th>St&#228;rke</th><th>Schw&#228;che</th></tr>
+  <tr>
+    <td><strong>pyannote</strong><br><span style="font-size:11px;color:#888">Segmentierung &#8212; wer spricht wann</span></td>
+    <td>Erkennt Sprecherwechsel sehr pr&#228;zise, auch bei &#252;berlappender Sprache oder unbekannter Sprecheranzahl &#8212; etablierter Industriestandard f&#252;r Diarisierung.</td>
+    <td>Braucht Python + HuggingFace-Token + einmalige Lizenzzustimmung, gr&#246;&#223;erer Modell-Download, auf CPU sp&#252;rbar langsamer als reine Embedding-Verfahren.</td>
+  </tr>
+  <tr>
+    <td><strong>ECAPA-TDNN</strong><br><span style="font-size:11px;color:#888">Stimm-Embedding &#8212; wer ist das</span></td>
+    <td>State-of-the-art beim Wiedererkennen bereits bekannter Stimmen &#252;ber mehrere Meetings hinweg &#8212; deutlich zuverl&#228;ssiger als einfachere Verfahren wie MFCC, dabei kompakt und schnell.</td>
+    <td>Erkennt selbst keine Sprecherwechsel &#8212; dient nur dem Abgleich &#8222;wer ist das&#8220;, nicht dem &#8222;wer spricht wann&#8220;; bei sehr &#228;hnlichen Stimmen (z.&nbsp;B. nahen Verwandten) weniger trennscharf.</td>
+  </tr>
+  <tr>
+    <td><strong>sherpa-onnx</strong><br><span style="font-size:11px;color:#888">Komplettpaket &#8212; Segmentierung + Embedding in .NET</span></td>
+    <td>Kein Python, kein HuggingFace-Konto/Token n&#246;tig, deutlich kleinerer Download (~32&nbsp;MB statt ~1&nbsp;GB), einfachste Einrichtung. Nutzt intern dieselbe pyannote-Segmentierung, aber ein anderes Embedding-Modell (WeSpeaker ResNet34 statt ECAPA-TDNN).</td>
+    <td>Noch experimentell &#8212; die automatische Sprecheranzahl-Erkennung trifft nicht bei jedem Meeting exakt. Beim Wechsel zu oder von sherpa-onnx m&#252;ssen bereits gelernte Sprecher einmalig neu zugeordnet werden (anderes, nicht kompatibles Stimm-Embedding).</td>
+  </tr>
+</table>
+<div class="info">&#8505; <strong>Alternative ohne Python:</strong> Unter Einstellungen &#8594; Sprechererkennung &#8594; Backend steht zus&#228;tzlich <strong>sherpa-onnx</strong> zur Verf&#252;gung &#8212; l&#228;uft komplett in .NET ohne Python-Installation und ohne HuggingFace-Token (nur ein einmaliger ~32&nbsp;MB-Modell-Download &#252;ber den Button in den Einstellungen). Noch experimentell: die automatische Sprecheranzahl-Erkennung trifft nicht bei jedem Meeting exakt. &#9888; Beim Wechsel zu oder von sherpa-onnx werden bereits bekannte Sprecher einmalig nicht mehr automatisch erkannt (anderes Stimm-Embedding) &#8212; danach lernt das jeweilige Backend sie wie gewohnt neu.</div>
+<table>
+  <tr><th style="width:200px">Schritt</th><th>Was passiert</th></tr>
+  <tr>
+    <td><strong>1 &#8212; Aufnahme</strong></td>
+    <td>JohnnyAI zeichnet Mikrofon + System-Audio gleichzeitig auf (WASAPI Loopback)</td>
+  </tr>
+  <tr>
+    <td><strong>2 &#8212; Transkription</strong></td>
+    <td>Audio wird in Text umgewandelt (Whisper oder alternatives Backend)</td>
+  </tr>
+  <tr>
+    <td><strong>3 &#8212; Diarisierung</strong></td>
+    <td>Das gew&#228;hlte Backend trennt das Audio nach Sprechern: wer spricht wann? (pyannote/ECAPA/resemblyzer ben&#246;tigen Python + HuggingFace-Token; sherpa-onnx und MFCC laufen ohne Python)</td>
+  </tr>
+  <tr>
+    <td><strong>4 &#8212; Profilabgleich</strong></td>
+    <td>Stimmvektoren der neuen Sprecher werden per Kosinus-&#196;hnlichkeit mit allen gespeicherten Profilen verglichen</td>
+  </tr>
+  <tr>
+    <td><strong>5 &#8212; Zuweisung</strong></td>
+    <td>Bekannte Sprecher werden automatisch benannt. Unbekannte erscheinen als SPEAKER_00, SPEAKER_01 usw.</td>
+  </tr>
+</table>
+<div class="tip">&#128161; <strong>Kalender-Bonus:</strong> Personen, die laut Outlook-Kalender im Meeting eingeladen sind, erhalten +0,08 auf die Kosinus-&#196;hnlichkeit &#8212; die Erkennung ist so deutlich zuverl&#228;ssiger, wenn JohnnyAI wei&#223;, wer teilnehmen sollte.</div>
+
+<h2>Sprecher-Chips &#8212; Meeting-weit umbenennen</h2>
+<p style="padding:4px 12px 8px;font-size:13px;color:#444;line-height:1.6">Die farbigen Chips oben im Transkript-Tab repr&#228;sentieren alle erkannten Sprecher des Meetings. Klick auf einen Chip &#246;ffnet das Umbennungs-Popup.</p>
+<div class="row"><span class="label">Namen eingeben</span><span class="value">Freitext oder Auswahl aus bekannten Sprechern &#8212; Autocomplete wird angeboten</span></div>
+<div class="row"><span class="label">Abschnitt &#8222;Aus Einladung&#8220;</span><span class="value">Ist ein Kalendertermin mit dem Meeting verkn&#252;pft, schl&#228;gt das Popup zus&#228;tzlich alle eingeladenen Teilnehmer vor, die noch keinem Sprecher zugeordnet sind &#8212; anklicken statt tippen. Erscheint nur bei verkn&#252;pftem Termin.</span></div>
+<div class="row"><span class="label">&#9654; Probe 1 / 2 / 3</span><span class="value">Spielt bis zu 3 Audio-Ausschnitte des Sprechers ab (je 10 Sek.) &#8212; so l&#228;sst sich die Stimme identifizieren</span></div>
+<div class="row"><span class="label">Best&#228;tigen</span><span class="value">Benennt alle Transkript-Abschnitte dieses Sprechers um und aktualisiert das globale Stimmprofil</span></div>
+<div class="row"><span class="label">&#128100; Nicht erkennbar</span><span class="value">Markiert den Sprecher als nicht identifizierbar &#8212; kein Profilupdate, l&#246;scht eine bestehende Zuweisung</span></div>
+<div class="row"><span class="label">&#10005; Zuweisung l&#246;schen</span><span class="value">Setzt einen benannten Sprecher zur&#252;ck auf sein anonymes Label (SPEAKER_N)</span></div>
+
+<h2>Sprecher-Zuweisung auf Segment-Ebene</h2>
+<p style="padding:4px 12px 8px;font-size:13px;color:#444;line-height:1.6">W&#228;hrend die Chips alle Abschnitte eines Sprechers gleichzeitig umbenennen, kann jeder einzelne Abschnitt auch gezielt bearbeitet werden &#8212; n&#252;tzlich wenn ein Abschnitt falsch zugeordnet wurde oder zwei Sprecher in einem Chip zusammengefasst sind.</p>
+<div class="row"><span class="label">Sprecher-Button</span><span class="value">Jeder Transkript-Abschnitt hat links einen kleinen Sprecher-Button. Klick &#246;ffnet ein Popup direkt beim Abschnitt.</span></div>
+<div class="row"><span class="label">Suchfeld</span><span class="value">Namen eingeben oder aus den im Meeting vorhandenen Sprechern w&#228;hlen &#8212; neue Namen k&#246;nnen direkt angelegt werden</span></div>
+<div class="row"><span class="label">Nur diesen Abschnitt</span><span class="value">&#196;ndert den Sprecher ausschlie&#223;lich f&#252;r diesen Abschnitt &#8212; kein Profilupdate, andere Abschnitte unver&#228;ndert</span></div>
+<div class="row"><span class="label">Alle von &#8222;Name&#8220;</span><span class="value">Benennt alle Abschnitte des aktuellen Sprechers in <strong>diesem Meeting</strong> um und aktualisiert das globale Stimmprofil &#8212; empfohlen f&#252;r die erste Zuweisung</span></div>
+<div class="row"><span class="label">&#127760; Alle Meetings</span><span class="value">Benennt den Sprecher-Label (z.&nbsp;B. SPEAKER_00) mit einem Klick in <strong>allen vorhandenen Transkripten</strong> gleichzeitig um &#8212; nach Best&#228;tigungsdialog. Ideal um anonyme Speaker-Labels rückwirkend zuzuordnen.</span></div>
+<div class="tip">&#128161; <strong>Wann welche Variante?</strong> &#8212; Chip-Umbenennung f&#252;r alle Abschnitte gleichzeitig; Segment-Button f&#252;r einzelne Korrekturen, z.&nbsp;B. wenn pyannote zwei Sprecher vermischt hat.</div>
+
+<h2>Sprecher-Lernfunktion &amp; globale Stimmprofile</h2>
+<p style="padding:4px 12px 8px;font-size:13px;color:#444;line-height:1.6">Jede Umbenennung via <strong>&#8222;Alle von &#8230;&#8220;</strong> (Chip oder Segment) l&#246;st das Sprecher-Lernen aus: JohnnyAI berechnet den Durchschnitts-Stimmvektor aller Abschnitte dieses Sprechers und speichert ihn als globales Profil.</p>
+<div class="row"><span class="label">Wo gespeichert?</span><span class="value"><code>%LOCALAPPDATA%\JohnnyAI\settings.json</code> &#8594; <code>KnownSpeakers</code> &#8212; Felder: Name, E-Mail, Embedding (float[]), SampleCount, UsageCount</span></div>
+<div class="row"><span class="label">Automatische Erkennung</span><span class="value">Beim n&#228;chsten Meeting vergleicht JohnnyAI neue Stimmvektoren per Kosinus-&#196;hnlichkeit mit allen gespeicherten Profilen. &#196;hnlichkeit &gt; 0,72 &#8594; automatische Zuweisung.</span></div>
+<div class="row"><span class="label">Wachsendes Modell</span><span class="value">Mit jeder Best&#228;tigung w&#228;chst SampleCount. Das Embedding wird als gleitender Durchschnitt aktualisiert &#8212; das Profil wird pr&#228;ziser.</span></div>
+<div class="row"><span class="label">Kalender-Teilnehmer</span><span class="value">Outlook-Eingeladene erhalten +0,08 Bonus auf die &#196;hnlichkeit &#8212; erleichtert die Erkennung bei &#228;hnlichen Stimmen</span></div>
+<div class="warn">&#9888; Profil-Qualit&#228;t h&#228;ngt von der Aufnahmequalit&#228;t ab &#8212; schlechte Mikrofon-Aufnahmen oder starkes Echo k&#246;nnen die Vektoren verf&#228;lschen. Ruhige Aufnahmebedingungen verbessern die Erkennung deutlich.</div>
+
+<h2>Einrichtung: Sprecher-Erkennung aktivieren</h2>
+<p style="padding:4px 12px 4px;font-size:13px;color:#444;line-height:1.6">Die Diarisierung ben&#246;tigt Python und einen HuggingFace-Token. Ohne diese Voraussetzungen l&#228;uft Transkription und Zusammenfassung trotzdem &#8212; Sprecher werden dann nur als SPEAKER_00 usw. bezeichnet.</p>
+<table>
+  <tr><th style="width:180px">Schritt</th><th>Was tun</th></tr>
+  <tr>
+    <td><strong>1 &#8212; Python</strong></td>
+    <td>Python 3.10&#8211;3.12 installieren von <a href="https://python.org">python.org</a> &#8212; bei der Installation &#8222;Add Python to PATH&#8220; aktivieren</td>
+  </tr>
+  <tr>
+    <td><strong>2 &#8212; Python-Pakete</strong></td>
+    <td>Kommandozeile &#246;ffnen und ausf&#252;hren: <code>pip install pyannote.audio faster-whisper</code><br>Das KI-Modell (~1&nbsp;GB) wird beim ersten Diarisierungslauf automatisch heruntergeladen.</td>
+  </tr>
+  <tr>
+    <td><strong>3 &#8212; Installation pr&#252;fen</strong></td>
+    <td>Kommandozeile: <code>python --version</code> &#8212; sollte Python 3.10&#8211;3.12 ausgeben. Dann: <code>python -c "import pyannote.audio; print('OK')"</code> &#8212; gibt &#8222;OK&#8220; aus wenn alles korrekt installiert ist.</td>
+  </tr>
+  <tr>
+    <td><strong>4 &#8212; HuggingFace-Konto</strong></td>
+    <td>Kostenloses Konto auf <a href="https://huggingface.co">huggingface.co</a> erstellen</td>
+  </tr>
+  <tr>
+    <td><strong>5 &#8212; Token generieren</strong></td>
+    <td>Profil &#8594; Settings &#8594; Access Tokens &#8594; New token (Typ: Read) &#8594; Token kopieren (beginnt mit <code>hf_</code>)</td>
+  </tr>
+  <tr>
+    <td><strong>6 &#8212; Modell freischalten</strong></td>
+    <td><a href="https://huggingface.co/pyannote/speaker-diarization-3.1">huggingface.co/pyannote/speaker-diarization-3.1</a> &#8594; &#8222;Agree and access repository&#8220; (einmalig)</td>
+  </tr>
+  <tr>
+    <td><strong>7 &#8212; Token eintragen</strong></td>
+    <td>JohnnyAI &#8594; Einstellungen &#8594; Kalender &#8594; <strong>pyannote HuggingFace-Token</strong> &#8594; Speichern</td>
+  </tr>
+</table>
+<div class="tip">&#128161; Beim ersten Diarisierungslauf wird das Modell automatisch heruntergeladen (~1 GB, einmalig). Danach funktioniert alles offline.</div>
+
+</div>
+
+<!-- EINRICHTUNG -->
+<div id="tab-einrichtung" class="tab-content">
+
+<h2>1 &middot; Voraussetzungen (einmalig installieren)</h2>
+<div class="info">&#8505; <strong>Portable-Version:</strong> Die .NET&nbsp;8-Runtime ist bereits eingebettet &#8212; kein separater Download n&#246;tig. Einfach entpacken und starten.</div>
+<div class="row"><span class="label">.NET 8 Desktop Runtime</span><span class="value">Nur bei der Standard-Installation n&#246;tig (nicht bei Portable). Windows Desktop Runtime 8.x (x64)</span></div>
+<div class="tip">&#128161; Download: <a href="https://dotnet.microsoft.com/download/dotnet/8.0">dotnet.microsoft.com/download/dotnet/8.0</a> &#8594; &bdquo;Windows Desktop Runtime&ldquo;</div>
+<div class="row"><span class="label">Python 3.10&#8211;3.12</span><span class="value">Optional &#8212; ben&#246;tigt f&#252;r Sprechererkennung (pyannote) und erweiterte Transkription (faster-whisper, NVIDIA). Ohne Python l&#228;uft die eingebettete Whisper.net-Transkription.</span></div>
+<div class="tip">&#128161; Download: <a href="https://www.python.org/downloads/">python.org/downloads</a> &#8594; bei Installation &bdquo;Add Python to PATH&ldquo; aktivieren &#8594; danach: <code>pip install pyannote.audio faster-whisper</code></div>
+<div class="row"><span class="label">Ollama</span><span class="value">Optional &#8212; lokaler LLM-Server f&#252;r KI-Zusammenfassungen. Alternativ: OpenAI oder Mistral&nbsp;API.</span></div>
+<div class="tip">&#128161; Download: <a href="https://ollama.com">ollama.com</a> &#8594; Installer ausf&#252;hren &#8594; Terminal: <code>ollama pull llama3.2:3b</code></div>
+<div class="row"><span class="label">Microsoft Outlook</span><span class="value">Optional &#8212; f&#252;r Kalender-Integration (lokal installiert und eingeloggt)</span></div>
+<div class="row"><span class="label">Obsidian</span><span class="value">Optional &#8212; f&#252;r Markdown-Export und Deep-Links</span></div>
+<div class="tip">&#128161; <strong>Abh&#228;ngigkeiten pr&#252;fen:</strong> JohnnyAI pr&#252;ft beim Erststart automatisch, welche Komponenten fehlen, und zeigt einen Dialog mit Installationsanleitungen. Jederzeit erneut aufrufbar &#252;ber das Tray-Men&#252; &#8594; <strong>Abh&#228;ngigkeiten pr&#252;fen&nbsp;&#8230;</strong></div>
+
+<h2>2 &middot; Meeting-Ordner (Pflicht)</h2>
+<p style="padding:4px 12px 4px;color:#333">Einstellungen &#8594; Speicher &#8594; <strong>Meeting-Ordner</strong></p>
+<p style="padding:0 12px 6px;font-size:12px;color:#555">Standard-Pfad (wird automatisch erkannt):</p>
+<div class="path">%OneDrive%\Meetings</div>
+<div class="tip">&#128161; Empfehlung: OneDrive- oder Netzwerkpfad w&#228;hlen, damit Meetings auf mehreren Rechnern sichtbar sind.</div>
+<div class="warn">&#9888; Auf einem neuen Rechner denselben Pfad wie auf dem alten einstellen &#8212; sonst sieht JohnnyAI keine vorhandenen Meetings.</div>
+
+<h2>&#10004; Schnell-Checkliste Ersteinrichtung</h2>
+<ol class="checklist">
+  <li><strong>JohnnyAI.exe starten</strong> &#8212; beim ersten Start pr&#252;ft JohnnyAI automatisch alle Abh&#228;ngigkeiten und zeigt einen Einrichtungs-Dialog. Jederzeit erneut aufrufbar: Tray-Symbol &#8594; <strong>Abh&#228;ngigkeiten pr&#252;fen&nbsp;&#8230;</strong></li>
+  <li>Optional: Python 3.10&#8211;3.12 installieren und <code>pip install pyannote.audio faster-whisper</code> ausf&#252;hren &#8212; nur n&#246;tig f&#252;r Sprechererkennung und Python-Transkriptions-Backends. Der Dialog zeigt genaue Installationsanleitungen.</li>
+  <li>Einstellungen &#8594; Speicher: Meeting-Ordner auf OneDrive- oder Netzwerkpfad setzen</li>
+  <li>Einstellungen &#8594; Speicher: Mein Name eintragen</li>
+  <li>Einstellungen &#8594; Modelle: Transkriptions-Backend auf <strong>Auto</strong> stellen (empfohlen, werkseitig ist stattdessen OpenAI API voreingestellt) &#8212; JohnnyAI w&#228;hlt automatisch das schnellste verf&#252;gbare Backend. Optional manuell festlegen: &#x2601;&#xFE0F;&nbsp;Cloud (OpenAI API / NVIDIA NIM / Groq), &#x1F5A5;&#xFE0F;&nbsp;GPU (NVIDIA Lokal / AMD ROCm / Intel OpenVINO), &#x1F4BB;&nbsp;CPU (faster-whisper / Moonshine / Whisper.net)</li>
+  <li>Einstellungen &#8594; Modelle: LLM-Provider auf <strong>Auto</strong> stellen (empfohlen, werkseitig ist stattdessen Ollama voreingestellt) &#8212; optional API-Key f&#252;r Groq, Mistral oder OpenAI eintragen f&#252;r schnellere Cloud-Zusammenfassungen</li>
+  <li>Einstellungen &#8594; Prompts: Meeting-Typen-Prompts nach Bedarf anpassen, optional Agenda-Punkte und Sektionen (welche Abschnitte der LLM erzeugen soll) je Typ eintragen</li>
+  <li>Einstellungen &#8594; Kalender: Outlook COM aktivieren</li>
+  <li>Einstellungen &#8594; Darstellung: Design w&#228;hlen (Hell / Dunkel) und optional Erinnerung an offene Action Items aktivieren</li>
+  <li>Optional: Einstellungen &#8594; Speicher &#8594; <strong>Teams &#8212; Action Items posten</strong>: Incoming-Webhook-URL eintragen f&#252;r den Export in einen Teams-Kanal</li>
+  <li>Optional: Autostart aktivieren (minimiert starten)</li>
+  <li><strong>Einstellungen speichern &#8212; JohnnyAI ist bereit &#127881;</strong></li>
+</ol>
+
+</div>
+
+<!-- KONFIGURATION -->
+<div id="tab-konfiguration" class="tab-content">
+
+<h2>Transkription &#8594; Backend w&#228;hlen</h2>
+<p style="padding:4px 12px 8px;color:#333">Einstellungen &#8594; Modelle &#8594; <strong>Transkription</strong></p>
+<p style="padding:0 12px 8px;font-size:13px;color:#444;line-height:1.6">Alle Backends &#252;bernehmen ausschlie&#223;lich die <strong>Transkription</strong> (Audio &#8594; Text). Diarisierung und Zusammenfassung laufen unabh&#228;ngig davon mit den separat gew&#228;hlten Modellen. Die Backends sind nach Prozessorbereich gruppiert &#8212; schnellste zuerst.</p>
+<table>
+  <tr><th style="width:220px">Backend</th><th>Wann verwenden?</th><th>Kosten / Einrichtung</th></tr>
+  <tr>
+    <td><strong>Auto</strong> <span class="badge">Empfohlen</span></td>
+    <td>Testet automatisch alle verf&#252;gbaren Backends (Cloud → GPU → CPU) und w&#228;hlt das schnellste. Ergebnis wird 10&nbsp;Min. gecacht &#8212; kein Overhead bei jedem Meeting.</td>
+    <td>Keinen zus&#228;tzlichen API-Key n&#246;tig &#8212; nutzt vorhandene Schl&#252;ssel und installierte Python-Pakete</td>
+  </tr>
+  <tr><td colspan="3" style="background:#EDF5FF;font-weight:600;color:#1a4a7a;padding:5px 8px">&#x2601;&#xFE0F; Cloud &#8212; 10&#8211;30&#215; Echtzeit</td></tr>
+  <tr>
+    <td><strong>NVIDIA NIM API &#x1F680;</strong> (Parakeet oder Canary)</td>
+    <td>Englisch (Parakeet) oder Deutsch + Englisch (Canary) &#8212; state-of-the-art via NVIDIA Cloud</td>
+    <td>1.000 Credits/Monat kostenlos &#8212; NVIDIA API-Key erforderlich (build.nvidia.com)</td>
+  </tr>
+  <tr>
+    <td><strong>Groq Whisper &#x26A1;&#x26A1;</strong></td>
+    <td>whisper-large-v3-turbo &#252;ber die Groq-Cloud &#8212; sehr schnell, gute Qualit&#228;t f&#252;r Deutsch und Englisch</td>
+    <td>Kostenlos bis ~40&nbsp;Std/Monat &#8212; Groq API-Key erforderlich</td>
+  </tr>
+  <tr>
+    <td><strong>OpenAI API &#x26A1;</strong></td>
+    <td>Transkription &#252;ber die OpenAI-Cloud, gute Qualit&#228;t f&#252;r Deutsch und Englisch</td>
+    <td>Ca. 0,006&nbsp;$/min &#8212; OpenAI API-Key erforderlich</td>
+  </tr>
+  <tr><td colspan="3" style="background:#EDFBEE;font-weight:600;color:#1a4a1a;padding:5px 8px">&#x1F5A5;&#xFE0F; GPU &#8212; 5&#8211;30&#215; Echtzeit (je nach GPU)</td></tr>
+  <tr>
+    <td><strong>NVIDIA Lokal &#x1F4BB;</strong> (Parakeet oder Canary)</td>
+    <td>Gleiche Modelle wie Cloud &#8212; l&#228;uft vollst&#228;ndig auf dem Rechner, kein API-Key. NVIDIA-GPU erforderlich.</td>
+    <td>Kostenlos &#8212; Python + HuggingFace n&#246;tig, Erststart l&#228;dt Modell (2&#8211;4 GB)</td>
+  </tr>
+  <tr>
+    <td><strong>AMD GPU &#x1F534;</strong> (faster-whisper + ROCm)</td>
+    <td>faster-whisper mit AMD GPU-Beschleunigung &#8212; f&#252;r AMD Radeon-Grafikkarten (RX 6000 / 7000 / 9000). 5&#8211;20&#215; schneller als CPU.</td>
+    <td>Kostenlos &#8212; Python + ROCm-f&#228;higes PyTorch n&#246;tig</td>
+  </tr>
+  <tr>
+    <td><strong>Intel GPU/NPU &#x1F535;</strong> (faster-whisper + OpenVINO)</td>
+    <td>faster-whisper mit Intel-Beschleunigung &#8212; f&#252;r Intel Arc-Grafikkarten und Intel Iris Xe / NPU (Core Ultra). 3&#8211;10&#215; schneller als CPU.</td>
+    <td>Kostenlos &#8212; Python + OpenVINO n&#246;tig</td>
+  </tr>
+  <tr><td colspan="3" style="background:#FEFBEE;font-weight:600;color:#5a3a00;padding:5px 8px">&#x1F4BB; CPU &#8212; 2&#8211;8&#215; Echtzeit</td></tr>
+  <tr>
+    <td><strong>faster-whisper &#x1F3C3; (CPU)</strong></td>
+    <td>Schnellste CPU-Option ohne GPU &#8212; int8-Quantisierung, automatische Spracherkennung. Empfohlen wenn keine GPU vorhanden ist.</td>
+    <td>Kostenlos &#8212; Python + <code>pip install faster-whisper</code> n&#246;tig, Erststart l&#228;dt Modell (~75 MB bis 1,5 GB je nach Wahl)</td>
+  </tr>
+  <tr>
+    <td><strong>Moonshine &#x1F319;</strong></td>
+    <td>Sehr kleines, schnelles lokales Modell von Useful Sensors &#8212; prim&#228;r f&#252;r Englisch optimiert</td>
+    <td>Kostenlos &#8212; l&#228;uft lokal, kein Python n&#246;tig</td>
+  </tr>
+  <tr>
+    <td><strong>Lokal (Whisper.net)</strong> <span class="badge">Empfohlen (kein Python)</span></td>
+    <td>Deutsche und gemischte Meetings &#8212; l&#228;uft vollst&#228;ndig auf dem Rechner, kein Python, kein Internet n&#246;tig</td>
+    <td>Kostenlos &#8212; Modell wird beim ersten Start automatisch heruntergeladen (~632 MB)</td>
+  </tr>
+</table>
+<p style="padding:12px 12px 4px;color:#333"><strong>Lokale Whisper-Modelle:</strong></p>
+<table>
+  <tr><th style="width:260px">Modell</th><th style="width:80px">Gr&#246;&#223;e</th><th>Beschreibung</th></tr>
+  <tr>
+    <td><code>large-v3-v20240930_turbo_632MB</code> <span class="badge">Standard</span></td>
+    <td>~632&nbsp;MB</td>
+    <td>Beste Balance aus Qualit&#228;t und Geschwindigkeit. Empfohlen f&#252;r den t&#228;glichen Einsatz &#8212; verarbeitet eine Stunde Audio in ca. 3&#8211;5 Minuten.</td>
+  </tr>
+  <tr>
+    <td><code>large-v3</code></td>
+    <td>~1,5&nbsp;GB</td>
+    <td>H&#246;chste Genauigkeit, besonders bei starkem Akzent oder schlechter Audioqualit&#228;t. Ca. 2&#215; langsamer als Turbo &#8212; sinnvoll f&#252;r besonders wichtige Aufnahmen.</td>
+  </tr>
+  <tr>
+    <td><code>small</code></td>
+    <td>~465&nbsp;MB</td>
+    <td>Schnellstes lokales Modell, geringste Qualit&#228;t. Geeignet f&#252;r kurze Aufnahmen oder wenn Geschwindigkeit wichtiger ist als Genauigkeit.</td>
+  </tr>
+  <tr>
+    <td><code>base</code></td>
+    <td>~145&nbsp;MB</td>
+    <td>Minimales Modell f&#252;r schwache Hardware. Deutlich niedrigere Erkennungsqualit&#228;t &#8212; nur empfohlen wenn RAM oder Speicher sehr begrenzt sind.</td>
+  </tr>
+</table>
+<div class="info">&#8505; Lokale Modelle werden beim ersten Start automatisch heruntergeladen nach: <code>%LOCALAPPDATA%\JohnnyAI\WhisperModels</code></div>
+
+<h2>Transkription &#8594; Auto (schnellstes Backend)</h2>
+<p style="padding:4px 12px 8px;color:#333">Einstellungen &#8594; Modelle &#8594; <strong>Auto (empfohlen)</strong></p>
+<p style="padding:0 12px 8px;font-size:13px;color:#444;line-height:1.6">Im Auto-Modus testet JohnnyAI beim ersten Meeting der Sitzung automatisch alle verf&#252;gbaren Backends in Geschwindigkeitsreihenfolge und w&#228;hlt das schnellste, das bereit ist.</p>
+<p style="padding:0 12px 4px;font-size:13px;font-weight:600;color:#333">Reihenfolge der Pr&#252;fung (schnellste zuerst):</p>
+<table>
+  <tr><th style="width:260px">Backend</th><th>Voraussetzung</th></tr>
+  <tr><td>1. NVIDIA Parakeet (Cloud)</td><td>NVIDIA API-Key hinterlegt + Internetverbindung</td></tr>
+  <tr><td>2. Groq Whisper (Cloud)</td><td>Groq API-Key hinterlegt + Internetverbindung</td></tr>
+  <tr><td>3. OpenAI Whisper (Cloud)</td><td>OpenAI API-Key hinterlegt + Internetverbindung</td></tr>
+  <tr><td>4. Parakeet (lokal / GPU)</td><td>Python + NVIDIA-GPU + Modell-Download (~2&#8211;4 GB)</td></tr>
+  <tr><td>5. faster-whisper small (CPU)</td><td>Python + <code>pip install faster-whisper</code></td></tr>
+  <tr><td>6. faster-whisper medium (CPU)</td><td>Python + <code>pip install faster-whisper</code></td></tr>
+  <tr><td>7. faster-whisper large-v3 (CPU)</td><td>Python + <code>pip install faster-whisper</code></td></tr>
+  <tr><td>8. Moonshine (lokal/CPU)</td><td>Immer verf&#252;gbar &#8212; kein Python, kein API-Key</td></tr>
+  <tr><td>9. Whisper.net (eingebettet)</td><td>Immer verf&#252;gbar &#8212; kein Python, kein API-Key</td></tr>
+</table>
+<div class="row"><span class="label">Cache-Dauer</span><span class="value">Das Ergebnis wird 10&nbsp;Minuten gecacht &#8212; kein erneutes Testen bei jedem Meeting. Nach 10&nbsp;Minuten oder JohnnyAI-Neustart wird erneut gepr&#252;ft.</span></div>
+<div class="row"><span class="label">Overlay-Anzeige</span><span class="value">W&#228;hrend der Backend-Ermittlung zeigt das Overlay &#8222;Schnellstes Backend ermitteln&#8230;&#8220;. Das gew&#228;hlte Backend erscheint dann als Modell-Label im Job-Eintrag.</span></div>
+<div class="tip">&#128161; Auto ist die beste Wahl f&#252;r die meisten Nutzer. Wer immer dasselbe Backend verwenden m&#246;chte (z.&nbsp;B. immer OpenAI f&#252;r maximale Geschwindigkeit), sollte es manuell festlegen &#8212; dann entf&#228;llt das Probing.</div>
+
+<h2>Transkription &#8594; Lokal (Whisper)</h2>
+<p style="padding:4px 12px 8px;color:#333">Einstellungen &#8594; Modelle &#8594; <strong>Lokal (Whisper)</strong></p>
+<div class="row"><span class="label">Wof&#252;r?</span><span class="value">Ausschlie&#223;lich Transkription (Audio &#8594; Text) &#8212; deutsche und gemischte Meetings, l&#228;uft vollst&#228;ndig auf dem Rechner</span></div>
+<div class="row"><span class="label">Einrichtung</span><span class="value">Kein API-Key n&#246;tig &#8212; Modell wird beim ersten Start automatisch heruntergeladen (~632 MB)</span></div>
+<div class="row"><span class="label">Kosten</span><span class="value">Kostenlos &#8212; kein Internet n&#246;tig, keine Daten werden &#252;bertragen</span></div>
+<div class="tip">&#128161; Beste Wahl f&#252;r den t&#228;glichen Einsatz &#8212; insbesondere bei deutschen und gemischten Meetings.</div>
+
+<h2>Transkription &#8594; OpenAI API (Whisper)</h2>
+<p style="padding:4px 12px 8px;color:#333">Einstellungen &#8594; Modelle &#8594; <strong>OpenAI API</strong></p>
+<div class="row"><span class="label">Wof&#252;r?</span><span class="value">Ausschlie&#223;lich Transkription (Audio &#8594; Text) &#8212; schnelle Cloud-Transkription, gute Qualit&#228;t auf Deutsch und Englisch</span></div>
+<div class="row"><span class="label">Einrichtung</span><span class="value">OpenAI API-Key unter <a href="https://platform.openai.com/api-keys">platform.openai.com/api-keys</a> erstellen &#8594; in Einstellungen eintragen</span></div>
+<div class="row"><span class="label">Kosten</span><span class="value">Ca. 0,006&nbsp;$/min &#8212; nutzungsbasiert, kein Abo n&#246;tig</span></div>
+<div class="tip">&#128161; Ca. 30&#215; schneller als die lokale Variante &#8212; sinnvoll wenn viele Meetings in kurzer Zeit verarbeitet werden sollen.</div>
+
+<h2>Transkription &#8594; NVIDIA NIM API &#x1F680;</h2>
+<p style="padding:4px 12px 8px;color:#333">Einstellungen &#8594; Modelle &#8594; <strong>NVIDIA NIM API &#x1F680;</strong> &#8594; Modell w&#228;hlen</p>
+<div class="row"><span class="label">Wof&#252;r?</span><span class="value">Transkription &#252;ber die NVIDIA-Cloud &#8212; kein lokaler Rechenaufwand, sehr schnell</span></div>
+<div class="row"><span class="label">Einrichtung</span><span class="value"><a href="https://build.nvidia.com">build.nvidia.com</a> &#8594; einloggen &#8594; <strong>Get API Key</strong> &#8594; Key (beginnt mit <code>nvapi-</code>) in Einstellungen eintragen &#8594; Verbindung testen</span></div>
+<div class="row"><span class="label">Kosten</span><span class="value">1.000 Credits/Monat kostenlos &#8212; ca. 60&#8211;80 Credits pro Stunde Audio</span></div>
+<div class="tip">&#128161; F&#252;r deutsche Meetings: <strong>Canary-1B</strong> w&#228;hlen. F&#252;r rein englische Meetings: <strong>Parakeet TDT v3</strong> bietet die h&#246;chste Genauigkeit.</div>
+<p style="padding:8px 12px 4px;font-size:13px;font-weight:bold;color:#333">Modelle im Vergleich:</p>
+<table>
+  <tr><th style="width:220px">Modell</th><th>St&#228;rken</th><th>Sprachen</th></tr>
+  <tr>
+    <td><strong>Parakeet TDT 1.1B v3</strong> <span class="badge">Englisch</span></td>
+    <td>State-of-the-art Englisch-Erkennung, beste Genauigkeit f&#252;r englischsprachige Meetings</td>
+    <td>Englisch</td>
+  </tr>
+  <tr>
+    <td><strong>Canary-1B</strong> <span class="badge">Mehrsprachig</span></td>
+    <td>Hohe Genauigkeit in vier Sprachen &#8212; ideal wenn im Meeting Deutsch gesprochen wird</td>
+    <td>Deutsch, Englisch, Franz&#246;sisch, Spanisch</td>
+  </tr>
+</table>
+
+<h2>Transkription &#8594; NVIDIA Lokal &#x1F4BB;</h2>
+<p style="padding:4px 12px 8px;color:#333">Einstellungen &#8594; Modelle &#8594; <strong>NVIDIA Lokal &#x1F4BB;</strong> &#8594; Modell w&#228;hlen</p>
+<div class="row"><span class="label">Wof&#252;r?</span><span class="value">Gleiche Modelle wie Cloud (Parakeet oder Canary) &#8212; l&#228;uft vollst&#228;ndig auf dem Rechner, kein API-Key n&#246;tig</span></div>
+<div class="row"><span class="label">Einrichtung</span><span class="value">1.&nbsp;Python installieren &#8594; 2.&nbsp;<code>pip install transformers torch torchaudio</code> &#8594; 3.&nbsp;Python-Pfad in Einstellungen eintragen &#8594; 4.&nbsp;<strong>Pr&#252;fen</strong> klicken &#8594; 5.&nbsp;Modell-Download beim ersten Start (Parakeet ~4 GB, Canary ~2 GB &#8212; einmalig)</span></div>
+<div class="row"><span class="label">Kosten</span><span class="value">Kostenlos &#8212; kein API-Key, nach dem Download kein Internet n&#246;tig</span></div>
+<div class="tip">&#128161; NVIDIA-GPU empfohlen &#8212; deutlich schneller als CPU. F&#252;r deutsche Meetings <strong>Canary-1B</strong> w&#228;hlen. Canary lokal ben&#246;tigt alternativ: <code>pip install nemo_toolkit[asr]</code></div>
+
+<h2>Transkription &#8594; faster-whisper &#x1F3C3; (CPU)</h2>
+<p style="padding:4px 12px 8px;color:#333">Einstellungen &#8594; Modelle &#8594; <strong>faster-whisper &#x1F3C3; (CPU)</strong> &#8594; Modellgr&#246;&#223;e w&#228;hlen</p>
+<div class="row"><span class="label">Wof&#252;r?</span><span class="value">Schnellste lokale Transkription ohne GPU. L&#228;uft auf CPU mit int8-Quantisierung &#8212; deutlich flotter als Whisper.net. Automatische Spracherkennung. Empfohlen wenn keine NVIDIA-GPU vorhanden ist.</span></div>
+<div class="row"><span class="label">Einrichtung</span><span class="value">1.&nbsp;Python installieren &#8594; 2.&nbsp;<code>pip install faster-whisper</code> &#8594; 3.&nbsp;Python-Pfad in Einstellungen (gleicher Pfad wie NVIDIA Lokal) &#8594; 4.&nbsp;Modellgr&#246;&#223;e w&#228;hlen &#8594; Modell wird beim ersten Start automatisch heruntergeladen</span></div>
+<div class="row"><span class="label">Speicherpfad</span><span class="value">Modelle werden ohne Symlinks gespeichert unter: <code>%LOCALAPPDATA%\JohnnyAI\faster_whisper_models\</code></span></div>
+<div class="row"><span class="label">Kosten</span><span class="value">Kostenlos &#8212; kein API-Key, nach dem Download kein Internet n&#246;tig</span></div>
+<p style="padding:8px 12px 4px;font-size:13px;font-weight:bold;color:#333">Modellgr&#246;&#223;en im Vergleich:</p>
+<table>
+  <tr><th style="width:180px">Modell</th><th style="width:80px">Gr&#246;&#223;e</th><th>Beschreibung</th></tr>
+  <tr>
+    <td><code>large-v3</code> <span class="badge">Empfohlen</span></td>
+    <td>~1,5&nbsp;GB</td>
+    <td>H&#246;chste Genauigkeit, automatische Spracherkennung (Deutsch, Englisch &#8230;). Empfohlen f&#252;r t&#228;glichen Einsatz.</td>
+  </tr>
+  <tr>
+    <td><code>medium</code></td>
+    <td>~769&nbsp;MB</td>
+    <td>Gute Qualit&#228;t bei deutlich geringerer Gr&#246;&#223;e &#8212; sinnvoll wenn large-v3 zu langsam ist.</td>
+  </tr>
+  <tr>
+    <td><code>small</code></td>
+    <td>~244&nbsp;MB</td>
+    <td>Spürbar schneller &#8212; Qualit&#228;t ausreichend f&#252;r klare Aufnahmen.</td>
+  </tr>
+  <tr>
+    <td><code>tiny</code></td>
+    <td>~75&nbsp;MB</td>
+    <td>Minimal &#8212; f&#252;r Testzwecke oder sehr schwache Hardware.</td>
+  </tr>
+</table>
+<div class="warn">&#9888; Windows ohne Developer Mode: faster-whisper nutzt automatisch den Ordner <code>%LOCALAPPDATA%\JohnnyAI\faster_whisper_models\</code> ohne Symlinks &#8212; kein Developer Mode n&#246;tig.</div>
+<div class="tip">&#128161; Bei einem Ryzen 7 und &#228;hnlicher CPU: <code>large-v3</code> transkribiert 1 Stunde Audio in ca. 10&#8211;15 Minuten &#8212; im Hintergrund, w&#228;hrend das n&#228;chste Meeting l&#228;uft.</div>
+
+<h2>Transkription &#8594; AMD GPU &#x1F534; (faster-whisper + ROCm)</h2>
+<p style="padding:4px 12px 8px;color:#333">Einstellungen &#8594; Modelle &#8594; <strong>AMD GPU &#x1F534;</strong> &#8594; Modellgr&#246;&#223;e w&#228;hlen</p>
+<div class="row"><span class="label">Wof&#252;r?</span><span class="value">faster-whisper mit AMD GPU-Beschleunigung &#8212; 5&#8211;20&#215; schneller als CPU. Kompatibel mit AMD Radeon RX 6000, 7000 und 9000 (RDNA 2/3/4). Ben&#246;tigt ROCm-f&#228;higes PyTorch.</span></div>
+<div class="row"><span class="label">Einrichtung</span><span class="value">1.&nbsp;Python installieren &#8594; 2.&nbsp;ROCm-PyTorch installieren (Befehl unter <a href="https://pytorch.org/get-started/locally/">pytorch.org/get-started/locally/</a> w&#228;hlen: ROCm) &#8594; 3.&nbsp;<code>pip install faster-whisper</code> &#8594; 4.&nbsp;Python-Pfad in Einstellungen eintragen &#8594; 5.&nbsp;Modellgr&#246;&#223;e w&#228;hlen</span></div>
+<div class="row"><span class="label">Speicherpfad</span><span class="value">Modelle unter: <code>%LOCALAPPDATA%\JohnnyAI\faster_whisper_models\</code></span></div>
+<div class="row"><span class="label">Kosten</span><span class="value">Kostenlos &#8212; kein API-Key, nach dem Download kein Internet n&#246;tig</span></div>
+<div class="tip">&#128161; Empfohlene Modellgr&#246;&#223;e: <code>large-v3</code> f&#252;r beste Qualit&#228;t. Gleiche Modelle wie faster-whisper CPU &#8212; nur das Backend (GPU statt CPU) unterscheidet sich.</div>
+<div class="warn">&#9888; ROCm ist offiziell f&#252;r Linux ausgelegt. Unter Windows ist die ROCm-Unterst&#252;tzung begrenzt &#8212; nur Radeon RX 6000/7000/9000 werden unterst&#252;tzt. Bei Problemen faster-whisper CPU als Fallback verwenden.</div>
+
+<h2>Transkription &#8594; Intel GPU/NPU &#x1F535; (faster-whisper + OpenVINO)</h2>
+<p style="padding:4px 12px 8px;color:#333">Einstellungen &#8594; Modelle &#8594; <strong>Intel GPU/NPU &#x1F535;</strong> &#8594; Modellgr&#246;&#223;e w&#228;hlen</p>
+<div class="row"><span class="label">Wof&#252;r?</span><span class="value">faster-whisper mit Intel-Beschleunigung &#8212; 3&#8211;10&#215; schneller als CPU. Kompatibel mit Intel Arc-Grafikkarten und Intel Iris Xe / NPU (Intel Core Ultra, 12.&nbsp;Gen+). L&#228;uft auf GPU oder NPU je nach Verf&#252;gbarkeit.</span></div>
+<div class="row"><span class="label">Einrichtung</span><span class="value">1.&nbsp;Python installieren &#8594; 2.&nbsp;<code>pip install faster-whisper openvino</code> &#8594; 3.&nbsp;Python-Pfad in Einstellungen eintragen &#8594; 4.&nbsp;Modellgr&#246;&#223;e w&#228;hlen</span></div>
+<div class="row"><span class="label">Speicherpfad</span><span class="value">Modelle unter: <code>%LOCALAPPDATA%\JohnnyAI\faster_whisper_models\</code></span></div>
+<div class="row"><span class="label">Kosten</span><span class="value">Kostenlos &#8212; kein API-Key, nach dem Download kein Internet n&#246;tig</span></div>
+<div class="tip">&#128161; Empfohlene Modellgr&#246;&#223;e: <code>large-v3</code> f&#252;r beste Qualit&#228;t. Besonders interessant f&#252;r Laptops mit Intel Core Ultra (Meteor Lake / Lunar Lake) &#8212; die integrierte NPU &#252;bernimmt die Transkription ohne GPU-Auslastung.</div>
+
+<h2>Zusammenfassung &#8594; LLM-Provider</h2>
+<p style="padding:4px 12px 8px;color:#333">Einstellungen &#8594; Modelle &#8594; <strong>Zusammenfassung (LLM)</strong></p>
+<p style="padding:0 12px 8px;font-size:13px;color:#444;line-height:1.6">Der LLM-Provider erstellt ausschlie&#223;lich die <strong>KI-Zusammenfassung</strong> aus dem fertigen Transkript. Transkription und Diarisierung laufen unabh&#228;ngig davon.</p>
+<div class="info">&#8505; <strong>Wie w&#228;hlen?</strong><br>
+&#x2022; <strong>Einfachste Variante:</strong> <em>Auto</em> lassen &#8212; JohnnyAI nutzt automatisch den besten verf&#252;gbaren Provider. Einfach API-Key f&#252;r Groq, OpenAI, Mistral oder Claude hinterlegen, fertig.<br>
+&#x2022; <strong>Schnellste Cloud-Option (kostenlos):</strong> <em>Groq</em> &#8212; Free Tier, sehr schnell, gute Qualit&#228;t auf Deutsch und Englisch.<br>
+&#x2022; <strong>H&#246;chste Qualit&#228;t:</strong> <em>OpenAI gpt-4o</em> oder <em>Claude</em> &#8212; f&#252;r besonders wichtige Meetings oder sehr lange Transkripte.<br>
+&#x2022; <strong>Ebenfalls kosteneffizient:</strong> <em>Mistral</em> &#8212; Free Tier, gute Qualit&#228;t auf Deutsch und Englisch.<br>
+&#x2022; <strong>100 % lokal / datenschutzkonform:</strong> <em>Ollama</em> &#8212; kein Internet, keine Kosten, l&#228;uft auf dem eigenen Rechner. Deutlich langsamer als Cloud-Provider.
+</div>
+<table>
+  <tr><th style="width:160px">Provider</th><th>Wann verwenden?</th><th>Geschwindigkeit</th><th>Kosten / Einrichtung</th></tr>
+  <tr>
+    <td><strong>Auto</strong> <span class="badge">Empfohlen</span></td>
+    <td>W&#228;hlt automatisch den besten verf&#252;gbaren Provider: Groq (wenn API-Key hinterlegt) &#8594; OpenAI &#8594; Mistral &#8594; Claude &#8594; Ollama</td>
+    <td>Wie der gew&#228;hlte Provider</td>
+    <td>Keinen zus&#228;tzlichen API-Key n&#246;tig &#8212; nutzt vorhandene Schl&#252;ssel automatisch</td>
+  </tr>
+  <tr>
+    <td><strong>Groq</strong> <span class="badge">Empfohlen</span></td>
+    <td>Schnellste Cloud-Option, gute Qualit&#228;t &#8212; h&#246;chste Priorit&#228;t im Auto-Modus</td>
+    <td>&#9889;&#9889; 2&#8211;8&nbsp;Sek. f&#252;r 1&nbsp;Std. Meeting</td>
+    <td>Dauerhaft kostenlos (Free Tier) &#8212; Modell: <code>openai/gpt-oss-120b</code> &#8212; API-Key: <a href="https://console.groq.com">console.groq.com</a></td>
+  </tr>
+  <tr>
+    <td><strong>Mistral</strong></td>
+    <td>Schnelle, qualitativ hochwertige Zusammenfassungen auf Deutsch und Englisch &#8212; Cloud-basiert</td>
+    <td>&#9889; 5&#8211;15&nbsp;Sek. f&#252;r 1&nbsp;Std. Meeting</td>
+    <td>Free Tier verf&#252;gbar, danach nutzungsbasiert &#8212; API-Key: <a href="https://console.mistral.ai">console.mistral.ai</a></td>
+  </tr>
+  <tr>
+    <td><strong>OpenAI (ChatGPT)</strong></td>
+    <td>H&#246;chste Qualit&#228;t, sehr gutes Deutsch &#8212; ideal f&#252;r komplexe Meetings und lange Transkripte</td>
+    <td>&#9889; 10&#8211;25&nbsp;Sek. f&#252;r 1&nbsp;Std. Meeting</td>
+    <td>Kostenpflichtig &#8212; gpt-4o-mini g&#252;nstigste Option &#8212; API-Key: <a href="https://platform.openai.com/api-keys">platform.openai.com/api-keys</a></td>
+  </tr>
+  <tr>
+    <td><strong>Claude</strong></td>
+    <td>Sehr hohe Qualit&#228;t auf Deutsch und Englisch &#8212; Alternative zu OpenAI f&#252;r wichtige Meetings</td>
+    <td>&#9889; 3&#8211;10&nbsp;Sek. f&#252;r 1&nbsp;Std. Meeting</td>
+    <td>Kostenpflichtig, nutzungsbasiert &#8212; API-Key: <a href="https://console.anthropic.com">console.anthropic.com</a></td>
+  </tr>
+  <tr>
+    <td><strong>Ollama</strong></td>
+    <td>100&nbsp;% lokal, kein Internet, keine Kosten, vollst&#228;ndig datenschutzkonform</td>
+    <td>&#128011; 2&#8211;10&nbsp;Min. (GPU) / 5&#8211;30&nbsp;Min. (CPU)</td>
+    <td>Ollama lokal installieren &#8594; <code>ollama pull llama3.2:3b</code> &#8212; Qualit&#228;t abh&#228;ngig vom Modell</td>
+  </tr>
+</table>
+<div class="tip">&#128161; Empfehlung: <strong>Auto</strong> &#8212; JohnnyAI w&#228;hlt automatisch den besten verf&#252;gbaren Provider (Groq &#8594; OpenAI &#8594; Mistral &#8594; Claude &#8594; Ollama). Einfach API-Key f&#252;r Groq, OpenAI, Mistral oder Claude hinterlegen und &bdquo;Auto&ldquo; w&#228;hlen &#8212; kein weiteres Umkonfigurieren n&#246;tig wenn sich verf&#252;gbare Keys &#228;ndern.</div>
+
+<h2>Zusammenfassung &#8594; Auto (empfohlen)</h2>
+<p style="padding:4px 12px 8px;color:#333">Einstellungen &#8594; Modelle &#8594; <strong>Zusammenfassung (LLM) &#8594; Auto</strong></p>
+<div class="row"><span class="label">Wof&#252;r?</span><span class="value">Automatische Auswahl des besten verf&#252;gbaren LLM-Providers &#8212; kein manuelles Umkonfigurieren n&#246;tig</span></div>
+<div class="row"><span class="label">Priorit&#228;t</span><span class="value">1. Groq (wenn API-Key hinterlegt) &#8594; 2. OpenAI (wenn API-Key hinterlegt) &#8594; 3. Mistral (wenn API-Key hinterlegt) &#8594; 4. Claude (wenn API-Key hinterlegt) &#8594; 5. Ollama (immer verf&#252;gbar)</span></div>
+<div class="row"><span class="label">Overlay-Anzeige</span><span class="value">Zeigt &#8222;Auto &#8594; Groq&#8220; / &#8222;Auto &#8594; OpenAI gpt-4o-mini&#8220; / &#8222;Auto &#8594; Mistral AI&#8220; / &#8222;Auto &#8594; Claude claude-sonnet-5&#8220; / &#8222;Auto &#8594; Ollama llama3.2:3b&#8220; je nach gew&#228;hltem Provider</span></div>
+<div class="row"><span class="label">Modell-Label</span><span class="value">In der Statistik-Leiste des Meetings erscheint z.&nbsp;B. &#8222;Auto &#8594; openai/gpt-oss-120b&#8220; oder &#8222;Auto &#8594; mistral-large-latest&#8220; &#8212; so ist immer nachvollziehbar, welcher Provider tats&#228;chlich verwendet wurde</span></div>
+<div class="row"><span class="label">Kosten</span><span class="value">Abh&#228;ngig vom gew&#228;hlten Provider &#8212; bei Groq und Ollama kostenlos, bei OpenAI/Mistral/Claude API-nutzungsbasiert</span></div>
+<div class="tip">&#128161; Einfach Groq-, OpenAI-, Mistral- oder Claude-API-Key hinterlegen und LLM-Provider auf &bdquo;Auto&ldquo; lassen &#8212; JohnnyAI nutzt dann automatisch den schnellsten verf&#252;gbaren Cloud-Provider und f&#228;llt auf Ollama zur&#252;ck, wenn kein Key vorhanden ist.</div>
+
+<h2>Zusammenfassung &#8594; Mistral</h2>
+<p style="padding:4px 12px 8px;color:#333">Einstellungen &#8594; Modelle &#8594; <strong>Zusammenfassung (LLM) &#8594; Mistral</strong></p>
+<div class="row"><span class="label">Wof&#252;r?</span><span class="value">KI-Zusammenfassung aus dem Transkript &#8212; schnellste Cloud-Option, gute Qualit&#228;t auf Deutsch und Englisch</span></div>
+<div class="row"><span class="label">Geschwindigkeit</span><span class="value">&#9889; 5&#8211;15&nbsp;Sek. f&#252;r ein einstündiges Meeting &#8212; l&#228;uft parallel zur n&#228;chsten Aufnahme im Hintergrund</span></div>
+<div class="row"><span class="label">Einrichtung</span><span class="value">API-Key unter <a href="https://console.mistral.ai">console.mistral.ai</a> erstellen &#8594; in Einstellungen eintragen &#8594; Verbindung testen</span></div>
+<div class="row"><span class="label">Kosten</span><span class="value">Free Tier verf&#252;gbar, danach nutzungsbasiert</span></div>
+<div class="tip">&#128161; Empfohlene Wahl f&#252;r den t&#228;glichen Einsatz &#8212; bestes Preis-Leistungs-Verh&#228;ltnis und k&#252;rzeste Wartezeit.</div>
+
+<h2>Zusammenfassung &#8594; OpenAI (ChatGPT)</h2>
+<p style="padding:4px 12px 8px;color:#333">Einstellungen &#8594; Modelle &#8594; <strong>Zusammenfassung (LLM) &#8594; OpenAI / ChatGPT</strong></p>
+<div class="row"><span class="label">Wof&#252;r?</span><span class="value">KI-Zusammenfassung aus dem Transkript &#8212; h&#246;chste Qualit&#228;t, sehr gutes Deutsch</span></div>
+<div class="row"><span class="label">Geschwindigkeit</span><span class="value">&#9889; 10&#8211;25&nbsp;Sek. f&#252;r ein einstündiges Meeting (gpt-4o-mini schneller, gpt-4o etwas langsamer)</span></div>
+<div class="row"><span class="label">Einrichtung</span><span class="value">API-Key unter <a href="https://platform.openai.com/api-keys">platform.openai.com/api-keys</a> erstellen &#8594; in Einstellungen eintragen &#8594; Modell w&#228;hlen</span></div>
+<div class="row"><span class="label">Kosten</span><span class="value">Kostenpflichtig &#8212; gpt-4o-mini g&#252;nstigste Option, gpt-4o h&#246;chste Qualit&#228;t</span></div>
+<div class="tip">&#128161; Ideal f&#252;r besonders wichtige Meetings oder wenn die h&#246;chste Zusammenfassungsqualit&#228;t gefragt ist.</div>
+
+<h2>Zusammenfassung &#8594; Claude</h2>
+<p style="padding:4px 12px 8px;color:#333">Einstellungen &#8594; Modelle &#8594; <strong>Zusammenfassung (LLM) &#8594; Claude</strong></p>
+<div class="row"><span class="label">Wof&#252;r?</span><span class="value">KI-Zusammenfassung aus dem Transkript &#8212; sehr hohe Qualit&#228;t auf Deutsch und Englisch, Alternative zu OpenAI</span></div>
+<div class="row"><span class="label">Geschwindigkeit</span><span class="value">&#9889; 3&#8211;10&nbsp;Sek. f&#252;r ein einst&#252;ndiges Meeting</span></div>
+<div class="row"><span class="label">Einrichtung</span><span class="value">API-Key unter <a href="https://console.anthropic.com">console.anthropic.com</a> erstellen &#8594; in Einstellungen eintragen &#8594; Modell optional anpassen</span></div>
+<div class="row"><span class="label">Workspace-ID</span><span class="value">Nur n&#246;tig, wenn der API-Key nicht bereits einem Workspace zugeordnet ist &#8212; optionales Feld</span></div>
+<div class="row"><span class="label">Kosten</span><span class="value">Kostenpflichtig, nutzungsbasierte Abrechnung</span></div>
+<div class="tip">&#128161; Gute Alternative zu OpenAI, falls bereits ein Claude-API-Key vorhanden ist.</div>
+
+<h2>Zusammenfassung &#8594; Eigener Anbieter (OpenAI-kompatibel)</h2>
+<p style="padding:4px 12px 8px;color:#333">Einstellungen &#8594; Modelle &#8594; <strong>Zusammenfassung (LLM) &#8594; Eigener Anbieter</strong></p>
+<div class="row"><span class="label">Wof&#252;r?</span><span class="value">Jeder Dienst, der die OpenAI-Schnittstelle (<code>chat/completions</code>) spricht &#8212; z.&nbsp;B. Scaleway, IONOS, STACKIT (EU-Hosting), Cerebras, OpenRouter oder Gemini. Auch ein eigener Server im Netzwerk.</span></div>
+<div class="row"><span class="label">Einrichtung</span><span class="value">Anzeigename, <strong>Basis-URL</strong> (bis einschlie&#223;lich <code>/v1</code>, z.&nbsp;B. <code>https://api.scaleway.ai/v1</code>), <strong>Modell</strong> (genau der Name aus der Modell&#252;bersicht des Anbieters) und <strong>API-Key</strong> eintragen &#8594; <strong>Testen</strong>. Der Test sendet eine echte Anfrage mit einem Token und zeigt bei Fehlern die Meldung des Anbieters.</span></div>
+<div class="row"><span class="label">Max. Antwortl&#228;nge</span><span class="value">Standard 8192 Tokens. Meldet der Anbieter z.&nbsp;B. &#8222;max_tokens too large&#8220;, den Wert senken (etwa 4096).</span></div>
+<div class="row"><span class="label">Reihenfolge im Auto-Modus</span><span class="value">Groq &#8594; Eigener Anbieter &#8594; OpenAI &#8594; Mistral &#8594; Claude &#8594; Ollama &#8212; jeweils nur, wenn der Anbieter eingerichtet <em>und</em> unter &#8222;Erlaubte Cloud-Anbieter&#8220; angehakt ist.</span></div>
+<div class="warn">&#9888; <strong>Typische Fehler:</strong> <em>401/403</em> &#8212; beim Anbieter fehlt eine Berechtigung (z.&nbsp;B. eine Policy f&#252;r die Generative-APIs) oder es wurde statt des <strong>Secret Keys</strong> die Key-Kennung eingetragen. <em>429</em> &#8212; Kontingent pro Minute oder Konto-Limit erreicht (oft bei Konten ohne hinterlegte Zahlungsmethode).</div>
+
+<h2>Zusammenfassung &#8594; Erlaubte Cloud-Anbieter (Datenschutz)</h2>
+<p style="padding:4px 12px 8px;color:#333">Einstellungen &#8594; Modelle &#8594; <strong>Zusammenfassung (LLM) &#8594; Erlaubte Cloud-Anbieter</strong></p>
+<div class="row"><span class="label">Wof&#252;r?</span><span class="value">Legt fest, welche Cloud-Anbieter Transkripte bzw. Audio erhalten d&#252;rfen. Ein nicht angehakter Anbieter wird im Modus &#8222;Auto&#8220; und in der Ausweichkette gar nicht erst kontaktiert &#8212; auch nicht als letzter Ausweg.</span></div>
+<div class="row"><span class="label">Standard</span><span class="value">Groq und Claude sind angehakt, alle anderen nicht. Ollama (lokal) ist immer erlaubt.</span></div>
+<div class="row"><span class="label">Ausdr&#252;ckliche Wahl</span><span class="value">Ein Anbieter, den Sie selbst als Zusammenfassungs-Anbieter ausw&#228;hlen (nicht &#8222;Auto&#8220;), gilt als erlaubt &#8212; die Auswahl ist die Freigabe.</span></div>
+<div class="row"><span class="label">Gilt auch f&#252;r</span><span class="value">Cloud-Transkription im Modus &#8222;Auto&#8220; (Groq-/OpenAI-Whisper), die Sprecher-Erkennung per KI und die Ticket-Entw&#252;rfe &#8212; sie nutzen dieselbe Anbieter-Kette wie die Zusammenfassung.</span></div>
+<div class="tip">&#128161; Neue oder noch nicht gepr&#252;fte Anbieter erst anhaken, wenn gekl&#228;rt ist, welche Daten dorthin &#252;bertragen werden d&#252;rfen.</div>
+
+<h2>Zusammenfassung &#8594; Ollama (lokal)</h2>
+<p style="padding:4px 12px 8px;color:#333">Einstellungen &#8594; Modelle &#8594; <strong>Zusammenfassung (LLM) &#8594; Ollama</strong></p>
+<div class="row"><span class="label">Wof&#252;r?</span><span class="value">KI-Zusammenfassung aus dem Transkript &#8212; vollst&#228;ndig lokal, kein Internet, datenschutzkonform</span></div>
+<div class="row"><span class="label">Geschwindigkeit</span><span class="value">&#128011; 2&#8211;10&nbsp;Min. mit dedizierter GPU (NVIDIA RTX 3060+), 5&#8211;30&nbsp;Min. auf CPU &#8212; stark abh&#228;ngig vom Modell und Hardware. Deutlich langsamer als Cloud-Provider.</span></div>
+<div class="row"><span class="label">Einrichtung</span><span class="value">Ollama unter <a href="https://ollama.com">ollama.com</a> installieren &#8594; Terminal: <code>ollama pull llama3.2:3b</code> &#8594; URL und Modell in Einstellungen best&#228;tigen</span></div>
+<div class="row"><span class="label">Kosten</span><span class="value">Kostenlos &#8212; l&#228;uft vollst&#228;ndig auf dem Rechner</span></div>
+<div class="tip">&#128161; Beste Wahl wenn Datenschutz oberste Priorit&#228;t hat. Empfohlenes Modell: <code>llama3.2:3b</code> &#8212; gutes Verh&#228;ltnis aus Qualit&#228;t und Geschwindigkeit. Gr&#246;&#223;ere Modelle (70B+) verbessern die Qualit&#228;t, sind aber nochmals deutlich langsamer.</div>
+
+<h2>Prompt &#8594; Meeting-Typen &amp; Agenda-Vorlagen</h2>
+<p style="padding:4px 12px 8px;color:#333">Einstellungen &#8594; Prompt</p>
+<div class="row"><span class="label">Meeting-Typ w&#228;hlen</span><span class="value">Dropdown mit den eigenen Prompt-Vorlagen &#8212; jede hat ihren eigenen Prompt; &#8222;&#8211; Automatisch erkannt &#8211;&#8220; l&#228;sst KI-Klassifikation und/oder Standard-Prompt entscheiden</span></div>
+<div class="row"><span class="label">Wann automatisch anwenden?</span><span class="value">Optionale Beschreibung pro Vorlage (z.&nbsp;B. &#8222;Gespr&#228;ch mit einem externen Kunden&#8220;) &#8212; nur Vorlagen mit dieser Beschreibung werden der KI zur automatischen Auswahl angeboten</span></div>
+<div class="row"><span class="label">Meeting-Typ automatisch per KI erkennen</span><span class="value">Schalter oberhalb der Vorlagenliste (Standard: an). Ausgeschaltet oder keine Vorlage mit Beschreibung &#8594; nur manuelle Auswahl m&#246;glich</span></div>
+<div class="row"><span class="label">Prompt bearbeiten</span><span class="value">Freitext-Editor &#8212; &#196;nderungen mit &bdquo;Speichern&ldquo; best&#228;tigen</span></div>
+<div class="row"><span class="label">Zur&#252;cksetzen</span><span class="value">Stellt den eingebauten Standard-Prompt f&#252;r diesen Typ wieder her</span></div>
+<div class="row"><span class="label">Globaler Prompt</span><span class="value">&#220;berschreibt alle Typ-Prompts &#8212; wird f&#252;r jedes Meeting verwendet, unabh&#228;ngig vom Typ</span></div>
+<div class="tip">&#128161; Ablaufreihenfolge: manuell im Meeting gew&#228;hlter Typ &#8594; von der KI automatisch erkannter Typ (falls mindestens eine Vorlage eine &#8222;Wann automatisch anwenden?&#8220;-Beschreibung hat) &#8594; Standard-Prompt. Ein manuell gew&#228;hlter Typ wird nie automatisch &#252;berschrieben. Das erkannte Ergebnis erscheint im Meeting als &#8222;&#129302; KI-erkannt: &#8230;&#8220; neben dem Meeting-Typ-Feld.</div>
+
+<h2>Agenda-Punkte &amp; Sektionen in Meeting-Templates</h2>
+<p style="padding:4px 12px 8px;color:#333">Einstellungen &#8594; Prompt &#8594; <strong>Agenda-Punkte / Sektionen</strong></p>
+<p style="padding:0 12px 8px;font-size:13px;color:#444;line-height:1.6">Zu jedem Meeting-Typ k&#246;nnen Agenda-Punkte und Sektionen hinterlegt werden.</p>
+<div class="row"><span class="label">Agenda-Punkte eintragen</span><span class="value">Textfeld unterhalb des Prompt-Editors &#8212; ein Agenda-Punkt pro Zeile</span></div>
+<div class="row"><span class="label">Automatische Bef&#252;llung</span><span class="value">Wird im Meeting-Detail ein Typ gew&#228;hlt, werden die hinterlegten Punkte sofort als Agenda-Themen eingetragen &#8212; nur wenn die Agenda noch leer ist</span></div>
+<div class="row"><span class="label">Manuell &#228;nderbar</span><span class="value">Die vorbef&#252;llte Agenda kann im Meeting-Detail jederzeit bearbeitet, erg&#228;nzt oder gel&#246;scht werden</span></div>
+<div class="row"><span class="label">Sektionen</span><span class="value">Vier Checkboxen steuern, welche Abschnitte der LLM f&#252;r diesen Meeting-Typ erzeugen soll: <strong>Zusammenfassung, Action Items, Entscheidungen, Offene Fragen</strong>. Kein H&#228;kchen = alle Sektionen (Standard). H&#228;kchen setzen = nur diese Sektionen werden vom LLM angefordert.</span></div>
+<div class="tip">&#128161; Beispiele: Standup-Vorlage &#8594; nur Action Items + Offene Fragen aktiv. Sales-Call-Vorlage &#8594; nur Zusammenfassung + Entscheidungen + Action Items. Default &#8594; alle Sektionen (kein H&#228;kchen n&#246;tig).</div>
+
+<h2>Zweikanaliger Modus (Dual-Channel-Transkription)</h2>
+<p style="padding:4px 12px 8px;color:#333">Einstellungen &#8594; Modelle &#8594; <strong>Zweikanaliger Modus (Mikrofon + Loopback getrennt transkribieren)</strong></p>
+<p style="padding:0 12px 8px;font-size:13px;color:#444;line-height:1.6">Im Dual-Channel-Modus werden Mikrofon und System-Audio <strong>separat</strong> transkribiert und danach zusammengef&#252;hrt. Das eliminiert Echo-&#220;berlagerungen, bei denen JohnnyAI die eigene Stimme doppelt erkennt &#8212; einmal direkt vom Mikrofon und einmal als Echo im System-Audio.</p>
+<div class="row"><span class="label">Wann sinnvoll?</span><span class="value">Bei Meetings ohne Kopfh&#246;rer &#8212; wenn eigene Stimme und Gegenseite &#252;ber denselben Lautsprecher ausgegeben werden. Mit Kopfh&#246;rer ist Dual-Channel in der Regel nicht n&#246;tig.</span></div>
+<div class="row"><span class="label">Ablauf</span><span class="value">Mikrofon-Audio und System-Audio werden als separate Dateien transkribiert, danach nach Zeitstempel zusammengef&#252;hrt &#8212; jeder Sprecher erscheint nur einmal im Transkript</span></div>
+<div class="row"><span class="label">Nachteil</span><span class="value">Doppelter Transkriptionsaufwand und doppelte API-Kosten, da zwei Audiodateien verarbeitet werden</span></div>
+<div class="tip">&#128161; Standard (deaktiviert) eignet sich f&#252;r die meisten Setups. Dual-Channel nur aktivieren, wenn Echo-Doppelungen im Transkript st&#246;ren.</div>
+
+<h2>Datenschutz &#8212; Verschl&#252;sselung &amp; Offline-Modus</h2>
+<p style="padding:4px 12px 8px;color:#333">Einstellungen &#8594; Speicher</p>
+<div class="row"><span class="label">Transkripte/Zusammenfassungen verschl&#252;sseln</span><span class="value">Verschl&#252;sselt Transkript, Zusammenfassung und Agenda jedes Meetings mit Windows' eigenem Datenschutz-Mechanismus (DPAPI) &#8212; nur unter dem eigenen Windows-Benutzerkonto auf diesem Rechner lesbar. Gilt ab dem n&#228;chsten Speichern; bereits vorhandene Dateien werden nicht r&#252;ckwirkend verschl&#252;sselt.</span></div>
+<div class="row"><span class="label">Offline-Modus &#8212; keine Cloud-Verbindungen</span><span class="value">Blockiert alle ausgehenden API-Aufrufe: Transkription und Zusammenfassung laufen dann ausschlie&#223;lich &#252;ber lokale Backends (Whisper.net/faster-whisper, Ollama), Kalender-Synchronisation und Teams-@Mentions werden pausiert. Cloud-Optionen erscheinen ausgegraut, eine zuvor gew&#228;hlte Cloud-Option wird automatisch auf die lokale Variante umgestellt.</span></div>
+<div class="tip">&#128161; Offline-Modus eignet sich f&#252;r besonders vertrauliche Meetings oder wenn kein Internetzugang verf&#252;gbar ist &#8212; alle Kernfunktionen (Aufnahme, Transkription, Zusammenfassung, Sprechererkennung) funktionieren weiterhin lokal.</div>
+
+<h2>Zuverl&#228;ssigkeit &#8212; Fallback &amp; Auto-Retry</h2>
+<p style="padding:4px 12px 8px;color:#333">Einstellungen &#8594; Modelle</p>
+<div class="row"><span class="label">Bei Cloud-Fehler auf lokales Whisper.net zur&#252;ckfallen</span><span class="value">Schl&#228;gt die gew&#228;hlte Cloud-Transkription fehl (z.&nbsp;B. Netzwerkproblem, abgelaufener Key), wird automatisch die eingebettete lokale Whisper.net-Transkription verwendet, statt die Verarbeitung abzubrechen</span></div>
+<div class="row"><span class="label">Auto-Retry bei Verbindungsfehlern (Minuten)</span><span class="value">Bei vor&#252;bergehenden Netzwerkfehlern wartet JohnnyAI die eingestellte Zeit und versucht es automatisch erneut &#8212; maximal 3&nbsp;Versuche. Wert 0 deaktiviert Auto-Retry.</span></div>
+<div class="tip">&#128161; Beide Optionen greifen nur bei tats&#228;chlichen Fehlern (Netzwerk, Server, Timeout) &#8212; eine erfolgreiche Verarbeitung wird davon nicht beeinflusst.</div>
+
+<h2>Sprachen &#8212; Transkription &amp; Ausgabe</h2>
+<p style="padding:4px 12px 8px;color:#333">Einstellungen &#8594; Modelle</p>
+<div class="row"><span class="label">Audio-Sprache (Transkription)</span><span class="value">Sprache des gesprochenen Audios &#8212; wird an Backends weitergegeben, die eine explizite Sprachangabe unterst&#252;tzen oder ben&#246;tigen (z.&nbsp;B. Canary-1B). Parakeet-TDT transkribiert ausschlie&#223;lich Englisch, faster-whisper erkennt die Sprache i.&nbsp;d.&nbsp;R. automatisch.</span></div>
+<div class="row"><span class="label">Ausgabesprache (Zusammenfassung &amp; UI)</span><span class="value">Sprache der von der KI erzeugten Zusammenfassung, Action Items usw. Gilt ab dem n&#228;chsten Meeting.</span></div>
+<div class="row"><span class="label">Nicht-deutsche Transkripte automatisch &#252;bersetzen</span><span class="value">&#220;bersetzt englische oder gemischtsprachige Transkripte vor der Zusammenfassung automatisch ins Deutsche &#8212; das Original-Transkript bleibt davon unber&#252;hrt gespeichert</span></div>
+
+<h2>Audioger&#228;te &amp; Pegeltest</h2>
+<p style="padding:4px 12px 8px;color:#333">Einstellungen &#8594; Speicher</p>
+<div class="row"><span class="label">Audio-Ausgabeger&#228;t (Loopback)</span><span class="value">Ger&#228;t, dessen Systemton aufgenommen wird &#8212; z.&nbsp;B. das Headset, &#252;ber das Teams l&#228;uft. Standard: Windows-Standardausgabe.</span></div>
+<div class="row"><span class="label">Mikrofon-Ger&#228;t</span><span class="value">Ger&#228;t f&#252;r die eigene Stimme. Standard: Windows-Standardmikrofon. Kann w&#228;hrend einer laufenden Aufnahme auch direkt im Overlay gewechselt werden (siehe Abschnitt &#8222;Overlay&#8220;).</span></div>
+<div class="row"><span class="label">Pegeltest &#246;ffnen</span><span class="value">&#214;ffnet ein kleines Testfenster, das die aktuellen Pegel von Mikrofon und Systemton live anzeigt &#8212; n&#252;tzlich um vor einem wichtigen Meeting zu pr&#252;fen, ob beide Quellen erfasst werden</span></div>
+<div class="row"><span class="label">Bevorzugtes Headset</span><span class="value">Unter Einstellungen steht ein Namensteil (z.&nbsp;B. &#8222;Jabra Evolve2&#8220;). JohnnyAI sucht damit Mikrofon <em>und</em> Lautsprecher des Headsets. Passt der volle Name nicht (andere Modellnummer), werden k&#252;rzere Namensteile probiert. Ohne Treffer wird das Windows-Kommunikationsger&#228;t genommen und eine Warnung angezeigt.</span></div>
+<div class="row"><span class="label">Warnungen w&#228;hrend der Aufnahme</span><span class="value">45&nbsp;Sekunden nach dem Start pr&#252;ft JohnnyAI, ob das Mikrofon ein Signal liefert und ob der Ton der Gegenseite &#252;ber das aufgenommene Ger&#228;t l&#228;uft; liegt der Ton auf einem anderen Ger&#228;t (z.&nbsp;B. Laptop-Lautsprecher), erscheint eine Meldung. F&#228;llt das Mikrofon w&#228;hrend der Aufnahme aus (Headset abgesteckt), kommt sofort eine Meldung, und JohnnyAI versucht die Aufnahme fortzusetzen.</span></div>
+<div class="tip">&#128161; Bei Problemen mit der Spracherkennung zuerst hier pr&#252;fen, ob das richtige Mikrofon ausgew&#228;hlt ist &#8212; besonders nach dem An-/Abstecken eines Headsets.</div>
+
+<h2>Wort-Korrekturen</h2>
+<p style="padding:4px 12px 8px;color:#333">Einstellungen &#8594; Korrekturen</p>
+<p style="padding:0 12px 8px;font-size:13px;color:#444;line-height:1.6">Whisper erkennt manche Fachbegriffe, Firmennamen oder Eigennamen systematisch falsch (z.&nbsp;B. &#8222;SaaS&#8220; als &#8222;Sa&#223;&#8220;). Hier lassen sich feste Ersetzungsregeln hinterlegen, die auf jedes neue Transkript automatisch angewendet werden.</p>
+<table>
+  <tr><th style="width:140px">Spalte</th><th>Bedeutung</th></tr>
+  <tr><td><strong>Falsch</strong></td><td>Der von Whisper tats&#228;chlich erkannte (falsche) Text</td></tr>
+  <tr><td><strong>Richtig</strong></td><td>Der Text, durch den er ersetzt werden soll</td></tr>
+  <tr><td><strong>Gro&#223;/Klein</strong></td><td>H&#228;kchen gesetzt &#8594; nur exakte Gro&#223;-/Kleinschreibung wird ersetzt. Ohne H&#228;kchen wird unabh&#228;ngig von Gro&#223;-/Kleinschreibung ersetzt.</td></tr>
+  <tr><td><strong>Regex</strong></td><td>H&#228;kchen gesetzt &#8594; &#8222;Falsch&#8220; wird als regul&#228;rer Ausdruck ausgewertet statt als W&#246;rtlicher Text</td></tr>
+</table>
+<div class="row"><span class="label">Korrekturen speichern</span><span class="value">Speichert die Tabelle &#8212; gilt ab dem n&#228;chsten neu erstellten Transkript</span></div>
+<div class="row"><span class="label">Auf alle Transkripte anwenden&#8230;</span><span class="value">Wendet alle gespeicherten Korrekturen r&#252;ckwirkend auf s&#228;mtliche bereits vorhandenen Transkripte und Zusammenfassungen an &#8212; auch neu hinzugef&#252;gte Regeln wirken damit sofort auf die gesamte Historie</span></div>
+<div class="tip">&#128161; Zu kurze Suchbegriffe (1&#8211;2 Zeichen) werden automatisch ignoriert, um Massen-Fehlkorrekturen zu vermeiden. Regeln werden nacheinander angewendet, nicht verkettet.</div>
+
+<h2>Tags-Vokabular</h2>
+<p style="padding:4px 12px 8px;color:#333">Einstellungen &#8594; Tags</p>
+<p style="padding:0 12px 8px;font-size:13px;color:#444;line-height:1.6">Ein festes Vokabular an Tags, das in der Meeting-Liste als &#8222;+ Tag&#8220;-Vorschlag und f&#252;r die automatische Zuweisung genutzt wird &#8212; verhindert wild wachsende Freitext-Tags.</p>
+<table>
+  <tr><th style="width:140px">Spalte</th><th>Bedeutung</th></tr>
+  <tr><td><strong>Name</strong></td><td>Anzeigename des Tags</td></tr>
+  <tr><td><strong>Gruppe</strong></td><td>Kategorie zur optischen Gruppierung (z.&nbsp;B. Kunde, Intern, Projekt)</td></tr>
+  <tr><td><strong>E-Mail-Domains</strong></td><td>Kommaseparierte Domains (z.&nbsp;B. <code>kunde.de</code>) &#8212; ist ein Teilnehmer-E-Mail-Absender dieser Domain zugeordnet, wird der Tag automatisch vergeben</td></tr>
+  <tr><td><strong>Wann anwenden</strong></td><td>Optionale Beschreibung &#8212; ist sie ausgef&#252;llt, darf die KI diesen Tag zus&#228;tzlich inhaltlich vergeben (nie einen neuen Tag erfinden, nur aus diesem Vokabular w&#228;hlen)</td></tr>
+</table>
+<div class="tip">&#128161; Bereits vorhandene Freitext-Tags aus &#228;lteren Meetings werden beim ersten Start einmalig automatisch ins Vokabular &#252;bernommen &#8212; nichts geht verloren.</div>
+
+<h2>Export-Einstellungen</h2>
+<p style="padding:4px 12px 8px;color:#333">Einstellungen &#8594; Export</p>
+<div class="row"><span class="label">Auto-Export bei Fertigstellung</span><span class="value">Exportiert jedes fertig zusammengefasste Meeting automatisch als Markdown in den unten gew&#228;hlten Ordner &#8212; ohne manuellen Klick auf &#8222;Export&#8220;</span></div>
+<div class="row"><span class="label">Export-Ordner</span><span class="value">Zielordner f&#252;r den Auto-Export &#8212; unabh&#228;ngig vom Obsidian-Vault-Pfad, kann z.&nbsp;B. ein separater Backup- oder Netzwerkordner sein</span></div>
+<div class="row"><span class="label">Transkript einschlie&#223;en</span><span class="value">Ist die Option aktiv, enth&#228;lt die exportierte Markdown-Datei zus&#228;tzlich das vollst&#228;ndige Transkript, nicht nur Zusammenfassung und Action Items</span></div>
+<div class="tip">&#128161; Diese Einstellung steuert den <strong>automatischen</strong> Export nach Fertigstellung. Der manuelle &#8222;&#8599; Exportieren&#8220;-Button im Meeting bleibt davon unabh&#228;ngig jederzeit verf&#252;gbar.</div>
+
+<h2>Tickets &#8212; Freshdesk &amp; Azure DevOps einrichten</h2>
+<p style="padding:4px 12px 8px;color:#333">Einstellungen &#8594; Tickets</p>
+<p style="padding:0 12px 8px;font-size:13px;color:#444;line-height:1.6">Voraussetzung f&#252;r den &#128127;&nbsp;Ticket-Button im Meeting (siehe Abschnitt &#8222;Toolbar&#8220;). Mindestens eines der beiden Systeme muss eingerichtet sein, beide k&#246;nnen gleichzeitig aktiv sein.</p>
+<table>
+  <tr><th style="width:160px">Feld</th><th>Bedeutung</th></tr>
+  <tr><td colspan="2" style="background:#f0f0f0;font-weight:600;padding:5px 8px">Freshdesk</td></tr>
+  <tr><td><strong>Domain</strong></td><td>Subdomain der Freshdesk-Instanz, z.&nbsp;B. <code>meinefirma</code> bei <code>meinefirma.freshdesk.com</code></td></tr>
+  <tr><td><strong>API Key</strong></td><td>Im Freshdesk-Profil unter &#8222;API-Key anzeigen&#8220; zu finden</td></tr>
+  <tr><td colspan="2" style="background:#f0f0f0;font-weight:600;padding:5px 8px">Azure DevOps</td></tr>
+  <tr><td><strong>Organisation</strong></td><td>Name der Azure-DevOps-Organisation (aus der URL <code>dev.azure.com/&lt;Organisation&gt;</code>)</td></tr>
+  <tr><td><strong>Projekt</strong></td><td>Name des Zielprojekts innerhalb der Organisation</td></tr>
+  <tr><td><strong>Area Path</strong></td><td>Optionaler Area Path f&#252;r neu erstellte Work Items</td></tr>
+  <tr><td><strong>Personal Access Token</strong></td><td>Unter Azure DevOps &#8594; User Settings &#8594; Personal Access Tokens erstellen &#8212; ben&#246;tigt Berechtigung <strong>Work Items: Read &amp; Write</strong></td></tr>
+</table>
+<div class="tip">&#128161; Nach der Einrichtung erstellt der Ticket-Button in einem Schritt Entw&#252;rfe f&#252;r beide Systeme gleichzeitig, sofern beide konfiguriert sind &#8212; jeder Entwurf bleibt vor dem Absenden separat anpassbar.</div>
+
+<h2>Backend-Pr&#252;fhistorie</h2>
+<p style="padding:4px 12px 8px;color:#333">Einstellungen &#8594; Modelle</p>
+<div class="row"><span class="label">Jetzt pr&#252;fen</span><span class="value">Erzwingt eine sofortige Neupr&#252;fung aller Transkriptions- und LLM-Backends, unabh&#228;ngig vom 10-Minuten-Cache des Auto-Modus</span></div>
+<div class="row"><span class="label">Liste der gepr&#252;ften Backends</span><span class="value">Zeigt zu jedem getesteten Backend &#10003;/&#10005;, den Fehlergrund bei Misserfolg, den Backend-Typ und markiert das aktuell bevorzugte mit &#8222;&#9733; Bevorzugt&#8220;</span></div>
+<div class="tip">&#128161; N&#252;tzlich zur Fehlersuche, wenn der Auto-Modus unerwartet ein langsameres Backend w&#228;hlt &#8212; die Liste zeigt sofort, warum ein schnelleres Backend als nicht verf&#252;gbar eingestuft wurde.</div>
+
+<h2>Teams &#8212; Action Items in Kanal posten</h2>
+<p style="padding:4px 12px 8px;color:#333">Einstellungen &#8594; Speicher &#8594; <strong>Teams &#8212; Action Items posten</strong></p>
+<p style="padding:0 12px 8px;font-size:13px;color:#444;line-height:1.6">Mit einem Klick werden alle Action Items eines Meetings als Adaptive Card in einen Teams-Kanal gepostet &#8212; &#252;ber einen konfigurierten <strong>Incoming Webhook</strong>.</p>
+<table>
+  <tr><th style="width:180px">Schritt</th><th>Was tun</th></tr>
+  <tr>
+    <td><strong>1 &#8212; Webhook erstellen</strong></td>
+    <td>Teams &#246;ffnen &#8594; gew&#252;nschten Kanal &#8594; <strong>&#183;&#183;&#183; Mehr Optionen</strong> &#8594; <strong>Connectors</strong> (oder <strong>Workflows</strong>) &#8594; <strong>Incoming Webhook</strong> suchen &#8594; <strong>Hinzuf&#252;gen</strong> &#8594; Namen vergeben (z.&nbsp;B. &#8222;JohnnyAI&#8220;) &#8594; <strong>Erstellen</strong> &#8594; generierte URL kopieren</td>
+  </tr>
+  <tr>
+    <td><strong>2 &#8212; URL eintragen</strong></td>
+    <td>JohnnyAI &#8594; Einstellungen &#8594; Speicher &#8594; Abschnitt <strong>Teams &#8212; Action Items posten</strong> &#8594; URL einf&#252;gen &#8594; Speichern</td>
+  </tr>
+  <tr>
+    <td><strong>3 &#8212; Verwenden</strong></td>
+    <td>Meeting-Detailseite &#8594; <strong>&#8599; Exportieren</strong>-Dropdown &#8594; <strong>&#128172; In Teams posten</strong> (zuvor ausgegraut, jetzt aktiv)</td>
+  </tr>
+</table>
+<div class="tip">&#128161; Die Adaptive Card zeigt Meeting-Titel und alle Action Items als Aufz&#228;hlungsliste. Mehrere Konfigurationen sind derzeit nicht m&#246;glich &#8212; pro Webhook-URL ein Kanal.</div>
+
+<h2>Kalender &amp; Teams-Anrufe &#8594; automatische Aufnahme</h2>
+<p style="padding:4px 12px 8px;color:#333;line-height:1.6;font-size:13px">JohnnyAI bietet <strong>zwei unabh&#228;ngige Wege</strong> zur automatischen Aufnahme. Beide k&#246;nnen gleichzeitig aktiv sein.</p>
+
+<p style="padding:4px 12px 4px;font-size:13px;font-weight:bold;color:#333">Weg 1 &#8212; Kalender-gesteuert (Outlook)</p>
+<table>
+  <tr><th style="width:160px;white-space:nowrap">Schritt</th><th>Was tun</th></tr>
+  <tr>
+    <td style="white-space:nowrap"><strong>1 &#8212; Outlook aktiv</strong></td>
+    <td>Microsoft Outlook muss ge&#246;ffnet und eingeloggt sein. Teams-Einladungen m&#252;ssen im Kalender sichtbar sein.</td>
+  </tr>
+  <tr>
+    <td style="white-space:nowrap"><strong>2 &#8212; Outlook COM</strong></td>
+    <td>Einstellungen &#8594; Kalender &#8594; <strong>Outlook COM-Integration aktivieren</strong>. Kein Azure&nbsp;AD n&#246;tig.</td>
+  </tr>
+  <tr>
+    <td style="white-space:nowrap"><strong>3 &#8212; Autostart</strong></td>
+    <td>Einstellungen &#8594; Kalender &#8594; <strong>Aufnahme automatisch starten wenn passendes Meeting im Kalender</strong>. Startet bei Meetingbeginn (&#8805;&nbsp;2 Teilnehmer, Status &#8222;Besch&#228;ftigt&#8220;).</td>
+  </tr>
+  <tr>
+    <td style="white-space:nowrap"><strong>4 &#8212; Lautsprecher</strong></td>
+    <td>Teams muss dasselbe Ausgabeger&#228;t wie Windows nutzen.</td>
+  </tr>
+</table>
+<div class="warn">&#9888; Ausnahmen: Termine mit Schl&#252;sselw&#246;rtern wie &bdquo;Blocker&ldquo;, &bdquo;Lunch&ldquo; werden &#252;bersprungen &#8594; Einstellungen &#8594; Kalender &#8594; <strong>Ausnahmen (kommasepariert)</strong>.</div>
+<div class="info">&#8505; <strong>&#8222;New Outlook&#8220;?</strong> Outlook COM funktioniert nur mit dem klassischen Outlook &#8212; bei &#8222;New Outlook&#8220; bleibt der Kalender-Zugriff aus, egal wie oft die Einstellung gespeichert wird. In dem Fall auf <strong>Microsoft Graph API</strong> ausweichen (n&#228;chster Abschnitt).</div>
+
+<h2>ICS-Kalenderlink &#8212; Kalender mit dem neuen Outlook</h2>
+<p style="padding:4px 12px 8px;color:#333">Einstellungen &#8594; Kalender &#8594; <strong>ICS-Kalenderlink (f&#252;r das neue Outlook)</strong></p>
+<p style="padding:0 12px 8px;font-size:13px;color:#444;line-height:1.6">Das neue Outlook hat keine COM-Schnittstelle. Als Alternative ohne Azure-AD-Registrierung kann JohnnyAI einen <strong>ver&#246;ffentlichten Kalender</strong> (ICS-Link) lesen.</p>
+<table>
+  <tr><th style="width:160px;white-space:nowrap">Schritt</th><th>Was tun</th></tr>
+  <tr><td style="white-space:nowrap"><strong>1 &#8212; Link erzeugen</strong></td><td>Outlook im Web &#8594; Einstellungen &#8594; Kalender &#8594; Freigegebene Kalender &#8594; <strong>Kalender ver&#246;ffentlichen</strong> &#8594; ICS-Link kopieren.</td></tr>
+  <tr><td style="white-space:nowrap"><strong>2 &#8212; Eintragen</strong></td><td>Einstellungen &#8594; Kalender &#8594; Feld <strong>ICS-Kalenderlink</strong> &#8594; <strong>Testen</strong> (zeigt, wie viele Eintr&#228;ge gelesen wurden) &#8594; Speichern.</td></tr>
+  <tr><td style="white-space:nowrap"><strong>3 &#8212; Nutzung</strong></td><td>Reihenfolge der Quellen: Microsoft Graph (falls eingerichtet) &#8594; klassisches Outlook per COM (live) &#8594; ICS-Link. Der Link greift automatisch, wenn das klassische Outlook nicht ge&#246;ffnet ist. Der Feed wird h&#246;chstens alle 5&nbsp;Minuten neu geladen.</td></tr>
+</table>
+<div class="info">&#8505; <strong>Sicherheit:</strong> Wer den Link kennt, kann den Kalender lesen. JohnnyAI speichert ihn deshalb verschl&#252;sselt und schreibt ihn nicht ins Protokoll. &#8222;Entfernen&#8220; l&#246;scht ihn wieder.</div>
+<div class="warn">&#9888; Enth&#228;lt der ver&#246;ffentlichte Kalender keine Teilnehmer oder keine Antwort-Angaben, fehlen Einladungsnamen, und &#8222;abgelehnt&#8220; l&#228;sst sich nicht erkennen. Abgesagte Termine werden trotzdem erkannt.</div>
+<div class="info">&#8505; <strong>Klassisches Outlook per COM:</strong> JohnnyAI h&#228;ngt sich nur noch an ein bereits ge&#246;ffnetes Outlook an und startet selbst keines mehr, solange das neue Outlook l&#228;uft &#8212; ein im Hintergrund gestartetes Outlook blockierte sonst die Verbindung.</div>
+
+<h2>Microsoft Graph API &#8212; Kalenderintegration (Alternative zu Outlook COM)</h2>
+<p style="padding:4px 12px 8px;color:#333">Einstellungen &#8594; Kalender &#8594; <strong>Microsoft Graph API (optional)</strong></p>
+<p style="padding:0 12px 8px;font-size:13px;color:#444;line-height:1.6">Liest den Kalender &#252;ber die Microsoft-Cloud statt &#252;ber die lokale Outlook-Automatisierung. Das ist der einzige Weg, wenn Outlook als &#8222;New Outlook&#8220; l&#228;uft &#8212; dort funktioniert die COM-Automatisierung strukturell nicht (kein Support daf&#252;r vorgesehen).</p>
+<table>
+  <tr><th style="width:180px">Schritt</th><th>Was tun</th></tr>
+  <tr>
+    <td><strong>1 &#8212; App-Registrierung (IT)</strong></td>
+    <td>Die IT-Abteilung legt im Azure Portal unter <strong>App-Registrierungen</strong> eine neue App an (z.&nbsp;B. &#8222;JohnnyAI&#8220;) und erteilt die Microsoft-Graph-<strong>Anwendungsberechtigung</strong> <code>Calendars.Read</code> mit Administrator-Einwilligung.</td>
+  </tr>
+  <tr>
+    <td><strong>2 &#8212; Client-Secret erstellen (IT)</strong></td>
+    <td>In derselben App-Registrierung ein Client-Secret erstellen (z.&nbsp;B. G&#252;ltigkeit 24 Monate) und den Wert einmalig notieren &#8212; er ist danach nicht mehr einsehbar.</td>
+  </tr>
+  <tr>
+    <td><strong>3 &#8212; Werte eintragen</strong></td>
+    <td>In JohnnyAI: Einstellungen &#8594; Kalender &#8594; <strong>Microsoft Graph API</strong> &#8594; <strong>Tenant-ID</strong>, <strong>Client-ID</strong> und <strong>Client-Secret</strong> aus der App-Registrierung eintragen.</td>
+  </tr>
+  <tr>
+    <td><strong>4 &#8212; Mailbox-Adresse</strong></td>
+    <td>Feld <strong>Mailbox-Adresse (f&#252;r Kalenderzugriff)</strong> &#8594; die eigene E-Mail-Adresse eintragen. Ein App-only-Zugriff hat keinen eigenen Postfach-Kontext und muss wissen, welchen Kalender er lesen soll.</td>
+  </tr>
+  <tr>
+    <td><strong>5 &#8212; Verbindung testen</strong></td>
+    <td>Button <strong>Verbindung testen</strong> klicken &#8212; pr&#252;ft Anmeldung und Kalenderzugriff sofort, ohne zu speichern oder ein Meeting abzuwarten. Bei einem Fehler zeigt die Meldung direkt, ob Zugangsdaten oder Berechtigung das Problem sind.</td>
+  </tr>
+</table>
+<div class="tip">&#128161; Outlook COM und Graph API k&#246;nnen gleichzeitig aktiviert sein &#8212; JohnnyAI nutzt Outlook COM, wenn verf&#252;gbar, und f&#228;llt sonst auf Graph zur&#252;ck. Das Client-Secret wird wie die anderen API-Keys verschl&#252;sselt gespeichert (DPAPI).</div>
+
+<p style="padding:12px 12px 4px;font-size:13px;font-weight:bold;color:#333">Weg 2 &#8212; Teams-Anruf-Erkennung (WASAPI, kein Kalender n&#246;tig)</p>
+<p style="padding:0 12px 8px;font-size:13px;color:#444;line-height:1.6">JohnnyAI &#252;berwacht alle 3&nbsp;Sekunden die Windows-Audio-Sessions. Sobald Teams (<code>ms-teams.exe</code> oder <code>Teams.exe</code>) das Mikrofon &#246;ffnet, erkennt JohnnyAI einen aktiven Anruf &#8212; unabh&#228;ngig davon ob es ein Teams-to-Teams-Meeting oder ein Anruf an eine Telefonnummer (PSTN) ist.</p>
+<table>
+  <tr><th style="width:200px">Verhalten</th><th>Details</th></tr>
+  <tr>
+    <td><strong>Aufnahme startet</strong></td>
+    <td>~9 Sekunden nach Anrufbeginn (3 aufeinanderfolgende Erkennungen &#8212; Schutz vor kurzen Benachrichtigungst&#246;nen)</td>
+  </tr>
+  <tr>
+    <td><strong>Aufnahme stoppt</strong></td>
+    <td>~30 Sekunden nach Anrufende (10 aufeinanderfolgende Nicht-Erkennungen &#8212; Puffer f&#252;r kurze Stille)</td>
+  </tr>
+  <tr>
+    <td><strong>Kein Kalender n&#246;tig</strong></td>
+    <td>Funktioniert ohne Outlook-Integration &#8212; auch f&#252;r spontane Anrufe oder Ad-hoc-Gespr&#228;che</td>
+  </tr>
+  <tr>
+    <td><strong>Einstellung</strong></td>
+    <td>Einstellungen &#8594; Kalender &#8594; <strong>Aufnahme automatisch starten bei Teams-Anruf (auch Telefonnummern)</strong> &#8212; Standard: aktiviert</td>
+  </tr>
+</table>
+<div class="tip">&#128161; Beide Wege erg&#228;nzen sich: Weg 1 erkennt den Termin im Kalender (startet p&#252;nktlich), Weg 2 erkennt den tats&#228;chlichen Anruf &#252;ber das Mikrofon &#8212; auch wenn kein Kalendereintrag existiert.</div>
+
+<h2>Diarisierung &#8594; HuggingFace-Token</h2>
+<p style="padding:4px 12px 8px;color:#333">Einstellungen &#8594; Kalender &#8594; <strong>pyannote HuggingFace-Token</strong></p>
+<p style="padding:0 12px 8px;font-size:13px;color:#444;line-height:1.6">Die automatische <strong>Sprecher-Erkennung (Diarisierung)</strong> verwendet das pyannote-Modell von HuggingFace. Um das Modell herunterladen zu d&#252;rfen, ben&#246;tigt JohnnyAI einmalig einen kostenlosen HuggingFace-Token.</p>
+<table>
+  <tr><th style="width:180px">Schritt</th><th>Was tun</th></tr>
+  <tr>
+    <td><strong>1 &#8212; Konto erstellen</strong></td>
+    <td>Auf <a href="https://huggingface.co">huggingface.co</a> registrieren (kostenlos, kein Kreditkarte n&#246;tig)</td>
+  </tr>
+  <tr>
+    <td><strong>2 &#8212; Token generieren</strong></td>
+    <td>Profil-Men&#252; (oben rechts) &#8594; <strong>Settings</strong> &#8594; <strong>Access Tokens</strong> &#8594; <strong>New token</strong> &#8594; Typ <em>Read</em> w&#228;hlen &#8594; <strong>Generate</strong> &#8594; Token kopieren (beginnt mit <code>hf_</code>)</td>
+  </tr>
+  <tr>
+    <td><strong>3 &#8212; Modell freischalten</strong></td>
+    <td>Auf <a href="https://huggingface.co/pyannote/speaker-diarization-3.1">huggingface.co/pyannote/speaker-diarization-3.1</a> einloggen und die Nutzungsbedingungen einmalig akzeptieren (&#8222;Agree and access repository&#8220;)</td>
+  </tr>
+  <tr>
+    <td><strong>4 &#8212; Token eintragen</strong></td>
+    <td>In JohnnyAI: Einstellungen &#8594; Kalender &#8594; Feld <strong>pyannote HuggingFace-Token</strong> &#8594; Token einf&#252;gen &#8594; Speichern</td>
+  </tr>
+</table>
+<div class="tip">&#128161; Der Token wird sicher in <code>%LocalAppData%\JohnnyAI\huggingface.key</code> gespeichert &#8212; nicht in der portablen Datendatei. Beim ersten Diarisierungslauf l&#228;dt JohnnyAI das Modell automatisch herunter (~1&nbsp;GB, einmalig).</div>
+<div class="tip">&#128161; <strong>Alternative ohne Token:</strong> Das Backend &#8222;sherpa-onnx&#8220; (Einstellungen &#8594; Sprechererkennung &#8594; Backend) l&#228;uft komplett in .NET &#252;ber ONNX Runtime &#8212; kein Python, kein HuggingFace-Konto, nur ein einmaliger In-App-Modell-Download (~32&nbsp;MB). Ein anderes Stimm-Embedding als ECAPA/resemblyzer/MFCC bedeutet aber, dass bereits gelernte Sprecher nach einem Backend-Wechsel einmalig neu zugeordnet werden m&#252;ssen.</div>
+<div class="warn">&#9888; Ohne Token und ohne sherpa-onnx-Modelle f&#228;llt die Sprecher-Erkennung auf eine schw&#228;chere rein lokale MFCC-Methode zur&#252;ck (kein Python n&#246;tig, aber deutlich ungenauer bei mehreren Sprechern). Transkription und Zusammenfassung funktionieren in jedem Fall weiter &#8212; Sprecher werden dann als SPEAKER_00, SPEAKER_01 usw. bezeichnet.</div>
+
+<h2>Speicher &amp; System</h2>
+<div class="row"><span class="label">Meeting-Ordner</span><span class="value">Einstellungen &#8594; Speicher &#8212; Empfehlung: OneDrive-Pfad f&#252;r ger&#228;te&#252;bergreifenden Zugriff</span></div>
+<div class="row"><span class="label">Mein Name</span><span class="value">Einstellungen &#8594; Speicher &#8212; vollst&#228;ndiger Name f&#252;r Aktionspunkt-Erkennung (Pr&#228;fixabgleich)</span></div>
+<div class="row"><span class="label">Audio-Aufbewahrung</span><span class="value">Standard: 60 Tage &#8212; danach wird Audio gel&#246;scht, Transkripte &amp; Zusammenfassungen bleiben erhalten</span></div>
+<div class="row"><span class="label">Windows-Autostart</span><span class="value">Einstellungen &#8594; System &#8212; &bdquo;Minimiert starten&ldquo; empfohlen, so ist Win+Shift+R immer aktiv</span></div>
+<div class="row"><span class="label">Portabler Modus</span><span class="value">Datei <code>JohnnyAI.portable</code> neben der EXE ablegen &#8212; alle Daten werden dann im Unterordner <code>data\</code> gespeichert</span></div>
+
+<h2>Confluence Export &#8212; Einrichtung</h2>
+<table>
+  <tr><th style="width:180px">Einstellung</th><th>Wo &amp; Was</th></tr>
+  <tr><td><strong>Base URL</strong></td><td>Confluence-Instanz-URL, z.&nbsp;B. <code>https://meinefirma.atlassian.net</code> (Atlassian Cloud) oder interne URL ohne abschlie&#223;enden Schr&#228;gstrich</td></tr>
+  <tr><td><strong>Benutzer (E-Mail)</strong></td><td>Die E-Mail-Adresse des Confluence-Accounts, mit dem der API-Token erstellt wurde</td></tr>
+  <tr><td><strong>Space Key</strong></td><td>Kurzbezeichnung des Confluence-Spaces, z.&nbsp;B. <code>MEET</code> oder <code>TEAM</code> &#8212; sichtbar in der Space-URL</td></tr>
+  <tr><td><strong>Parent Page ID</strong></td><td>Optional: ID der &#252;bergeordneten Seite (sieht man in der URL als <code>pageId=123456</code>). L&#228;sst man das Feld leer, wird die Seite direkt im Space-Root angelegt.</td></tr>
+  <tr><td><strong>API Token</strong></td><td>Auf <a href="https://id.atlassian.com/manage-profile/security/api-tokens">id.atlassian.com/manage-profile/security/api-tokens</a> erstellen &#8594; in Einstellungen eintragen</td></tr>
+</table>
+<div class="tip">&#128161; Nach der Einrichtung erscheint &#8222;Confluence&#8220; im Export-Dropdown aktiv. Die erstellte Seite enth&#228;lt Agenda, Zusammenfassung, Entscheidungen, Action Items (als Confluence-Aufgabenliste) und offene Fragen.</div>
+
+<h2>Obsidian &#8594; Einstellungen</h2>
+<p style="padding:4px 12px 8px;color:#333">Einstellungen &#8594; Speicher &#8594; <strong>Obsidian</strong></p>
+<div class="row"><span class="label">Vault-Name</span><span class="value">Name des Obsidian-Vaults (wie im Obsidian-Titel sichtbar) &#8212; ben&#246;tigt f&#252;r Deep-Links (<code>obsidian://open?vault=…</code>) und den Direktstart aus JohnnyAI</span></div>
+<div class="row"><span class="label">Obsidian-Pfad</span><span class="value">Absoluter Pfad zum Vault-Verzeichnis &#8212; ben&#246;tigt damit JohnnyAI Dateien direkt in die richtigen Ordner schreiben kann (<code>Meetings/</code>, <code>ToDos/</code>)</span></div>
+<div class="row"><span class="label">Obsidian automatisch &#246;ffnen</span><span class="value">Startet Obsidian beim JohnnyAI-Start automatisch &#8212; n&#252;tzlich wenn Vault und Meeting-&#220;bersicht immer nebeneinander sichtbar sein sollen</span></div>
+<div class="row"><span class="label">&#9826; Vault &#246;ffnen</span><span class="value">Kleiner Diamond-Button im Sidebar-Header &#246;ffnet den Vault jederzeit per Klick &#8212; ohne einen Export auszul&#246;sen</span></div>
+<div class="tip">&#128161; Vault-Name und Vault-Pfad m&#252;ssen &#252;bereinstimmen. Nach einer Vault-Umbenennung in Obsidian beide Felder aktualisieren &#8212; sonst schlagen Deep-Links und der automatische Export fehl.</div>
+
+<h2>Darstellung &#8594; Dunkelmodus &amp; Erinnerungen</h2>
+<p style="padding:4px 12px 8px;color:#333">Einstellungen &#8594; Darstellung</p>
+<div class="row"><span class="label">Design: Hell</span><span class="value">Helles Farbschema &#8212; Standard</span></div>
+<div class="row"><span class="label">Design: Dunkel</span><span class="value">Dunkles Farbschema &#8212; schonend f&#252;r die Augen bei wenig Umgebungslicht. Die Vorschau wird sofort angewendet.</span></div>
+<div class="row"><span class="label">Erinnerung an offene Action Items</span><span class="value">Zeigt beim JohnnyAI-Start eine Windows-Benachrichtigung, wenn aus den letzten 30 Tagen noch offene Aktionspunkte vorhanden sind &#8212; einmal pro Tag. Aktivieren: H&#228;kchen setzen &#8594; Speichern.</span></div>
+<div class="tip">&#128161; Der Dunkelmodus gilt sofort nach dem Wechsel &#8212; JohnnyAI muss nicht neu gestartet werden.</div>
+
+<h2>Dateipfade</h2>
+<p style="padding:4px 12px 2px;font-size:12px;font-weight:600;color:#555">Einstellungen</p>
+<div class="path">%LOCALAPPDATA%\JohnnyAI\settings.json</div>
+<p style="padding:6px 12px 2px;font-size:12px;font-weight:600;color:#555">Whisper-Modelle</p>
+<div class="path">%LOCALAPPDATA%\JohnnyAI\WhisperModels</div>
+<p style="padding:6px 12px 2px;font-size:12px;font-weight:600;color:#555">API-Keys (Mistral, OpenAI)</p>
+<div class="path">%LOCALAPPDATA%\JohnnyAI (z. B. mistral.key, openai.key, groq.key)</div>
+<p style="padding:6px 12px 2px;font-size:12px;font-weight:600;color:#555">Log-Dateien</p>
+<div class="path">%LOCALAPPDATA%\JohnnyAI\logs</div>
+<div class="tip">&#128161; Umzug auf neuen Rechner: <code>settings.json</code> kopieren, danach Meeting-Ordner-Pfad pr&#252;fen (falls Laufwerksbuchstaben ge&#228;ndert).</div>
+
+</div>
+
+<!-- ERSTE SCHRITTE / PORTABLE -->
+<div id="tab-start" class="tab-content">
+
+<h2>Installation &mdash; zwei M&#246;glichkeiten</h2>
+<table>
+  <tr><th style="width:160px">Variante</th><th>Wann empfohlen</th><th>Vorgehen</th></tr>
+  <tr>
+    <td><strong>Installer (.exe)</strong> <span class="badge">Empfohlen</span></td>
+    <td>Neuer Rechner, kein vorheriges JohnnyAI</td>
+    <td><code>JohnnyAI-Setup-v2.2.0.exe</code> starten, dem Assistenten folgen. .NET&#8202;8 Desktop Runtime wird automatisch gepr&#252;ft.</td>
+  </tr>
+  <tr>
+    <td><strong>Portabel (ZIP)</strong></td>
+    <td>Kein Installations-Recht, USB-Stick, Test-Umgebung</td>
+    <td>ZIP entpacken, gesamten Ordner kopieren, <code>JohnnyAI.exe</code> starten.</td>
+  </tr>
+</table>
+<div class="tip">&#128161; Beim ersten Start &#246;ffnet sich automatisch der <strong>Erststart-Assistent</strong> &mdash; er f&#252;hrt durch Whisper-Modell-Wahl und LLM-Einrichtung in zwei Schritten.</div>
+
+<h2>Portabel &mdash; Dieser Ordner</h2>
+<p style="padding:4px 12px 8px;font-size:13px;color:#444;line-height:1.6">Enth&#228;lt die vollst&#228;ndige portable Version von JohnnyAI. Den <strong>gesamten Ordner</strong> auf den Zielrechner kopieren und <code>JohnnyAI.exe</code> starten &#8212; Einstellungen, Meeting-Ordner-Verkn&#252;pfung und Integrationen funktionieren sofort. Diese Hilfeseite wird bei jedem Start automatisch neu erzeugt und ist damit immer auf dem Stand der installierten Version.</p>
+
+<h2>1 &middot; Voraussetzungen (einmalig)</h2>
+<div class="row"><span class="label">.NET 8 Desktop Runtime</span><span class="value"><strong>Pflicht bei Standard-Installation</strong> &mdash; bei der Portable-Version bereits eingebettet (kein separater Download). Windows Desktop Runtime 8.x (x64): <a href="https://dotnet.microsoft.com/download/dotnet/8.0">dotnet.microsoft.com/download/dotnet/8.0</a></span></div>
+<div class="row" style="margin-top:10px"><span class="label">KI-Provider f&#252;r Zusammenfassungen</span><span class="value">Mindestens einen der folgenden Provider einrichten:</span></div>
+<table>
+  <tr><th style="width:130px">Provider</th><th>Empfehlung &amp; Einrichtung</th></tr>
+  <tr>
+    <td><strong>Groq</strong> <span class="badge">Empfohlen</span></td>
+    <td>Schnellste Cloud-Option, dauerhaft kostenlos (Free Tier) &mdash; API-Key auf <a href="https://console.groq.com">console.groq.com</a> erstellen, in Einstellungen &rarr; Modelle eintragen</td>
+  </tr>
+  <tr>
+    <td><strong>Mistral</strong></td>
+    <td>Gute Qualit&#228;t, Free Tier verf&#252;gbar &mdash; API-Key auf <a href="https://console.mistral.ai">console.mistral.ai</a> erstellen</td>
+  </tr>
+  <tr>
+    <td><strong>OpenAI</strong></td>
+    <td>H&#246;chste Qualit&#228;t &mdash; API-Key auf <a href="https://platform.openai.com/api-keys">platform.openai.com/api-keys</a> erstellen</td>
+  </tr>
+  <tr>
+    <td><strong>Ollama</strong></td>
+    <td>100&nbsp;% lokal, kostenlos, kein Internet n&#246;tig &mdash; <a href="https://ollama.com">ollama.com</a> installieren, dann: <code>ollama pull llama3.2:3b</code></td>
+  </tr>
+</table>
+<div class="row" style="margin-top:6px"><span class="label">Python 3.10&ndash;3.12 (optional)</span><span class="value">Nur f&#252;r Sprecher-Erkennung (pyannote) und GPU-Transkriptions-Backends (faster-whisper). Whisper.net l&#228;uft ohne Python. Download: <a href="https://www.python.org">python.org</a> &mdash; bei Installation &#8222;Add Python to PATH&#8220; aktivieren, danach: <code>pip install pyannote.audio faster-whisper</code></span></div>
+<div class="row" style="margin-top:6px"><span class="label">HuggingFace-Token (optional)</span><span class="value">Nur f&#252;r automatische Sprecher-Erkennung. Kostenloses Konto auf <a href="https://huggingface.co">huggingface.co</a> &rarr; Settings &rarr; Access Tokens &rarr; New token (Typ: Read). Modell freischalten: <a href="https://huggingface.co/pyannote/speaker-diarization-3.1">pyannote/speaker-diarization-3.1</a> &rarr; &#8222;Agree and access repository&#8220;. Token in Einstellungen &rarr; Kalender eintragen.</span></div>
+<div class="row" style="margin-top:6px"><span class="label">Microsoft Outlook (optional)</span><span class="value">Nur f&#252;r Kalender-Integration und automatische Aufnahme. Muss lokal installiert und eingeloggt sein.</span></div>
+
+<h2>2 &middot; Erster Start &mdash; Erststart-Assistent</h2>
+<p style="padding:4px 12px 8px;font-size:13px;color:#444;line-height:1.6">Beim allerersten Start &#246;ffnet sich automatisch der <strong>Erststart-Assistent</strong> mit zwei Schritten:</p>
+<div class="row"><span class="label">Schritt&#8202;1 &mdash; Whisper-Modell</span><span class="value">Transkriptions-Modell w&#228;hlen: <strong>Large Turbo</strong> (h&#246;chste Qualit&#228;t, 632&#8202;MB), <strong>Small</strong> (ausgewogen, 465&#8202;MB) oder <strong>Base</strong> (schnell, 145&#8202;MB). Das Modell wird beim ersten Meeting automatisch heruntergeladen.</span></div>
+<div class="row" style="margin-top:4px"><span class="label">Schritt&#8202;2 &mdash; LLM-Einrichtung</span><span class="value">Entweder <strong>Ollama</strong> (lokal, kostenlos) oder <strong>Groq</strong> (Cloud, kostenlos, schnell) einrichten &mdash; oder den Assistenten &#252;berspringen und sp&#228;ter in Einstellungen konfigurieren.</span></div>
+<div class="tip">&#128161; Der Assistent erscheint nur beim ersten Start. Er kann jederzeit &#252;bersprungen werden &mdash; alle Einstellungen sind danach unter Einstellungen &#8594; Modelle erreichbar.</div>
+<div class="row" style="margin-top:8px"><span class="label">1. JohnnyAI.exe starten</span><span class="value">Nach dem Assistenten &#246;ffnet sich automatisch der Einrichtungs-Dialog mit Status aller Komponenten. Jederzeit erneut: Tray-Symbol &rarr; <strong>Abh&#228;ngigkeiten pr&#252;fen&nbsp;&#8230;</strong></span></div>
+<div class="row" style="margin-top:4px"><span class="label">2. Meeting-Ordner setzen</span><span class="value">Einstellungen &rarr; Speicher &rarr; <strong>Meeting-Ordner</strong>. Empfehlung: OneDrive-Pfad &mdash; Meetings dann auf mehreren Rechnern sichtbar.</span></div>
+<div class="row" style="margin-top:4px"><span class="label">3. Mein Name eintragen</span><span class="value">Einstellungen &rarr; Speicher &rarr; <strong>Mein Name</strong>. Wird f&#252;r die Aktionspunkt-Erkennung verwendet.</span></div>
+<div class="row" style="margin-top:4px"><span class="label">4. KI-Provider w&#228;hlen</span><span class="value">Einstellungen &rarr; Modelle &rarr; <strong>Zusammenfassung (LLM) &rarr; Auto</strong> w&#228;hlen (empfohlen; werkseitig ist stattdessen Ollama voreingestellt). Optional: Mistral-API-Key hinterlegen f&#252;r schnelle Cloud-Zusammenfassungen &mdash; Free Tier gen&#252;gt f&#252;r den Einstieg.</span></div>
+<div class="row" style="margin-top:4px"><span class="label">5. Einstellungen speichern &mdash; fertig &#127881;</span><span class="value">&nbsp;</span></div>
+<div class="tip">&#128161; Detaillierte Einrichtungs-Checkliste (Kalender, Autostart, Darstellung&#8230;): Tab <strong>Einrichtung</strong>. Transkriptions-Backends und alle LLM-Provider im Detail: Tab <strong>Konfiguration</strong>.</div>
+
+<h2>Globaler Hotkey</h2>
+<div class="row"><span class="label">&#8862; Win + Shift + R</span><span class="value">Aufnahme starten und stoppen &mdash; auch wenn JohnnyAI minimiert ist oder im Hintergrund l&#228;uft</span></div>
+
+<h2>Portabler Umzug auf neuen Rechner</h2>
+<div class="row"><span class="label">Schritt 1</span><span class="value">Diesen Ordner vollst&#228;ndig auf den neuen Rechner kopieren</span></div>
+<div class="row" style="margin-top:4px"><span class="label">Schritt 2</span><span class="value"><code>%LOCALAPPDATA%\JohnnyAI\</code> mitkopieren &mdash; enth&#228;lt alle pers&#246;nlichen Einstellungen (<code>settings.json</code>), API-Keys (z.&nbsp;B. <code>mistral.key</code>, <code>openai.key</code>) und Sprecher-Profile</span></div>
+<div class="row" style="margin-top:4px"><span class="label">Schritt 3</span><span class="value">Meeting-Ordner-Pfad in den Einstellungen pr&#252;fen (falls Laufwerksbuchstaben ge&#228;ndert haben)</span></div>
+<div class="warn">&#9888; Auf dem neuen Rechner denselben Meeting-Ordner-Pfad eintragen wie auf dem alten &mdash; sonst sieht JohnnyAI keine vorhandenen Meetings.</div>
+
+<h2>Update auf neue JohnnyAI-Version</h2>
+<p style="padding:4px 12px 8px;font-size:13px;color:#444;line-height:1.6">JohnnyAI pr&#252;ft beim Start einmal pro Woche automatisch, ob eine neue Version verf&#252;gbar ist. Ist ein Update vorhanden, erscheint eine Benachrichtigung mit Download-Angebot.</p>
+<div class="row"><span class="label">Automatische Update-Pr&#252;fung</span><span class="value">Erscheint beim App-Start (max. einmal pro Woche) als Hinweis-Dialog &mdash; &#8222;Jetzt herunterladen&#8220; &#246;ffnet die Download-Seite. Kein Zwangs-Update, kein automatisches Installieren.</span></div>
+<div class="row" style="margin-top:8px"><span class="label">Installer-Update</span><span class="value">Neuen Installer (<code>JohnnyAI-Setup-{version}.exe</code>) herunterladen und ausf&#252;hren &mdash; Einstellungen und Meetings bleiben erhalten.</span></div>
+<div class="row" style="margin-top:4px"><span class="label">Portabel-Update &mdash; Schritt 1</span><span class="value">JohnnyAI beenden &mdash; Infobereich (Tray) &rarr; <strong>Beenden</strong></span></div>
+<div class="row" style="margin-top:4px"><span class="label">Portabel-Update &mdash; Schritt 2</span><span class="value">Alle Dateien aus dem neuen ZIP in diesen Ordner kopieren und dabei die vorhandenen Dateien ersetzen</span></div>
+<div class="row" style="margin-top:4px"><span class="label">Portabel-Update &mdash; Schritt 3</span><span class="value">JohnnyAI.exe starten &mdash; Einstellungen und Meetings bleiben erhalten, da sie in <code>%LOCALAPPDATA%\JohnnyAI\</code> gespeichert sind</span></div>
+<div class="tip">&#128161; Die Datei <code>settings.json</code> liegt <strong>nicht</strong> im Programmordner &mdash; sie wird beim Update nicht &#252;berschrieben. Alle pers&#246;nlichen Einstellungen, API-Keys und Sprecher-Profile bleiben automatisch erhalten.</div>
+
+<h2>Teams-Calls automatisch aufnehmen</h2>
+<p style="padding:4px 12px 8px;font-size:13px;color:#444;line-height:1.6">JohnnyAI nimmt den System-Audio per <strong>WASAPI&nbsp;Loopback</strong> auf &mdash; alles, was der PC ausgibt, wird erfasst. Teams-Audio l&#228;uft automatisch mit, ohne Plugin. Der <strong>AutoRecord-Scheduler</strong> startet die Aufnahme automatisch, sobald ein Kalender-Meeting beginnt.</p>
+<table>
+  <tr><th style="width:180px">Schritt</th><th>Was tun</th></tr>
+  <tr><td><strong>1 &mdash; Outlook &#246;ffnen</strong></td><td>Microsoft Outlook muss ge&#246;ffnet und eingeloggt sein. Teams-Meeting-Einladungen m&#252;ssen im Outlook-Kalender sichtbar sein.</td></tr>
+  <tr><td><strong>2 &mdash; Outlook COM</strong></td><td>Einstellungen &rarr; Kalender &rarr; <strong>Outlook COM-Integration aktivieren</strong> (Standard: ein). Kein Azure AD oder App-Registrierung n&#246;tig.</td></tr>
+  <tr><td><strong>3 &mdash; Autostart aktivieren</strong></td><td>Einstellungen &rarr; Kalender &rarr; <strong>Aufnahme automatisch starten</strong>. JohnnyAI startet dann automatisch, wenn ein Meeting beginnt (&#8805;&nbsp;2 Teilnehmer, Status &#8222;Besch&#228;ftigt&#8220;).</td></tr>
+  <tr><td><strong>4 &mdash; Lautsprecher pr&#252;fen</strong></td><td>Teams muss dasselbe Ausgabeger&#228;t wie Windows nutzen. Bluetooth-Headsets: sicherstellen, dass Teams nicht auf ein separates Audioger&#228;t umschaltet.</td></tr>
+</table>
+<div class="tip">&#128161; Die Aufnahme stoppt automatisch, wenn das Meeting laut Kalender endet. Bei verl&#228;ngerten Calls einfach <strong>Win+Shift+R</strong> oder den Stopp-Button verwenden.</div>
+<div class="warn">&#9888; Ausnahmen: Termine mit Schl&#252;sselw&#246;rtern wie &#8222;Blocker&#8220;, &#8222;Lunch&#8220; oder &#8222;Fokuszeit&#8220; werden &#252;bersprungen &mdash; Liste anpassbar unter Einstellungen &rarr; Kalender &rarr; <strong>Ausnahmen (kommasepariert)</strong>.</div>
+
+</div>
+
+
+<!-- NEUERUNGEN -->
+<div id="tab-neuerungen" class="tab-content">
+
+<h2>v2.2.0 — Build 20261008</h2>
+<table>
+  <tr><th style="width:220px">Bereich</th><th>Was ist neu</th></tr>
+  <tr><td><strong>&#8222;Sprecher neu erkennen&#8220; wirkte bei bereits aufgeteilten Telefonat-Sprechern nicht</strong></td><td>Die neue Stimm-Erkennung bei Telefonaten (siehe oben) konnte auf bereits einmal in &#8222;Remote 1&#8220;/&#8222;Remote 2&#8220;/&#8230; aufgeteilten Altmeetings nie greifen: &#8222;Sprecher neu erkennen&#8220; suchte gezielt nach dem unaufgeteilten Platzhalter-Label &#8222;Remote&#8220; und brach bei bereits aufgeteilten Meetings sofort mit &#8222;keine Remote-Segmente&#8220; ab, ohne die Diarisierung &#252;berhaupt neu zu versuchen. Bereits aufgeteilte &#8222;Remote N&#8220;-Segmente gelten jetzt ebenfalls als geeignet f&#252;r eine erneute Erkennung.</td></tr>
+</table>
+
+<details style="margin:16px 0 8px;border:1px solid #e0e0e0;border-radius:6px;overflow:hidden">
+  <summary style="padding:10px 14px;background:#f5f5f5;cursor:pointer;font-weight:600;font-size:13px">v2.1.0 &#8212; Build 20260930</summary>
+  <table style="margin:0;border-radius:0">
+    <tr><th style="width:220px">Bereich</th><th>Was ist neu</th></tr>
+    <tr><td><strong>Mindestl&#228;nge f&#252;r Aufnahmen jetzt einstellbar</strong></td><td>Sehr kurze Aufnahmen (z.&nbsp;B. kurze Telefonate) wurden bisher automatisch verworfen, sobald sie unter einer Minute lagen &#8212; fest eingebaut, ohne Einstellm&#246;glichkeit. Unter Einstellungen &#8594; Kalender l&#228;sst sich die Mindestl&#228;nge jetzt selbst festlegen (in Sekunden, 0 = nie verwerfen).</td></tr>
+    <tr><td><strong>Abgebrochene Wiedergabe nach unterbrochener Audio-Konvertierung behoben</strong></td><td>Wurde JohnnyAI mitten in der Audio-Zusammenf&#252;hrung eines Meetings beendet (z.&nbsp;B. Neustart), blieb eine unvollst&#228;ndige, viel zu kurze Abspieldatei zur&#252;ck. Der automatische Neuversuch pr&#252;fte bisher nur, ob &#252;berhaupt eine Audiodatei existiert &#8212; nicht, ob die Konvertierung wirklich fertig war &#8212; und sprang direkt zur (bereits korrekten) Transkription, statt die Audiodatei neu zu erzeugen. Dadurch lie&#223; sich ab einem bestimmten Zeitpunkt kein Transkript-Abschnitt mehr abspielen, unabh&#228;ngig vom Sprecher. Ein fehlendes <code>audio.flac</code> gilt jetzt als sicheres Zeichen f&#252;r eine unvollst&#228;ndige Konvertierung und l&#246;st automatisch eine erneute Audio-Zusammenf&#252;hrung aus.</td></tr>
+    <tr><td><strong>Kurze Transkript-Abschnitte beim Abspielen kaum h&#246;rbar</strong></td><td>Ein Klick auf &#9654; bei einem sehr kurzen Gespr&#228;chsbeitrag (1-2 Sekunden, z.&nbsp;B. ein kurzer Zwischenruf) brach die Wiedergabe oft ab, bevor durch die technische Anlaufzeit der Audioausgabe &#252;berhaupt etwas h&#246;rbar wurde &#8212; wirkte wie fehlender Ton. Die Wiedergabe l&#228;uft jetzt pro Abschnitt automatisch etwas l&#228;nger, um diese Anlaufzeit auszugleichen.</td></tr>
+    <tr><td><strong>Falscher Abschnitt bei Wiedergabe aus komprimierten Aufnahmen (FLAC)</strong></td><td>Klickte man bei einer bereits fertig verarbeiteten (FLAC-komprimierten) Aufnahme auf &#9654; bei einem Transkript-Abschnitt oder in die Wellenform-Ansicht oben, sprang JohnnyAI teils an eine andere, unpassende Stelle der Aufnahme &#8212; verst&#228;ndlich als &#8222;falscher Ausschnitt&#8220; oder wirkendes Rauschen, obwohl die Aufnahme selbst einwandfrei war. Ursache: Windows' eingebauter FLAC-Dekoder springt beim Suchen einer bestimmten Zeitposition nicht immer zuverl&#228;ssig exakt dorthin. Beide Wiedergabewege entpacken die FLAC-Datei jetzt einmalig (&#252;ber denselben mitgelieferten Encoder/Decoder, der auch komprimiert) und suchen darin exakt.</td></tr>
+    <tr><td><strong>Gleichzeitiger Aufnahmestart konnte zu nicht stoppbaren Karteileichen f&#252;hren</strong></td><td>Trafen ein manueller Aufnahmestart und die automatische Teams-Anruf-Erkennung (oder zwei automatische Ausl&#246;ser) nahezu gleichzeitig ein, konnten mehrere Aufnahme-Versuche parallel loslaufen, bevor der interne Schutz vor Mehrfachstarts &#252;berhaupt griff &#8212; nur einer davon nahm wirklich Ton auf, die anderen scheiterten sofort (&#8222;Datei bereits in Verwendung&#8220;) und blieben als Karteileichen mit &#8222;Aufnahme l&#228;uft&#8220; im Verarbeitungs-Overlay h&#228;ngen, ohne dass sich diese stoppen lie&#223;en. Der Schutz wird jetzt sofort beim Start gesetzt statt erst am Ende der (teils mehrere Sekunden dauernden) Vorpr&#252;fungen.</td></tr>
+    <tr><td><strong>Warnhinweis bei Zusammenfassung durch Notfall-Modell</strong></td><td>Mussten wegen ausgefallener Cloud-Anbieter alle Textabschnitte &#252;ber das kleine lokale Notfall-Modell zusammengefasst werden, konnte dieses bei Feldern wie Gespr&#228;chspartner-Name/Firma frei erfundene, aber plausibel klingende Angaben liefern statt ehrlich &#8222;nicht erkennbar&#8220; zu schreiben &#8212; ohne jeden Hinweis darauf in der Ansicht. Die Zusammenfassung zeigt jetzt einen deutlichen Warnhinweis, wenn sie auf diese Weise entstanden ist.</td></tr>
+    <tr><td><strong>Telefonnummer bei Anrufen ohne Kalendertermin zuverl&#228;ssiger erkennbar</strong></td><td>Fand JohnnyAI zu einem Anruf keinen passenden Outlook-Termin und konnte aus dem Teams-Fenstertitel nur eine Telefonnummer statt eines Namens ablesen, wurde das der KI bisher als &#8222;laut Kalendereinladung eingeladener Teilnehmer&#8220; &#252;bergeben &#8212; missverst&#228;ndlich formuliert, wodurch die KI die Nummer teils ignorierte oder durch einen frei erfundenen Namen ersetzte. Die Nummer wird jetzt als das benannt, was sie ist (unbest&#228;tigte Rufnummer aus dem Fenstertitel), und in der Teilnehmer-Anzeige zus&#228;tzlich mit einem &#9742;-Symbol gekennzeichnet.</td></tr>
+    <tr><td><strong>Aussetzer bei der Systemton-Aufnahme verschoben Mikrofon- und Gegenseite-Spur gegeneinander</strong></td><td>Brach die Aufnahme der Gegenseite kurz ab (z.&nbsp;B. Headset-Verbindung kurz weg) und JohnnyAI verband automatisch neu, fehlte f&#252;r die Aussetzerdauer bisher jede Stille-Kompensation &#8212; die Mikrofonspur lief unterdessen durchgehend weiter. Dadurch verschoben sich beide Spuren zunehmend gegeneinander: Stimmen &#252;berlagerten sich an falschen Stellen, und die Sprechererkennung konnte durch den h&#246;rbaren Bruch an der Wiederverbindungsstelle eine einzelne Gegenperson f&#228;lschlich als mehrere Sprecher einstufen. Ein Aussetzer wird jetzt beim Wiederverbinden durch die exakt fehlende Stille-Dauer ausgeglichen, damit beide Spuren synchron bleiben.</td></tr>
+    <tr><td><strong>Anrufer-Titel nannte f&#228;lschlich den eigenen Namen statt der Gegenperson</strong></td><td>Bei einem Telefonat mit getrennten Audiospuren (Dual-Channel) wird der eigene Mikrofon-Sprecher im Transkript automatisch mit dem hinterlegten eigenen Namen beschriftet &#8212; die KI wusste davon aber nichts und konnte diesen Namen f&#228;lschlich als &#8222;Gespr&#228;chspartner&#8220; f&#252;r Titel und Zusammenfassung &#252;bernehmen (z.&nbsp;B. &#8222;Anruf mit Max Mustermann&#8220;, obwohl Max selbst aufgenommen hat). Die KI bekommt jetzt explizit mitgeteilt, dass dieser Name die aufnehmende Person ist und nie als externer Kontakt gelten darf.</td></tr>
+    <tr><td><strong>Bekannte Stimmen werden jetzt auch bei Telefonaten erkannt</strong></td><td>Die Stimmerkennung anhand bereits bekannter Sprecherprofile lief bisher ausschlie&#223;lich bei normalen Meeting-Aufnahmen &#8212; bei Telefonaten mit getrennten Audiospuren wurde die Gegenseite immer nur pauschal als &#8222;Remote&#8220; bzw. &#8222;Remote 1/2/&#8230;&#8220; bezeichnet, selbst wenn die Person aus fr&#252;heren Aufnahmen l&#228;ngst bekannt war. Der Abgleich mit den gespeicherten Stimmprofilen l&#228;uft jetzt auch bei Telefonaten &#8212; erkennt JohnnyAI die Stimme wieder, erscheint direkt der echte Name statt &#8222;Remote&#8220;. Rein lokale Verarbeitung, keine Cloud-Anfrage.</td></tr>
+    <tr><td><strong>Bevorzugtes Headset einstellbar, Standardwert korrigiert</strong></td><td>Der fest im Code hinterlegte Name des bevorzugten Headsets f&#252;r Mikrofon- und Systemton-Aufnahme war auf ein falsches Modell eingestellt (Verwechslung der Modellnummer) &#8212; dadurch griff die Bevorzugung nie, und JohnnyAI nahm statt des Headset-Mikrofons z.&nbsp;B. das eingebaute Laptop-Mikrofon, was Umgebungsger&#228;usche oder &#252;bersprechenden Ton aufnehmen und f&#228;lschlich der eigenen Person zuordnen konnte. Der Standardwert wurde korrigiert (matcht jetzt jede Modellvariante) und ist unter Einstellungen &#8594; Speicher jetzt auch selbst editierbar.</td></tr>
+  </table>
+</details>
+
+<details style="margin:16px 0 8px;border:1px solid #e0e0e0;border-radius:6px;overflow:hidden">
+  <summary style="padding:10px 14px;background:#f5f5f5;cursor:pointer;font-weight:600;font-size:13px">v2.0.0 &#8212; Build 20260917</summary>
+  <table style="margin:0;border-radius:0">
+    <tr><th style="width:220px">Bereich</th><th>Was ist neu</th></tr>
+    <tr><td><strong>Sprechererkennung ohne Python</strong></td><td>Neues Diarisierungs-Backend &#8222;sherpa-onnx&#8220; &#8212; l&#228;uft komplett in .NET &#252;ber ONNX Runtime, ben&#246;tigt keine Python-Installation und kein HuggingFace-Konto mehr. Einmaliger Modell-Download (~32&nbsp;MB statt ~1&nbsp;GB) direkt &#252;ber einen Button in den Einstellungen. Optional w&#228;hlbar unter Einstellungen &#8594; Sprechererkennung &#8594; Backend, das bisherige Python-Backend bleibt Standard.</td></tr>
+    <tr><td><strong>Echte FLAC-Kompression</strong></td><td>Aufnahmen werden jetzt tats&#228;chlich zu FLAC komprimiert (bisher nur unkomprimiert umbenannt) &#8212; im Schnitt ca. 75&nbsp;% weniger Speicherplatz pro Meeting. Kein Qualit&#228;tsverlust (FLAC ist verlustfrei).</td></tr>
+    <tr><td><strong>Ollama-Modell-Dropdown</strong></td><td>Das Modellfeld f&#252;r lokale Zusammenfassungen (Ollama) zeigt jetzt automatisch alle installierten Modelle zur Auswahl, inkl. Aktualisieren-Button &#8212; Modellnamen m&#252;ssen nicht mehr auswendig eingetippt werden.</td></tr>
+    <tr><td><strong>Kalender-Termin nachtr&#228;glich zuordnen</strong></td><td>Neues &#128197;-Symbol neben dem Meeting-Titel: falls die automatische Kalendererkennung beim Aufnahmestart fehlschl&#228;gt oder mehrdeutig ist, l&#228;sst sich der passende Termin jetzt nachtr&#228;glich manuell zuordnen (oder eine falsche Zuordnung entfernen).</td></tr>
+    <tr><td><strong>Korrektur-Vokabular verbessert</strong></td><td>Eigene Korrekturbegriffe werden jetzt zuverl&#228;ssiger angewendet: keine Verkettung mehr zwischen mehreren Regeln, zu kurze Begriffe werden automatisch ignoriert, die Zusammenfassung wird jetzt automatisch mitkorrigiert.</td></tr>
+    <tr><td><strong>Wort per Doppelklick korrigieren</strong></td><td>Falsch erkannte W&#246;rter lassen sich jetzt direkt im Transkript oder in der Zusammenfassung per Doppelklick markieren und korrigieren.</td></tr>
+    <tr><td><strong>Setup-Pr&#252;fung: &#8222;Erneut pr&#252;fen&#8220; repariert</strong></td><td>Der Button im Ersteinrichtungs-Dialog zeigte bisher nur den letzten (bis zu 24&nbsp;h alten) Cache-Stand erneut an, statt wirklich neu zu pr&#252;fen &#8212; nach einer frischen Installation blieb eine Komponente f&#228;lschlich als &#8222;fehlt&#8220; markiert. Ein Klick l&#246;st jetzt eine echte Neupr&#252;fung aus.</td></tr>
+    <tr><td><strong>Ollama-Erkennung robuster</strong></td><td>Der Erreichbarkeits-Check hatte nur 2 Sekunden Zeit und meldete Ollama unter Systemlast f&#228;lschlich als nicht erreichbar &#8212; Timeout auf 5 Sekunden erh&#246;ht.</td></tr>
+    <tr><td><strong>Diarisierungs-Modell sichtbar</strong></td><td>Die Fu&#223;zeile der Zusammenfassung zeigt jetzt auch an, welches Sprechererkennungs-Modell tats&#228;chlich gelaufen ist (z.&nbsp;B. &#8222;sherpa-onnx (ResNet34_LM)&#8220; oder &#8222;ECAPA-TDNN (SpeechBrain)&#8220;) &#8212; bisher war nur das Zusammenfassungs- und Transkriptions-Modell sichtbar.</td></tr>
+    <tr><td><strong>Echo-Unterdr&#252;ckung f&#252;r Mikrofon (experimentell)</strong></td><td>Neue Option in Einstellungen &#8594; Speicher: aktiviert Windows' eigene Kommunikations-Audioverarbeitung f&#252;r die Mikrofonaufnahme &#8212; dieselbe, die z.&nbsp;B. Teams nutzt. Kann Echo und Hintergrundger&#228;usche reduzieren, abh&#228;ngig vom Mikrofon-Treiber; f&#228;llt bei Problemen automatisch auf die normale Aufnahme zur&#252;ck, sodass eine Aufnahme nie blockiert wird.</td></tr>
+    <tr><td><strong>Offline-Modus deaktiviert Cloud-Optionen</strong></td><td>Ist &#8222;Offline-Modus &#8212; keine Cloud-Verbindungen&#8220; aktiv, werden die Cloud-Anbieter bei Transkription und Zusammenfassung (OpenAI, Groq, Mistral) jetzt ausgegraut statt nur still im Hintergrund umgeleitet zu werden &#8212; eine vorher ausgew&#228;hlte Cloud-Option wird automatisch auf die lokale Variante umgestellt, damit Anzeige und tats&#228;chliches Verhalten &#252;bereinstimmen.</td></tr>
+    <tr><td><strong>Neuer Tab &#8222;Tags&#8220;</strong></td><td>Einstellungen &#8594; Tags verwaltet jetzt ein festes Tag-Vokabular (Name, Gruppe, E-Mail-Domains, &#8222;Wann anwenden&#8220;). Ein Tag mit hinterlegten Domains wird automatisch anhand der Teilnehmer-E-Mails vergeben; ist zus&#228;tzlich &#8222;Wann anwenden&#8220; ausgef&#252;llt, darf auch die KI diesen Tag inhaltlich vergeben &#8212; erfinden kann sie aber nie einen neuen.</td></tr>
+    <tr><td><strong>Tag-Vorschl&#228;ge &amp; &#8222;Automatisch zur&#252;cksetzen&#8220;</strong></td><td>Das &#8222;+ Tag&#8220;-Vorschlagsfeld in der Meeting-Liste schl&#228;gt jetzt Tags aus dem Vokabular vor (nach H&#228;ufigkeit sortiert) statt irgendein zuvor getipptes Wort &#8212; ein neu eingetippter Tag landet automatisch im Vokabular. Wurden die Tags eines Meetings von Hand ge&#228;ndert, erscheint zus&#228;tzlich &#8222;&#8630; Automatisch&#8220;, um sie wieder aus Meeting-Typ, Teilnehmer-Domain und KI neu ableiten zu lassen. Bereits bestehende Freitext-Tags werden beim Start einmalig ins Vokabular &#252;bernommen.</td></tr>
+    <tr><td><strong>Diarisierungs-Fallback-Bug behoben</strong></td><td>War &#8222;sherpa-onnx&#8220; als Sprechererkennungs-Backend gew&#228;hlt und sherpa-onnx konnte f&#252;r ein Meeting kein Ergebnis liefern, brach die Diarisierung mit einem Python-Fehler ab, statt sauber auf ein funktionierendes Backend zur&#252;ckzufallen &#8212; das Meeting behielt dann nur einen einzigen unbenannten Sprecher. Der R&#252;ckfall-Pfad nutzt jetzt korrekt ein g&#252;ltiges Python-Backend (ECAPA-TDNN).</td></tr>
+    <tr><td><strong>Falsche Modellgr&#246;&#223;en im Erststart-Assistenten korrigiert</strong></td><td>Die Whisper-Modelle &#8222;Small&#8220; und &#8222;Base&#8220; zeigten dort falsche Downloadgr&#246;&#223;en (244&nbsp;MB / 74&nbsp;MB) &#8212; die tats&#228;chlichen Gr&#246;&#223;en sind 465&nbsp;MB / 145&nbsp;MB, jetzt korrekt angezeigt.</td></tr>
+    <tr><td><strong>H&#228;ngende Meetings in der Warteschlange behoben</strong></td><td>Lief eine manuelle Aktion (z.&nbsp;B. &#8222;Neu zusammenfassen&#8220;, &#8222;Neu transkribieren&#8220;) w&#228;hrend weitere Meetings bereits in der Verarbeitungswarteschlange warteten, wurden diese nach Abschluss der manuellen Aktion nicht mehr automatisch weiterverarbeitet &#8212; sie blieben dauerhaft bei &#8222;Wartet in der Pipeline&#8230;&#8220; h&#228;ngen (erst ein Neustart oder eine neue Aufnahme brachte sie wieder in Gang). Betraf sechs von acht internen Einstiegspunkten.</td></tr>
+    <tr><td><strong>Wartende Meetings &#252;berleben jetzt einen Neustart</strong></td><td>Meetings, die beim Beenden von JohnnyAI noch auf ihre Verarbeitung warteten (Status &#8222;Wartet in der Pipeline&#8230;&#8220;), blieben nach einem Neustart dauerhaft in diesem Zustand h&#228;ngen &#8212; die automatische Wiederaufnahme nach einem Absturz oder Neustart kannte diesen Fall bisher nicht. Ein Neustart holt solche Meetings jetzt automatisch wieder in die Verarbeitung.</td></tr>
+    <tr><td><strong>Sprechererkennung in den Tab &#8222;Modelle&#8220; verschoben</strong></td><td>Die Sektion &#8222;Sprechererkennung (Diarisierung)&#8220; lag bisher mitten im Tab &#8222;Kalender&#8220; &#8212; dort thematisch nur lose zugeh&#246;rig. Sie befindet sich jetzt im Tab &#8222;Modelle&#8220;, direkt bei der Transkriptions- und LLM-Backend-Wahl. Reine Umsortierung, keine Funktions&#228;nderung.</td></tr>
+    <tr><td><strong>API-Schl&#252;ssel jetzt verschl&#252;sselt gespeichert</strong></td><td>Gespeicherte API-Keys (OpenAI, Groq, Mistral, NVIDIA, HuggingFace, u.&nbsp;a.) lagen bisher als Klartext-Dateien in <code>%LOCALAPPDATA%\JohnnyAI\</code>. Sie werden jetzt mit Windows' eigenem Datenschutz-Mechanismus (DPAPI) verschl&#252;sselt abgelegt &#8212; nur unter dem eigenen Windows-Benutzerkonto lesbar. Bereits vorhandene Schl&#252;ssel werden automatisch beim n&#228;chsten Speichern verschl&#252;sselt, ein manueller Schritt ist nicht n&#246;tig.</td></tr>
+    <tr><td><strong>Claude als neuer LLM-Anbieter</strong></td><td>Einstellungen &#8594; Modelle &#8594; Zusammenfassung (LLM) bietet jetzt zus&#228;tzlich &#8222;Claude (Cloud)&#8220; neben Ollama, Groq, Mistral und OpenAI &#8212; inkl. API-Key-Feld, w&#228;hlbarem Modell und optionaler Workspace-ID. Claude reiht sich auch in die automatische Fallback-Kette (Modus &#8222;Auto&#8220;) ein.</td></tr>
+    <tr><td><strong>Automatische Meeting-Typ-Erkennung</strong></td><td>Einstellungen &#8594; Prompt: Jede Prompt-Vorlage kann jetzt eine Beschreibung &#8222;Wann automatisch anwenden?&#8220; erhalten. Ist mindestens eine Vorlage so beschrieben, schl&#228;gt die KI vor jeder Zusammenfassung automatisch die passendste Vorlage vor &#8212; ein manuell gew&#228;hlter Meeting-Typ hat aber immer Vorrang und wird nie &#252;berschrieben. Das Ergebnis erscheint im Meeting als &#8222;&#129302; KI-erkannt: &#8230;&#8220; neben dem Meeting-Typ-Feld. Ohne Beschreibung bei keiner Vorlage &#228;ndert sich nichts.</td></tr>
+    <tr><td><strong>Wochen-/Monatsbericht</strong></td><td>Neuer Button &#128197; oben in der Werkzeugleiste: fasst alle Meetings einer Woche oder eines Monats zu einem konsolidierten Bericht zusammen (gruppiert nach Themen, nicht nach einzelnem Meeting) &#8212; inkl. Beschl&#252;ssen und offenen Fragen &#252;ber den gesamten Zeitraum. Der Bericht wird direkt angezeigt und kann zus&#228;tzlich als Markdown in den Obsidian-Vault exportiert werden (Ordner &#8222;Wochenbericht&#8220;/&#8222;Monatsbericht&#8220;, neben &#8222;Meetings&#8220;).</td></tr>
+    <tr><td><strong>Outlook-COM-Einstellung zuverl&#228;ssiger gespeichert</strong></td><td>Die Einstellung &#8222;Outlook COM-Integration aktivieren&#8220; wurde auf manchen Rechnern beim Speichern nicht dauerhaft &#252;bernommen (die Ursache lag au&#223;erhalb von JohnnyAI, vermutlich eine Sicherheits-Software, die die Einstellungsdatei zur&#252;cksetzte). Diese eine Einstellung wird jetzt zus&#228;tzlich in der Windows-Registrierung gespeichert, davon unabh&#228;ngig.</td></tr>
+    <tr><td><strong>Microsoft Graph API f&#252;r Kalender vorbereitet</strong></td><td>Alternative zu Outlook COM &#8212; n&#246;tig f&#252;r &#8222;New Outlook&#8220;, wo die klassische COM-Automatisierung nicht funktioniert. Einstellungen &#8594; Kalender &#8594; Microsoft Graph API: Tenant-ID, Client-ID, Client-Secret und Mailbox-Adresse eintragen, dann mit dem neuen Button &#8222;Verbindung testen&#8220; sofort pr&#252;fen, ohne erst ein Meeting abzuwarten. Das Client-Secret wird jetzt genauso verschl&#252;sselt gespeichert wie die anderen API-Keys. Ben&#246;tigt eine einmalige Azure-AD-App-Registrierung durch die IT.</td></tr>
+    <tr><td><strong>Zusammenfassungen: klareres Format</strong></td><td>Der Standard-Prompt f&#252;r Meetings ohne eigene Vorlage erzeugt jetzt durchg&#228;ngig sauber getrennte Abschnitte und Bullet-Punkte &#8212; keine leeren Aufz&#228;hlungspunkte mehr und keine &#252;berlangen, zusammengeschriebenen Zeilen. Betrifft nur neu erstellte Zusammenfassungen; bestehende lassen sich &#252;ber &#8222;Neu verarbeiten &#8594; Zusammenfassung neu erstellen&#8220; auffrischen.</td></tr>
+    <tr><td><strong>In-App-Hilfe vervollst&#228;ndigt</strong></td><td>Die Hilfe direkt in JohnnyAI (Toolbar-Button &#8222;?&#8220;) zeigte bisher nur 3 von 6 Themenbereichen und war teils veraltet (falsche Dateipfade, fehlende Anbieter). Jetzt vollst&#228;ndig auf dem Stand der Web-Hilfe: neue Tabs &#8222;Sprecher&#8220;, &#8222;Erste Schritte&#8220; und &#8222;Neuerungen&#8220;, plus bisher undokumentierte Funktionen wie Verschl&#252;sselung, Offline-Modus, Wort-Korrekturen, Tags-Vokabular, Tickets-Integration und Favoriten.</td></tr>
+    <tr><td><strong>Setup-Pr&#252;fung: Timeout auf langsamen Rechnern behoben</strong></td><td>Auf manchen Rechnern zeigte die Abh&#228;ngigkeitspr&#252;fung faster-whisper und/oder pyannote.audio f&#228;lschlich als &#8222;nicht installiert&#8220; an, obwohl beide korrekt installiert waren &#8212; der Import dieser Pakete kann beim ersten Zugriff &#252;ber eine Minute dauern (u.&nbsp;a. durch den Ladevorgang von PyTorch), der bisherige 60-Sekunden-Timeout der Pr&#252;fung reichte daf&#252;r nicht immer aus. Timeout auf 120 Sekunden erh&#246;ht, zus&#228;tzlich einen Deadlock-Risikofall behoben, bei dem ausf&#252;hrliche Warnmeldungen des Python-Prozesses die Pr&#252;fung zus&#228;tzlich verz&#246;gern konnten. Au&#223;erdem wurden die vier Pr&#252;fergebnisse bisher nacheinander statt unabh&#228;ngig voneinander &#252;bernommen &#8212; ein schnelles Ergebnis blieb dadurch unn&#246;tig lange auf &#8222;wird gepr&#252;ft&#8220; stehen, bis auch das langsamste fertig war.</td></tr>
+    <tr><td><strong>Anzeige w&#228;hrend Zusammenfassung: falscher Anbieter behoben</strong></td><td>Der Live-Status w&#228;hrend der Zusammenfassung (z.&nbsp;B. &#8222;Groq groq/compound&#8220;) ber&#252;cksichtigte den Offline-Modus nicht &#8212; lief die Zusammenfassung durch den Offline-Modus tats&#228;chlich &#252;ber Ollama, zeigte die Anzeige trotzdem weiterhin den urspr&#252;nglich gew&#228;hlten Cloud-Anbieter an. Betraf auch die gesch&#228;tzte Restzeit. Alle betroffenen Stellen nutzen jetzt einheitlich dieselbe Erkennung wie der tats&#228;chliche Aufruf.</td></tr>
+    <tr><td><strong>Kalender-Teilnehmer flie&#223;en jetzt in die Zusammenfassung ein</strong></td><td>Die KI bekam bisher nur das reine Transkript &#8212; bekannte Namen aus einer verkn&#252;pften Outlook-Einladung wurden nie mitgegeben, selbst wenn sie vorlagen. Titel und Zusammenfassung nutzen jetzt die echten eingeladenen Namen zur Sprecher-Zuordnung, wo im Gespr&#228;ch erkennbar (ohne bei Unklarheit &#8212; z.&nbsp;B. externe Anrufer au&#223;erhalb der Einladungsliste &#8212; eine falsche Zuordnung zu erzwingen). Zus&#228;tzlich erkennt das Feld f&#252;r den Gespr&#228;chspartner eines Telefonats jetzt auch rein interne 1:1-Anrufe (vorher nur externe).</td></tr>
+    <tr><td><strong>Live-Warnung bei fehlendem Gegenseiten-Ton</strong></td><td>Neue Warnung direkt im Aufnahme-Overlay: L&#228;uft die System-Audio-Aufnahme technisch, liefert aber ~30 Sekunden lang kein Signal, w&#228;hrend es erkennbar wie ein echter Call aussieht (Kalendertermin mit mehreren Teilnehmern oder Aufnahme l&#228;uft bereits &#252;ber 2 Minuten), erscheint sofort ein Hinweis &#8212; z.&nbsp;B. wenn Teams/Zoom auf ein anderes Ausgabeger&#228;t als der Windows-Standard umgeschaltet hat (etwa nach einem Bluetooth-Headset-Wechsel). Bisher wurde das nur nachtr&#228;glich nach der Verarbeitung angezeigt, wenn die Aufnahme bereits vorbei war.</td></tr>
+    <tr><td><strong>Segment-Wiedergabe bei Dual-Channel-Meetings behoben</strong></td><td>Bei aktivierter Dual-Channel-Transkription (Mikrofon und Systemton getrennt) lie&#223; sich die Wiedergabe einzelner Transkript-Abschnitte manchmal nicht starten &#8212; die &#8222;Stille k&#252;rzen&#8220;-Funktion hatte unabh&#228;ngig davon die archivierte Audiodatei separat gek&#252;rzt, wodurch deren L&#228;nge nicht mehr zu den Zeitstempeln im Transkript passte. Die Stille-K&#252;rzung wird bei Dual-Channel-Meetings jetzt &#252;bersprungen, da sie dort ohnehin nicht auf der tats&#228;chlich transkribierten Datei arbeitet.</td></tr>
+    <tr><td><strong>FLAC-Komprimierung nach Stille-K&#252;rzung erhalten</strong></td><td>Wurde nach der FLAC-Komprimierung zus&#228;tzlich Stille aus der Aufnahme entfernt, wurde die Datei danach unkomprimiert (als WAV mit .flac-Endung) gespeichert &#8212; die Komprimierung ging dabei unbemerkt wieder verloren. Die gek&#252;rzte Aufnahme wird jetzt erneut korrekt zu FLAC komprimiert.</td></tr>
+    <tr><td><strong>Zusammenfassung: schnellerer R&#252;ckfall auf Cloud-Anbieter bei kurzzeitiger Ratenbegrenzung</strong></td><td>Bei langen Meetings wurden mehrere Textabschnitte gleichzeitig an den Cloud-Anbieter geschickt &#8212; das konnte dessen Anfragelimit ausl&#246;sen und die Zusammenfassung sofort auf die deutlich langsamere lokale Verarbeitung (Ollama) umleiten, obwohl der Cloud-Anbieter eigentlich einsatzbereit war. Eine kurzzeitige Ratenbegrenzung (Fehlercode 429) wird jetzt einmal nach kurzer Wartezeit erneut beim selben Anbieter versucht, bevor auf den n&#228;chsten umgeschaltet wird. Die Textabschnitte selbst wurden verkleinert (2.500 statt 5.000 W&#246;rter) &#8212; bei sehr langen Meetings (&#252;ber eine Stunde) hatte ein einzelner Abschnitt bei manchen Anbietern die zul&#228;ssige Anfragegr&#246;&#223;e &#252;berschritten (&#8222;Payload Too Large&#8220;). Zus&#228;tzlich laufen die Abschnitte jetzt grunds&#228;tzlich nacheinander statt gleichzeitig, mit einer echten Pause dazwischen &#8212; Cloud-Anbieter begrenzen nicht nur gleichzeitige Anfragen, sondern die Gesamtmenge pro Zeitfenster, was ein reiner zeitlicher Versatz beim Start nicht auffangen konnte.</td></tr>
+    <tr><td><strong>Kalender-Verkn&#252;pfung erholt sich jetzt von kurzzeitigen Outlook-Aussetzern</strong></td><td>Schlug die Verbindung zu Outlook (COM) einmal fehl &#8212; z.&nbsp;B. weil Outlook gerade neu startete oder kurzzeitig nicht reagierte &#8212; wurde die Kalenderabfrage bisher f&#252;r den Rest des Programmlaufs komplett abgeschaltet, auch wenn Outlook danach l&#228;ngst wieder normal lief. Dadurch bekamen sp&#228;tere Meetings am selben Tag keine Teilnehmernamen aus der Einladung mehr zugeordnet. Es wird jetzt nach 5 Minuten automatisch ein neuer Versuch gestartet, statt dauerhaft aufzugeben.</td></tr>
+    <tr><td><strong>Kaputte Cloud-Anbieter blockieren die Zusammenfassung nicht mehr &#252;ber Tage</strong></td><td>Ist bei einem Cloud-Anbieter das Guthaben aufgebraucht oder eine Ratenbegrenzung h&#228;lt &#252;ber den kurzen automatischen Wiederholungsversuch hinaus an, wurde dieser Anbieter bisher bei jedem einzelnen Textabschnitt und jedem neuen Meeting erneut angefragt &#8212; obwohl er erwiesenerma&#223;en seit Tagen nicht funktionierte. Das kostete unn&#246;tig Zeit und lie&#223; die Zusammenfassung h&#228;ufiger auf die langsame lokale Verarbeitung (Ollama) umleiten, als n&#246;tig gewesen w&#228;re. Ein erkannterma&#223;en aufgebrauchtes Guthaben sperrt den Anbieter jetzt f&#252;r 6 Stunden, eine anhaltende Ratenbegrenzung f&#252;r 10 Minuten &#8212; automatisch erkannt, keine Einstellung n&#246;tig.</td></tr>
+    <tr><td><strong>Kein 30-min&#252;tiges Warten mehr bei zu wenig Arbeitsspeicher</strong></td><td>War der freie Arbeitsspeicher bereits vor dem Start von Ollama (lokale Zusammenfassung) kritisch knapp (unter 2,5 GB), f&#252;hrte das zuverl&#228;ssig zu einem kompletten H&#228;nger &#252;ber die volle Wartezeit von 30 Minuten, ohne dass Ollama je eine Antwort liefern konnte. Der Arbeitsspeicher wird jetzt vorher gepr&#252;ft &#8212; reicht er nicht aus, erscheint sofort eine ehrliche Fehlermeldung mit der Bitte, andere Programme zu schlie&#223;en, statt erst nach einer halben Stunde.</td></tr>
+    <tr><td><strong>Kleineres Notfall-Modell, wenn alle Cloud-Anbieter ausgefallen sind</strong></td><td>Scheiterten alle Cloud-Anbieter (z.&nbsp;B. wegen Kontingent oder Ratenbegrenzung) und sprang die Zusammenfassung auf die lokale Verarbeitung (Ollama) um, wurde dort weiterhin das normal eingestellte (gr&#246;&#223;ere) Modell geladen &#8212; das braucht deutlich mehr Arbeitsspeicher und ist genau in dieser Situation (Speicher oft schon knapp) besonders anf&#228;llig f&#252;r einen H&#228;nger. In diesem Notfall-Fall wird jetzt automatisch ein kleineres, gen&#252;gsameres Modell verwendet, das deutlich bessere Chancen hat, tats&#228;chlich ein Ergebnis zu liefern. Die normal ausgew&#228;hlte Zusammenfassungs-Qualit&#228;t bleibt f&#252;r alle anderen F&#228;lle unver&#228;ndert.</td></tr>
+    <tr><td><strong>Gespr&#228;chspartner-Name bei Teams-Anrufen ohne Termin</strong></td><td>Bei einem Anruf ohne passenden Outlook-Kalendertermin (z.&nbsp;B. spontaner Teams-Anruf) kannte JohnnyAI bisher keinen Namen f&#252;r den Gespr&#228;chspartner, au&#223;er das Modell konnte ihn zuf&#228;llig aus dem gesprochenen Text erraten. JohnnyAI liest jetzt zus&#228;tzlich den Fenstertitel des Teams-Anrufs aus (z.&nbsp;B. &#8222;Anruf mit Max Mustermann&#8220;) und nutzt den erkannten Namen als Ersatz f&#252;r die fehlende Kalender-Information &#8212; nur wenn wirklich kein Termin gefunden wurde, ein echter Kalendertreffer hat immer Vorrang.</td></tr>
+    <tr><td><strong>Direkter Obsidian-Link je Meeting</strong></td><td>Im Men&#252; &#8222;&#128228; Export&#8220; gibt es jetzt &#8222;&#128279; In Obsidian &#246;ffnen&#8220; &#8212; erstellt/aktualisiert die Markdown-Notiz des Meetings (liegt automatisch im Obsidian-Vault, da der Meeting-Ordner selbst im Vault liegt) und &#246;ffnet sie direkt in Obsidian. Von dort aus lassen sich eigene Verkn&#252;pfungen, Weiterleitungen oder Notizen zu der jeweiligen Besprechung anlegen.</td></tr>
+    <tr><td><strong>Sprung zum Meeting markiert es jetzt auch links in der Liste</strong></td><td>Ein Doppelklick auf ein Meeting im Verarbeitungs-Overlay &#246;ffnete zwar dessen Zusammenfassung, zeigte aber nicht an, wo sich dieses Meeting in der Meeting-Liste links befindet &#8212; bei aktivem Such-/Monatsfilter tauchte es dort unter Umst&#228;nden gar nicht auf, oder es war einfach aus dem sichtbaren Bereich herausgescrollt. Ein solcher Sprung setzt jetzt bei Bedarf Suche/Monat/Favoriten-Filter zur&#252;ck und scrollt die Liste automatisch zum betreffenden Meeting.</td></tr>
+    <tr><td><strong>Live-Anzeige zeigt jetzt den tats&#228;chlich aktiven Anbieter w&#228;hrend der Zusammenfassung</strong></td><td>Fiel eine Zusammenfassung mitten im Lauf von der Cloud auf das lokale Notfall-Modell zur&#252;ck, zeigte die Anzeige weiterhin den urspr&#252;nglich vorgesehenen Cloud-Anbieter (z.&nbsp;B. &#8222;Groq groq/compound&#8220;) an, obwohl tats&#228;chlich schon minutenlang lokal gerechnet wurde. Die Anzeige folgt jetzt dem wirklich laufenden Versuch, nicht nur der anf&#228;nglichen Einsch&#228;tzung. Zus&#228;tzlich wurde die Mindest-Speicherschwelle f&#252;r das Notfall-Modell von 1,2 auf 2,0 GB angehoben, nachdem sich 1,2 GB in der Praxis als zu knapp erwiesen hatten.</td></tr>
+    <tr><td><strong>RAM-Check blockierte sich bei mehreren Textabschnitten selbst</strong></td><td>War das lokale Notfall-Modell durch einen vorherigen Textabschnitt bereits geladen (und belegte dadurch mehrere GB Arbeitsspeicher), stufte der RAM-Check den n&#228;chsten Textabschnitt f&#228;lschlich als &#8222;zu wenig Speicher&#8220; ein &#8212; obwohl das Modell bereits bereitstand und f&#252;r diesen Abschnitt gar nicht neu geladen werden musste. JohnnyAI fragt jetzt vorher bei Ollama nach, ob das Modell schon geladen ist, und &#252;berspringt den Speicher-Check in diesem Fall.</td></tr>
+    <tr><td><strong>Live-Anzeige blieb w&#228;hrend der ganzen Zusammenfassung eingefroren</strong></td><td>Die Anzeige des aktiven Anbieters/Modells wurde bisher nur einmal beim Start der Zusammenfassung ermittelt und danach nie wieder aktualisiert &#8212; wechselte die Zusammenfassung intern von der Cloud auf das lokale Notfall-Modell, blieb im Verarbeitungs-Overlay und in der Meeting-Ansicht trotzdem die urspr&#252;nglich angezeigte Cloud-Anbieter-Bezeichnung stehen, bis die Zusammenfassung fertig oder gescheitert war. Die Anzeige aktualisiert sich jetzt einmal pro Sekunde, solange die Zusammenfassung l&#228;uft.</td></tr>
+    <tr><td><strong>Groq-Zusammenfassung funktioniert wieder</strong></td><td>Das hinterlegte Groq-Modell (<code>groq/compound</code>) existierte nicht mehr &#8212; Groq hatte es offenbar entfernt oder umbenannt. Dadurch scheiterte Groq bei jeder Zusammenfassung sofort mit einem Fehler, was tagelang f&#228;lschlich f&#252;r ein Ratenlimit- oder Arbeitsspeicherproblem gehalten wurde. Umgestellt auf das aktuell verf&#252;gbare <code>openai/gpt-oss-120b</code> &#8212; Groq sollte damit wieder wie vorgesehen als schnellster Anbieter greifen, statt bei jedem Versuch auf die lokale Verarbeitung auszuweichen.</td></tr>
+    <tr><td><strong>Leere Cloud-Antworten werden jetzt einmal wiederholt statt sofort aufgegeben</strong></td><td>Lieferte ein Cloud-Anbieter bei einem langen Textabschnitt eine leere oder viel zu kurze Antwort zur&#252;ck (beobachtet bei Groq), wechselte JohnnyAI sofort zum n&#228;chsten Anbieter oder im schlimmsten Fall zur langsameren lokalen Verarbeitung &#8212; obwohl es sich meist nur um einen kurzen Aussetzer handelte. Genau wie bei einer Ratenbegrenzung wird jetzt erst derselbe Anbieter noch einmal versucht, bevor gewechselt wird.</td></tr>
+    <tr><td><strong>Automatische Update-Pr&#252;fung funktioniert jetzt wirklich</strong></td><td>Die einmal pro Woche laufende Pr&#252;fung auf eine neue Version schlug bisher immer im Hintergrund fehl (der hinterlegte Ablageort verlangte eine Anmeldung, die die App nicht mitbringen kann). Die Versionsinformation liegt jetzt an einem &#246;ffentlich ohne Anmeldung erreichbaren Ort &#8212; ein Hinweis auf eine neue Version erscheint jetzt zuverl&#228;ssig, sobald eine ver&#246;ffentlicht wird.</td></tr>
+  </table>
+</details>
+
+<details style="margin:16px 0 8px;border:1px solid #e0e0e0;border-radius:6px;overflow:hidden">
+  <summary style="padding:10px 14px;background:#f5f5f5;cursor:pointer;font-weight:600;font-size:13px">v1.7.0 &#8212; Build 20260904</summary>
+  <table style="margin:0;border-radius:0">
+    <tr><th style="width:220px">Bereich</th><th>Was ist neu</th></tr>
+    <tr><td><strong>Windows-Installer</strong></td><td>JohnnyAI l&#228;sst sich per <code>JohnnyAI-Setup-v1.7.0.exe</code> installieren &#8212; pr&#252;ft .NET&nbsp;8 automatisch, legt Startmen&#252;-Eintr&#228;ge an, optionaler Desktop-Shortcut und Autostart. Portable ZIP bleibt weiterhin verf&#252;gbar.</td></tr>
+    <tr><td><strong>Erststart-Assistent</strong></td><td>Beim allerersten Start f&#252;hrt ein zweistufiger Assistent durch die Einrichtung: Whisper-Modell w&#228;hlen (Large Turbo / Small / Base) und LLM-Provider einrichten (Ollama oder Groq).</td></tr>
+    <tr><td><strong>API-Key-Onboarding</strong></td><td>Wer in Einstellungen einen Cloud-Anbieter (Groq, Mistral, OpenAI) ausw&#228;hlt und noch keinen Key hinterlegt hat, erh&#228;lt automatisch einen schrittweisen Einrichtungs-Dialog.</td></tr>
+    <tr><td><strong>Automatische Update-Pr&#252;fung</strong></td><td>JohnnyAI pr&#252;ft einmal pro Woche beim Start, ob eine neue Version verf&#252;gbar ist, und bietet einen Download-Link an.</td></tr>
+    <tr><td><strong>Gesch&#228;tzte Restzeit</strong></td><td>W&#228;hrend der Transkription zeigt JohnnyAI eine ETA-Anzeige mit der voraussichtlichen Restzeit.</td></tr>
+  </table>
+</details>
+
+<details style="margin:8px 0;border:1px solid #e0e0e0;border-radius:6px;overflow:hidden">
+  <summary style="padding:10px 14px;background:#f5f5f5;cursor:pointer;font-weight:600;font-size:13px">v1.6.0 &#8212; Build 20260820</summary>
+  <table style="margin:0;border-radius:0">
+    <tr><th style="width:220px">Bereich</th><th>Was ist neu</th></tr>
+    <tr><td><strong>Tray-Icon Statusanzeige</strong></td><td>&#128308; Aufnahme &#183; &#128993; Verarbeitung &#183; &#128309; Zusammenfassung &#183; &#128994; Fertig</td></tr>
+    <tr><td><strong>Meeting-Metadaten in der Liste</strong></td><td>Dauer, Dateiformat und Dateigr&#246;&#223;e mit Punkt-Trennzeichen (z.&#8239;B. <code>&#183; 42&nbsp;min &#183; .flac &#183; 187&nbsp;MB</code>)</td></tr>
+    <tr><td><strong>Todos: Link zur Quelle</strong></td><td>Jeder Meeting-Abschnitt in <code>todos-all.md</code> enth&#228;lt einen Obsidian-Wikilink direkt zur Meeting-Notiz</td></tr>
+    <tr><td><strong>Todos-Dateiname konfigurierbar</strong></td><td>Einstellungen &#8594; Obsidian: Name der generierten Todos-Datei frei w&#228;hlbar (Standard: <code>todos-all</code>)</td></tr>
+    <tr><td><strong>Strukturierte Action Items</strong></td><td>LLM extrahiert Kontext (1&#8211;2 S&#228;tze) und Aufgabe getrennt; in <code>todos-all.md</code> als <em>Kontext</em> &#8212; Aufgabe dargestellt</td></tr>
+    <tr><td><strong>Ollama als letzter Ausweg</strong></td><td>Sind alle Cloud-Anbieter nicht erreichbar, versucht JohnnyAI automatisch Ollama statt abzubrechen</td></tr>
+    <tr><td><strong>Korrekte Timeout-Meldungen</strong></td><td>Jeder LLM-Anbieter zeigt die tats&#228;chliche Wartezeit an (Groq 1&nbsp;Min., Mistral/OpenAI 2&nbsp;Min.)</td></tr>
+    <tr><td><strong>Validierungs-Fix Mistral &amp; OpenAI</strong></td><td>&#8222;Bitte API-Key eingeben&#8220; erschien f&#228;lschlicherweise, obwohl ein Key hinterlegt war &#8212; behoben</td></tr>
+  </table>
+</details>
+
+<details style="margin:8px 0;border:1px solid #e0e0e0;border-radius:6px;overflow:hidden">
+  <summary style="padding:10px 14px;background:#f5f5f5;cursor:pointer;font-weight:600;font-size:13px">v1.5.0 &#8212; Build 20260731</summary>
+  <table style="margin:0;border-radius:0">
+    <tr><th style="width:220px">Bereich</th><th>Was ist neu</th></tr>
+    <tr><td><strong>Hover-L&#246;schen in Zusammenfassung</strong></td><td>Einzelne Eintr&#228;ge in Entscheidungen, offene Fragen und Action Items per Hover-Icon (&#10005;) l&#246;schbar</td></tr>
+    <tr><td><strong>Tooltips auf Toolbar-Buttons</strong></td><td>Summary, Transkript, Audio und Export zeigen beim Hover eine kurze Erl&#228;uterung</td></tr>
+    <tr><td><strong>Zeitstempel-Link im Transkript</strong></td><td>Klick auf einen Zeitstempel springt den Audio-Player an diese Stelle und startet die Wiedergabe</td></tr>
+    <tr><td><strong>Transkript-Sync</strong></td><td>Optionaler &#9654; Sync-Button: aktuelles Segment wird w&#228;hrend der Wiedergabe hervorgehoben und gescrollt</td></tr>
+    <tr><td><strong>Overlays minimieren</strong></td><td>Aufnahme- und Verarbeitungs-Overlay per &#8212; Button ausblendbar; &#252;ber Tray jederzeit wieder einblenden</td></tr>
+    <tr><td><strong>Tray-Men&#252;</strong></td><td>Icons und dunkles Design im Tray-Kontextmen&#252;</td></tr>
+    <tr><td><strong>Arbeitsspeicher-Warnung</strong></td><td>Sinkt freier RAM unter 1,5&nbsp;GB, erscheint eine Warnung</td></tr>
+    <tr><td><strong>Batch-Import</strong></td><td>Mehrere Audio- oder Transkript-Dateien auf einmal importieren</td></tr>
+    <tr><td><strong>API-Validierungsstatus</strong></td><td>Ergebnis mit Zeitstempel dauerhaft unter dem Validieren-Button angezeigt</td></tr>
+    <tr><td><strong>Volltextsuche: alle Transkripte</strong></td><td>Strg+K l&#228;dt alle Transkripte vom Disk &#8212; auch nie ge&#246;ffnete Meetings durchsuchbar</td></tr>
+    <tr><td><strong>&#127903; Ticket erstellen</strong></td><td>Ticket-Schaltfl&#228;che generiert per LLM automatisch einen Freshdesk-/DevOps-Ticket-Entwurf</td></tr>
+    <tr><td><strong>Dual-Channel-Transkription</strong></td><td>Mikrofon und System-Audio getrennt transkribieren &#8212; eliminiert Echo-&#220;berlagerungen</td></tr>
+  </table>
+</details>
+
+<details style="margin:8px 0;border:1px solid #e0e0e0;border-radius:6px;overflow:hidden">
+  <summary style="padding:10px 14px;background:#f5f5f5;cursor:pointer;font-weight:600;font-size:13px">v1.4.0</summary>
+  <table style="margin:0;border-radius:0">
+    <tr><th style="width:220px">Bereich</th><th>Was ist neu</th></tr>
+    <tr><td><strong>DOCX-Export</strong></td><td>Meeting als formatiertes Word-Dokument (.docx) exportieren</td></tr>
+    <tr><td><strong>Meeting-Statistiken</strong></td><td>&#128202;-Button in der Kopfzeile: Gesamtanzahl, Gesamtdauer, h&#228;ufigste Sprecher, Meetings pro Monat</td></tr>
+    <tr><td><strong>Stille k&#252;rzen</strong></td><td>Pausen &gt; 1,5&nbsp;Sek. vor der Transkription komprimieren &#8212; spart API-Kosten</td></tr>
+    <tr><td><strong>Sprecher global umbenennen</strong></td><td>&#127760; Alle Meetings: SPEAKER-Label in allen Transkripten gleichzeitig umbenennen</td></tr>
+  </table>
+</details>
+
+<details style="margin:8px 0;border:1px solid #e0e0e0;border-radius:6px;overflow:hidden">
+  <summary style="padding:10px 14px;background:#f5f5f5;cursor:pointer;font-weight:600;font-size:13px">v1.3.0 &#8212; Build 20260717</summary>
+  <table style="margin:0;border-radius:0">
+    <tr><th style="width:220px">Bereich</th><th>Was ist neu</th></tr>
+    <tr><td><strong>Audio-Wellenform</strong></td><td>Interaktiver Waveform-Player im Meeting-Header &#8212; visualisieren, seeken, abspielen</td></tr>
+    <tr><td><strong>Stille-Visualisierung</strong></td><td>Stille-Bereiche als gelbe Balken hervorgehoben</td></tr>
+    <tr><td><strong>FLAC-Unterst&#252;tzung</strong></td><td>Wellenform und Wiedergabe funktionieren auch f&#252;r FLAC-Aufnahmen</td></tr>
+    <tr><td><strong>Auto-Stopp bei Stille</strong></td><td>Nach 3&nbsp;Min. Stille: Countdown im Overlay &#8212; danach automatischer Stopp</td></tr>
+    <tr><td><strong>Abspielsymbol in der Navigation</strong></td><td>Meeting-Liste zeigt w&#228;hrend Wiedergabe ein blaues &#9654; neben Datum und Dauer</td></tr>
+    <tr><td><strong>Korrekturen r&#252;ckwirkend</strong></td><td>Einstellungen &#8594; W&#246;rter korrigieren: Korrekturen auf alle gespeicherten Transkripte anwenden</td></tr>
+  </table>
+</details>
+
+<details style="margin:8px 0;border:1px solid #e0e0e0;border-radius:6px;overflow:hidden">
+  <summary style="padding:10px 14px;background:#f5f5f5;cursor:pointer;font-weight:600;font-size:13px">v1.2.0 &#8212; Build 20260715</summary>
+  <table style="margin:0;border-radius:0">
+    <tr><th style="width:220px">Bereich</th><th>Was ist neu</th></tr>
+    <tr><td><strong>Hauptfenster neu gestaltet</strong></td><td>Kompaktere Seitenleiste, neue Willkommensseite mit Feature-&#220;bersicht und Hotkey-Hinweisen</td></tr>
+    <tr><td><strong>Schnellsuche (Strg+K)</strong></td><td>Meetings sekunden schnell durchsuchen &#8212; Ergebnislimit auf 200 erh&#246;ht</td></tr>
+    <tr><td><strong>Setup-Pr&#252;fung</strong></td><td>Automatische Pr&#252;fung von pyannote.audio und faster-whisper beim App-Start</td></tr>
+    <tr><td><strong>Meeting-Vergleich</strong></td><td>Zwei Meetings direkt gegen&#252;berstellen &#8212; &#8669;-Symbol in der Werkzeugleiste</td></tr>
+  </table>
+</details>
+
+<details style="margin:8px 0;border:1px solid #e0e0e0;border-radius:6px;overflow:hidden">
+  <summary style="padding:10px 14px;background:#f5f5f5;cursor:pointer;font-weight:600;font-size:13px">v1.0.x &#8212; Erstver&#246;ffentlichung</summary>
+  <p style="padding:10px 14px;font-size:13px;color:#444">Aufnahme, Transkription, Diarisierung, Zusammenfassung, Obsidian/Confluence-Export, Kalenderintegration, Tray-Icon.</p>
+</details>
+
+</div>
+
+<div class="footer">JohnnyAI v2.2.0 &middot; Diese Datei wird beim Start automatisch aktualisiert.</div>
+
+<script>
+function switchTab(id,el) {
+  document.querySelectorAll('.tab-content').forEach(function(t){ t.classList.remove('active'); });
+  document.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('active'); });
+  document.getElementById('tab-'+id).classList.add('active');
+  el.classList.add('active');
+}
+</script>
+</body>
+</html>
