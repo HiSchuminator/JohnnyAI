@@ -1,5 +1,5 @@
 {
-  "version": "2.1.0",
-  "downloadUrl": "https://github.com/HiSchuminator/JohnnyAI/releases/download/2.1.0/JohnnyAI-2.1.0-portable.zip",
-  "releaseNotes": "Mehrere Zuverlässigkeits-Fixes: Aufnahme-Aussetzer/-Synchronisation, Wiedergabe bei komprimierten Aufnahmen, Groq-Zusammenfassung, Stimm-Erkennung jetzt auch bei Telefonaten, Warnhinweis bei Notfall-Modell — plus einstellbare Mindest-Aufnahmelänge und Headset-Bevorzugung."
+  "Version": "2.2.0",
+  "DownloadUrl": "https://github.com/HiSchuminator/JohnnyAI/releases/download/v2.2.0/JohnnyAI-2.2.0-build.20261008-portable.zip",
+  "ReleaseNotes": "Neu: Eigener OpenAI-kompatibler Anbieter, Liste erlaubter Cloud-Anbieter, ICS-Kalenderlink für das neue Outlook, Teilnahme- und Teams-Prüfung bei Terminen, Headset-Warnungen während der Aufnahme, Sprecher-Erkennung über die Anbieter-Kette, deutsche Sprecher-Bezeichnungen, live gemessene Restzeit, besseres lokales Notfall-Modell (gemma3:4b)."
 }
