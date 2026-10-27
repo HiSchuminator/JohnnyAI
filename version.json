@@ -1,5 +1,5 @@
 {
-  "Version": "2.2.2",
-  "DownloadUrl": "https://github.com/HiSchuminator/JohnnyAI/releases/download/2.2.2/JohnnyAI-2.2.2-build.20261027-portable.zip",
-  "ReleaseNotes": "Neu: Installer erkennt die .NET-8-Runtime wieder zuverlässig, Reiter „Fragen“ (Nachfragen zum Meeting an die lokale KI, mit Zeitangaben und Abbrechen), Grafikkarten-Erkennung für die lokale KI, „Vor Bildschirmfreigabe schützen“, weniger Störmeldungen."
+  "Version": "2.2.3",
+  "DownloadUrl": "https://github.com/HiSchuminator/JohnnyAI/releases/download/2.2.3/JohnnyAI-2.2.3-build.20261027-portable.zip",
+  "ReleaseNotes": "Neu: Der Installer kann jetzt nach C:\\Program Files installieren (Wahl „Für alle Benutzer“ oder „Nur für mich“). Sonst unverändert gegenüber 2.2.2."
 }
