@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>JohnnyAI Hilfe &amp; Einrichtung v2.2.2</title>
+<title>JohnnyAI Hilfe &amp; Einrichtung v2.2.3</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;line-height:1.6;color:#1a1a1a;background:#fff;max-width:860px;margin:0 auto;padding:24px 20px 60px}
@@ -34,7 +34,7 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
 </style>
 </head>
 <body>
-<h1>JohnnyAI Hilfe &amp; Einrichtung <span style="font-size:13px;font-weight:400;color:#888">v2.2.2</span></h1>
+<h1>JohnnyAI Hilfe &amp; Einrichtung <span style="font-size:13px;font-weight:400;color:#888">v2.2.3</span></h1>
 <div class="subtitle">Bedienungshinweise und Schritt-f&#252;r-Schritt-Einrichtung</div>
 
 <div class="tabs">
@@ -1067,7 +1067,7 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
   <tr>
     <td><strong>Installer (.exe)</strong> <span class="badge">Empfohlen</span></td>
     <td>Neuer Rechner, kein vorheriges JohnnyAI</td>
-    <td><code>JohnnyAI-Setup-v2.2.2.exe</code> starten, dem Assistenten folgen. .NET&#8202;8 Desktop Runtime wird automatisch gepr&#252;ft.</td>
+    <td><code>JohnnyAI-Setup-v2.2.3.exe</code> starten, dem Assistenten folgen. .NET&#8202;8 Desktop Runtime wird automatisch gepr&#252;ft.</td>
   </tr>
   <tr>
     <td><strong>Portabel (ZIP)</strong></td>
@@ -1154,16 +1154,10 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
 <!-- NEUERUNGEN -->
 <div id="tab-neuerungen" class="tab-content">
 
-<h2>v2.2.2 — Build 20261027</h2>
+<h2>v2.2.3 — Build 20261027</h2>
 <table>
   <tr><th style="width:220px">Bereich</th><th>Was ist neu</th></tr>
-  <tr><td><strong>Installer erkennt die .NET-8-Runtime wieder zuverlässig</strong></td><td>Der Installer meldete „.NET 8 Desktop Runtime ist nicht installiert“, obwohl sie vorhanden war — bei aktuellen Runtime-Versionen (z. B. 8.0.33), weil er nur die 64-Bit-Registry-Ansicht und nur den Ordner „8.0.0“ prüfte. Jetzt werden beide Registry-Ansichten und jeder Ordner „8.*“ geprüft. Betroffen war nur die Installation per Installer; die portable Version nicht.</td></tr>
-  <tr><td><strong>Vor Bildschirmfreigabe schützen</strong></td><td>Neuer Schalter unter Einstellungen → Speicher → System („Vor Bildschirmfreigabe schützen“, standardmäßig an). Ist er an, sind das Hauptfenster und die Overlays (Aufnahme, Verarbeitung, Suche) in Bildschirmfreigaben und Aufnahmen — z. B. Teams, Zoom, Screenshots — nicht zu sehen; die anderen sehen dort den Desktop dahinter. Du selbst siehst alles wie gewohnt. So tauchen beim Teilen deines Bildschirms keine Transkripte oder Zusammenfassungen anderer Meetings auf. Der Schalter betrifft nur die Anzeige, nicht die Tonaufnahme — weise Teilnehmende weiterhin darauf hin, dass mitgeschrieben wird. Gilt ab Windows 10 Version 2004; die Änderung greift sofort nach „Speichern“.</td></tr>
-  <tr><td><strong>Fragen zu einem Meeting (lokale KI, Reiter „Fragen“)</strong></td><td>Neben „Zusammenfassung“ und „Transkript“ gibt es den Reiter „Fragen“: Du stellst eine Frage zum Meeting oder klickst auf eine fertige Frage („Aufgaben für mich“, „Follow-up-Mail“, „Zahlen &amp; Termine“ …; eigene Fragen unter Einstellungen → Fragen). Die Antwort erstellt Ollama lokal auf deinem Rechner aus Zusammenfassung und Transkript — nichts geht an einen Cloud-Anbieter. Zeitangaben in der Antwort (z. B. [12:34]) sind blau und springen zur Stelle im Transkript und in der Aufnahme. Während der Antwort steht dort „Antwort wird erstellt …“ mit der laufenden Zeit, ein Knopf „✕ Abbrechen“ beendet die Anfrage wirklich (die halbe Antwort wird verworfen). Wechselst du das Meeting, läuft die Frage im Hintergrund weiter und die Antwort erscheint im Meeting, in dem du gefragt hast; es läuft immer nur eine Frage gleichzeitig, und eine laufende Verarbeitung hat Vorrang. Beim Beenden von JohnnyAI während einer Frage kommt eine Warnung. Fragen und Antworten stehen im Meeting-Ordner (<code>questions.json</code>).</td></tr>
-  <tr><td><strong>Fragen: beantwortete Vorlagen als Sprungmarken, Knopf „Eigene Frage“</strong></td><td>Im Reiter „Fragen“ bekommt eine fertige Frage, die im Meeting schon beantwortet ist, ein ✓ und einen Pfeil (z. B. „✓ Offene Punkte ↓“) und ist blau. Ein Klick darauf stellt die Frage nicht neu, sondern springt zur Antwort im Verlauf und hebt sie kurz hervor; neu fragen geht per Rechtsklick → „Erneut fragen“. Löschst du die Antwort, wird der Knopf wieder normal. Ganz vorne in der Leiste steht der Knopf „✎ Eigene Frage …“, der direkt ins Eingabefeld unten springt; das Feld zeigt jetzt auch einen grauen Hinweistext.</td></tr>
-  <tr><td><strong>Grafikkarte wird erkannt und von der lokalen KI genutzt</strong></td><td>JohnnyAI erkennt eine NVIDIA-Grafikkarte (Name, Grafikspeicher, Treiber) und zeigt sie unter Einstellungen → Fragen und in „Abhängigkeiten prüfen …“ an. Ollama verwendet die Karte von sich aus; bei „Auto“ ist nichts einzustellen. Mit einer ausreichend großen Karte schickt JohnnyAI bei Fragen das ganze Transkript, ohne Karte nur die zur Frage passenden Stellen. Unter jeder Antwort steht, ob das Modell komplett auf der Grafikkarte lief. Das Modell für Fragen wählst du unter Einstellungen → Fragen (leer = das Ollama-Modell aus dem Reiter Modelle); die Empfehlung dort richtet sich nach dem Grafikspeicher. In der Modell-Liste steht hinter jedem installierten Modell seine Größe und ab wieviel freiem Speicher es sinnvoll ist (Grafikspeicher mit Karte, sonst Arbeitsspeicher), dazu ob es gerade passt.</td></tr>
-  <tr><td><strong>Keine Meldung „Keine Teilnehmer aus Outlook“ mehr beim Aufnahmestart</strong></td><td>Startet eine Aufnahme ohne Termin mit Teilnehmerliste (Vortrag, Test, spontanes Gespräch) und läuft kein klassisches Outlook, erschien eine Windows-Meldung mit dem Hinweis, Outlook vor dem Anruf zu starten. Die Meldung entfällt; der Hinweis steht nur noch im Log. Die Namenszuordnung funktioniert wie bisher — ohne Teilnehmerliste gibt es nur keine Namensvorschläge aus der Einladung.</td></tr>
-  <tr><td><strong>Keine Abfrage „Audiogeräte öffnen?“ mehr nach der Aufnahme</strong></td><td>Nach dem Ende einer Aufnahme erschien bei stummem Mikrofon oder stummem Systemton ein Fenster mit der Frage „Jetzt Audiogeräte öffnen?“ (Windows-Soundeinstellungen). Bei Vorträgen, in denen du wenig oder nichts sagst, ist ein stummes Mikrofon normal — das Fenster kam dort nach jedem Meeting. Es entfällt jetzt; der Hinweis steht nur noch im Log. Die Hinweise während der Aufnahme (Tray-Meldungen) bleiben unverändert.</td></tr>
+  <tr><td><strong>Installation nach „C:\Program Files“ möglich</strong></td><td>Beim Start des Installers erscheint jetzt die Wahl „Für alle Benutzer“ (Administratorrechte nötig, Standardordner <code>C:\Program Files\JohnnyAI</code>) oder „Nur für mich“ (ohne Administratorrechte, wie bisher im Benutzerordner). Einstellungen, Stimmprofile und Meetings bleiben unabhängig davon im Benutzerprofil bzw. in OneDrive. Eine schon vorhandene Benutzer-Installation wird dabei nicht ersetzt — bitte vorher deinstallieren, sonst gibt es zwei Kopien. Für automatische Installationen: <code>/ALLUSERS</code> bzw. <code>/CURRENTUSER</code>.</td></tr>
 </table>
 
 <details style="margin:16px 0 8px;border:1px solid #e0e0e0;border-radius:6px;overflow:hidden">
@@ -1325,7 +1319,7 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
 
 </div>
 
-<div class="footer">JohnnyAI v2.2.2 &middot; Diese Datei wird beim Start automatisch aktualisiert.</div>
+<div class="footer">JohnnyAI v2.2.3 &middot; Diese Datei wird beim Start automatisch aktualisiert.</div>
 
 <script>
 function switchTab(id,el) {
