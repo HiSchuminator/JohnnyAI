@@ -1,5 +1,5 @@
 {
-  "Version": "2.2.1",
-  "DownloadUrl": "https://github.com/HiSchuminator/JohnnyAI/releases/download/2.2.1/JohnnyAI-2.2.1-build.20261023-portable.zip",
-  "ReleaseNotes": "Neu: Overlay zeigt das aufnehmende Mikrofon (Headset oder Laptop) und lässt per Klick umschalten, „Treffen vor Ort“ mit Laptop-Mikro, leise Mikrofone werden angehoben, weniger KI-Verbrauch (Token-Auswertung, ganze Meetings in einem Schritt bei Claude/OpenAI, Sprecher-Namen ersetzen statt neu zusammenfassen), deutsche Begriffe in der Zusammenfassung, strengere Sprecher-Zuordnung, schnellerer Aufnahmestart bei Anrufen."
+  "Version": "2.2.2",
+  "DownloadUrl": "https://github.com/HiSchuminator/JohnnyAI/releases/download/2.2.2/JohnnyAI-2.2.2-build.20261027-portable.zip",
+  "ReleaseNotes": "Neu: Installer erkennt die .NET-8-Runtime wieder zuverlässig, Reiter „Fragen“ (Nachfragen zum Meeting an die lokale KI, mit Zeitangaben und Abbrechen), Grafikkarten-Erkennung für die lokale KI, „Vor Bildschirmfreigabe schützen“, weniger Störmeldungen."
 }
