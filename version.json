@@ -1,5 +1,5 @@
 {
-  "Version": "2.2.4",
-  "DownloadUrl": "https://github.com/HiSchuminator/JohnnyAI/releases/download/2.2.4/JohnnyAI-2.2.4-build.20261028-portable.zip",
-  "ReleaseNotes": "Neu: Fenster-Schutz jetzt „Automatisch“ (nur während Meetings, Screenshots sonst möglich, Taskleistensymbol nicht mehr leer), Installer startet JohnnyAI als normaler Benutzer und warnt bei einem Ordner unter „Programme“ ohne Administratorrechte."
+  "Version": "2.2.5",
+  "DownloadUrl": "https://github.com/HiSchuminator/JohnnyAI/releases/download/2.2.5/JohnnyAI-2.2.5-build.20261028-portable.zip",
+  "ReleaseNotes": "Neu: Leistungscheck (passende Modelle und Einstellungen für diesen Rechner), „Auto“ nutzt eine NVIDIA-Grafikkarte, Hinweis im Meeting wenn die Sprechererkennung nicht laufen konnte, aktuellere Anzeigen im Setup-Check, Korrektur der Hilfe zur .NET-Runtime (auch die portable Version braucht sie)."
 }
