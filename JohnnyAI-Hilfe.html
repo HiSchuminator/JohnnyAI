@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>JohnnyAI Hilfe &amp; Einrichtung v2.2.4</title>
+<title>JohnnyAI Hilfe &amp; Einrichtung v2.2.5</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;line-height:1.6;color:#1a1a1a;background:#fff;max-width:860px;margin:0 auto;padding:24px 20px 60px}
@@ -34,7 +34,7 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
 </style>
 </head>
 <body>
-<h1>JohnnyAI Hilfe &amp; Einrichtung <span style="font-size:13px;font-weight:400;color:#888">v2.2.4</span></h1>
+<h1>JohnnyAI Hilfe &amp; Einrichtung <span style="font-size:13px;font-weight:400;color:#888">v2.2.5</span></h1>
 <div class="subtitle">Bedienungshinweise und Schritt-f&#252;r-Schritt-Einrichtung</div>
 
 <div class="tabs">
@@ -422,8 +422,8 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
 <div id="tab-einrichtung" class="tab-content">
 
 <h2>1 &middot; Voraussetzungen (einmalig installieren)</h2>
-<div class="info">&#8505; <strong>Portable-Version:</strong> Die .NET&nbsp;8-Runtime ist bereits eingebettet &#8212; kein separater Download n&#246;tig. Einfach entpacken und starten.</div>
-<div class="row"><span class="label">.NET 8 Desktop Runtime</span><span class="value">Nur bei der Standard-Installation n&#246;tig (nicht bei Portable). Windows Desktop Runtime 8.x (x64)</span></div>
+<div class="info">&#8505; <strong>Auch die Portable-Version braucht die .NET&nbsp;8 Desktop Runtime</strong> &#8212; sie ist nicht eingebettet. Ohne sie startet JohnnyAI nicht; Windows meldet dann selbst, dass die Runtime fehlt.</div>
+<div class="row"><span class="label">.NET 8 Desktop Runtime</span><span class="value">Immer n&#246;tig (Installer und Portable): <strong>Windows Desktop Runtime 8.x, 64-Bit (x64)</strong> &#8212; nicht die x86- oder Arm64-Version und nicht &bdquo;.NET Runtime&ldquo; ohne Desktop-Teil.</span></div>
 <div class="tip">&#128161; Download: <a href="https://dotnet.microsoft.com/download/dotnet/8.0">dotnet.microsoft.com/download/dotnet/8.0</a> &#8594; &bdquo;Windows Desktop Runtime&ldquo;</div>
 <div class="row"><span class="label">Python 3.10&#8211;3.12</span><span class="value">Optional &#8212; ben&#246;tigt f&#252;r Sprechererkennung (pyannote) und erweiterte Transkription (faster-whisper, NVIDIA). Ohne Python l&#228;uft die eingebettete Whisper.net-Transkription.</span></div>
 <div class="tip">&#128161; Download: <a href="https://www.python.org/downloads/">python.org/downloads</a> &#8594; bei Installation &bdquo;Add Python to PATH&ldquo; aktivieren &#8594; danach: <code>pip install pyannote.audio faster-whisper</code></div>
@@ -1054,7 +1054,7 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
 <div class="path">%LOCALAPPDATA%\JohnnyAI (z. B. mistral.key, openai.key, groq.key)</div>
 <p style="padding:6px 12px 2px;font-size:12px;font-weight:600;color:#555">Log-Dateien</p>
 <div class="path">%LOCALAPPDATA%\JohnnyAI\logs</div>
-<div class="tip">&#128161; Umzug auf neuen Rechner: <code>settings.json</code> kopieren, danach Meeting-Ordner-Pfad pr&#252;fen (falls Laufwerksbuchstaben ge&#228;ndert).</div>
+<div class="tip">&#128161; Umzug auf neuen Rechner: <code>settings.json</code> kopieren, danach Meeting-Ordner-Pfad pr&#252;fen (falls Laufwerksbuchstaben ge&#228;ndert). <strong>API-Schl&#252;ssel</strong> sind mit Windows DPAPI an Rechner und Benutzerkonto gebunden &mdash; kopierte Schl&#252;sseldateien (<code>*.key</code>) funktionieren auf dem neuen Rechner nicht, die Schl&#252;ssel dort neu eintragen. Ebenso sind <strong>verschl&#252;sselte Transkripte</strong> (Option &bdquo;Transkripte und Zusammenfassungen verschl&#252;sseln&ldquo;) dort nicht lesbar.</div>
 
 </div>
 
@@ -1067,7 +1067,7 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
   <tr>
     <td><strong>Installer (.exe)</strong> <span class="badge">Empfohlen</span></td>
     <td>Neuer Rechner, kein vorheriges JohnnyAI</td>
-    <td><code>JohnnyAI-Setup-v2.2.4.exe</code> starten, dem Assistenten folgen. .NET&#8202;8 Desktop Runtime wird automatisch gepr&#252;ft.</td>
+    <td><code>JohnnyAI-Setup-v2.2.5.exe</code> starten, dem Assistenten folgen. .NET&#8202;8 Desktop Runtime wird automatisch gepr&#252;ft.</td>
   </tr>
   <tr>
     <td><strong>Portabel (ZIP)</strong></td>
@@ -1081,7 +1081,7 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
 <p style="padding:4px 12px 8px;font-size:13px;color:#444;line-height:1.6">Enth&#228;lt die vollst&#228;ndige portable Version von JohnnyAI. Den <strong>gesamten Ordner</strong> auf den Zielrechner kopieren und <code>JohnnyAI.exe</code> starten &#8212; Einstellungen, Meeting-Ordner-Verkn&#252;pfung und Integrationen funktionieren sofort. Diese Hilfeseite wird bei jedem Start automatisch neu erzeugt und ist damit immer auf dem Stand der installierten Version.</p>
 
 <h2>1 &middot; Voraussetzungen (einmalig)</h2>
-<div class="row"><span class="label">.NET 8 Desktop Runtime</span><span class="value"><strong>Pflicht bei Standard-Installation</strong> &mdash; bei der Portable-Version bereits eingebettet (kein separater Download). Windows Desktop Runtime 8.x (x64): <a href="https://dotnet.microsoft.com/download/dotnet/8.0">dotnet.microsoft.com/download/dotnet/8.0</a></span></div>
+<div class="row"><span class="label">.NET 8 Desktop Runtime</span><span class="value"><strong>Pflicht &mdash; auch bei der Portable-Version</strong> (die Runtime ist nicht eingebettet). Windows Desktop Runtime 8.x, 64-Bit (x64): <a href="https://dotnet.microsoft.com/download/dotnet/8.0">dotnet.microsoft.com/download/dotnet/8.0</a></span></div>
 <div class="row" style="margin-top:10px"><span class="label">KI-Provider f&#252;r Zusammenfassungen</span><span class="value">Mindestens einen der folgenden Provider einrichten:</span></div>
 <table>
   <tr><th style="width:130px">Provider</th><th>Empfehlung &amp; Einrichtung</th></tr>
@@ -1123,9 +1123,9 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
 
 <h2>Portabler Umzug auf neuen Rechner</h2>
 <div class="row"><span class="label">Schritt 1</span><span class="value">Diesen Ordner vollst&#228;ndig auf den neuen Rechner kopieren</span></div>
-<div class="row" style="margin-top:4px"><span class="label">Schritt 2</span><span class="value"><code>%LOCALAPPDATA%\JohnnyAI\</code> mitkopieren &mdash; enth&#228;lt alle pers&#246;nlichen Einstellungen (<code>settings.json</code>), API-Keys (z.&nbsp;B. <code>mistral.key</code>, <code>openai.key</code>) und Sprecher-Profile</span></div>
+<div class="row" style="margin-top:4px"><span class="label">Schritt 2</span><span class="value"><code>%LOCALAPPDATA%\JohnnyAI\</code> mitkopieren &mdash; enth&#228;lt alle pers&#246;nlichen Einstellungen (<code>settings.json</code>) und Sprecher-Profile. Die API-Keys (<code>*.key</code>) sind mit Windows DPAPI verschl&#252;sselt und funktionieren auf einem anderen Rechner oder Benutzerkonto <strong>nicht</strong> &mdash; dort in den Einstellungen neu eintragen</span></div>
 <div class="row" style="margin-top:4px"><span class="label">Schritt 3</span><span class="value">Meeting-Ordner-Pfad in den Einstellungen pr&#252;fen (falls Laufwerksbuchstaben ge&#228;ndert haben)</span></div>
-<div class="warn">&#9888; Auf dem neuen Rechner denselben Meeting-Ordner-Pfad eintragen wie auf dem alten &mdash; sonst sieht JohnnyAI keine vorhandenen Meetings.</div>
+<div class="warn">&#9888; Auf dem neuen Rechner denselben Meeting-Ordner-Pfad eintragen wie auf dem alten &mdash; sonst sieht JohnnyAI keine vorhandenen Meetings. Mit der Option &bdquo;Transkripte und Zusammenfassungen verschl&#252;sseln&ldquo; gespeicherte Dateien sind auf dem neuen Rechner nicht lesbar.</div>
 
 <h2>Update auf neue JohnnyAI-Version</h2>
 <p style="padding:4px 12px 8px;font-size:13px;color:#444;line-height:1.6">JohnnyAI pr&#252;ft beim Start einmal pro Woche automatisch, ob eine neue Version verf&#252;gbar ist. Ist ein Update vorhanden, erscheint eine Benachrichtigung mit Download-Angebot.</p>
@@ -1154,12 +1154,16 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
 <!-- NEUERUNGEN -->
 <div id="tab-neuerungen" class="tab-content">
 
-<h2>v2.2.4 — Build 20261028</h2>
+<h2>v2.2.5 — Build 20261028</h2>
 <table>
   <tr><th style="width:220px">Bereich</th><th>Was ist neu</th></tr>
-  <tr><td><strong>Fenster-Schutz nur noch während Meetings (Screenshots wieder möglich)</strong></td><td>Die Funktion „Vor Bildschirmfreigabe schützen“ (seit 2.2.2) macht JohnnyAI-Fenster für Bildschirmfreigaben unsichtbar — Windows kann das aber nicht von einem Screenshot unterscheiden, sodass auch Screenshots von JohnnyAI leer waren (z. B. beim Melden von Fehlern). Jetzt gibt es drei Einstellungen (Einstellungen → Speicher → System): „Automatisch“ (neuer Standard: Schutz nur, solange ein Meeting oder Videoanruf läuft — Teams, Zoom, Webex und andere Programme mit aktivem Mikrofon, auch Browser-Meetings — und noch zwei Minuten danach), „Immer“ und „Aus“. Der alte Schalter wird übernommen („an“ wird zu „Automatisch“). Im Infobereich-Menü zeigt der Eintrag „Fenster-Schutz …“ den Zustand und schaltet ihn von Hand um, z. B. für einen Screenshot mitten im Meeting. Ein Meeting ohne Mikrofon (reine Präsentation) wird nicht erkannt — dafür „Immer“ wählen oder den Schutz im Infobereich-Menü einschalten. Hinweis: Solange der Schutz an ist (auch im Meeting), kann Windows das Symbol von JohnnyAI in der Taskleiste leer darstellen — das ist nur kosmetisch und lässt sich im Infobereich-Menü („Fenster-Schutz“) oder in den Einstellungen abschalten. In den Versionen 2.2.2 und 2.2.3, in denen der Schutz immer an war, trat das auf manchen Rechnern auf.</td></tr>
-  <tr><td><strong>Installer: JohnnyAI startet nach der Installation als normaler Benutzer</strong></td><td>Wurde der Installer „als Administrator“ gestartet, lief JohnnyAI am Ende ebenfalls mit Administratorrechten. Eine so gestartete, erhöhte Kopie blockierte den normalen Start (es erschien kein Fenster) und hatte ein eigenes Infobereich-Symbol. Jetzt startet das Programm nach der Installation immer mit den Rechten des angemeldeten Benutzers.</td></tr>
-  <tr><td><strong>Installer: Hinweis bei einem Ordner unter „Programme“ ohne Administratorrechte</strong></td><td>Wählt jemand ohne Administratorrechte einen Zielordner unter „C:\Program Files“, scheiterte die Installation erst beim Kopieren mit „Fehler 5“. Jetzt erscheint schon bei der Ordnerauswahl ein Hinweis, den Installer neu zu starten und „Für alle Benutzer“ zu wählen oder einen Ordner im Benutzerprofil zu nehmen.</td></tr>
+  <tr><td><strong>„Auto“ nutzt die Grafikkarte und erklärt seine Wahl</strong></td><td>Bisher gewann beim lokalen Transkribieren immer „faster-whisper small (CPU)“ — auch auf Rechnern mit NVIDIA-Grafikkarte, weil „Auto“ eine feste Reihenfolge abarbeitet und die Karte nicht berücksichtigt. Jetzt prüft JohnnyAI beim Start, ob faster-whisper eine CUDA-Karte sieht, und wählt dann das größte Modell, das in ihren Speicher passt (large-v3 ab 6 GB, medium ab 3,5 GB, sonst small). Ohne Grafikkarte gilt die neue Einstellung „Startgröße ohne Grafikkarte“ (Einstellungen → Modelle → Auto): „Schnell — small“ (Standard), „Ausgewogen — medium“ oder „Qualität zuerst — large-v3“; läuft ein Modell nach 3 Minuten langsamer als das Meeting dauert, wechselt JohnnyAI wie bisher selbstständig eine Stufe kleiner. Die Einstellungen erklären jetzt, wie „Auto“ entscheidet (feste Reihenfolge, keine Messung). In der Prüf-Historie und im Meeting steht, womit tatsächlich transkribiert wurde — z. B. „faster-whisper large-v3 (GPU) · Auto“; bisher stand bei „Auto“ dort nur „Whisper.net“.</td></tr>
+  <tr><td><strong>faster-whisper fällt bei GPU-Problemen auf die CPU zurück</strong></td><td>Fehlen die CUDA-Bibliotheken (cuBLAS/cuDNN) oder reicht der Grafikspeicher nicht, brach die Transkription bisher mit einem Fehler ab. Jetzt läuft sie in diesem Fall auf der CPU weiter und schreibt den Grund ins Log. Der Leistungscheck zeigt, ob faster-whisper die Grafikkarte sieht, und warnt, wenn „Auto“ trotz nutzbarer Karte ein CPU-Modell gewählt hatte.</td></tr>
+  <tr><td><strong>Hinweis im Meeting, wenn die Sprechererkennung nicht laufen konnte</strong></td><td>Fehlt ein Python-Paket (z. B. „soundfile“) oder bricht das Skript der Sprechererkennung ab, blieb das bisher unbemerkt: alle Sprecher hießen einfach „Remote“, und nur das Log nannte den Grund. Jetzt erscheint in der Meeting-Ansicht ein Hinweis mit dem Grund und, bei einem fehlenden Paket, dem Installationsbefehl. Auch Fehler wie fehlender Arbeitsspeicher, nicht ladbare Modelle (Netzwerk/Proxy) oder CUDA-Probleme werden in verständlichen Sätzen erklärt.</td></tr>
+  <tr><td><strong>Prüfungen zeigen den aktuellen Stand</strong></td><td>In den Einstellungen wird die Liste der geprüften Backends beim Öffnen neu geprüft, wenn sie älter als 10 Minuten ist — ein später gestartetes Ollama wurde bisher weiter als „nicht erreichbar“ angezeigt. Im Setup-Check werden als „nicht installiert“ gemeldete Python-Pakete beim Öffnen erneut geprüft, und die Überschrift nennt, wann die Python-Prüfung lief. pyannote.audio und das HuggingFace-Token zählen dort nicht mehr als „fehlt“, weil die aktuellen Verfahren der Sprechererkennung sie nicht brauchen.</td></tr>
+  <tr><td><strong>Klarere Texte zu NVIDIA, .NET und Rechnerwechsel</strong></td><td>Die Meldungen zum NVIDIA-API-Key sagen jetzt, dass es um den NVIDIA-Cloud-Dienst (NIM) geht und nicht um die lokale Grafikkarte. Die Hilfe stellt richtig, dass auch die portable Version die .NET-8-Desktop-Runtime (64-Bit) braucht — sie ist nicht eingebettet. Neu: Hinweis, dass API-Schlüssel (und, falls die Option aktiv war, verschlüsselte Transkripte) mit Windows DPAPI an Rechner und Benutzerkonto gebunden sind und nach einem Rechnerwechsel neu eingetragen werden müssen bzw. nicht lesbar sind.</td></tr>
+  <tr><td><strong>Leistungscheck: welche Modelle und Einstellungen passen zu diesem Rechner?</strong></td><td>Im Setup-Check (Start → Abhängigkeiten prüfen) gibt es den Knopf „Leistungscheck …“. Er liest Prozessor, Arbeitsspeicher und NVIDIA-Grafikkarte und bewertet die installierten Ollama-Modelle (✓ passt, ◐ passt nur bedingt, ✗ zu groß). Daraus entstehen Empfehlungen für die Transkription (faster-whisper-Modellgröße, Grafikkarte oder CPU), das Modell für Zusammenfassungen, das Modell für Fragen zu einem Meeting und die Sprechererkennung — auf Wunsch mit Befehl zum Kopieren, z. B. „ollama pull …“ für ein passendes Modell. Der Knopf „Messung starten“ (1–3 Minuten) prüft zusätzlich, ob faster-whisper die Grafikkarte wirklich sieht, und misst die Geschwindigkeit der eingestellten Ollama-Modelle in Token pro Sekunde; er ist während einer Aufnahme, Verarbeitung oder Frage gesperrt. Es wird nichts automatisch umgestellt — die Empfehlungen sind Vorschläge.</td></tr>
+  <tr><td><strong>Setup-Check: fehlende Python-Pakete der Sprechererkennung und aktuellere Anzeige</strong></td><td>Eine neue Zeile „Sprechererkennung (Python-Pakete)“ nennt die Pakete, die dem eingestellten Verfahren fehlen (z. B. „soundfile“ — ohne es bricht die Sprechererkennung mit „ModuleNotFoundError“ ab), samt Installationsbefehl. Die Befehle verwenden jetzt „python -m pip install …“ mit dem in JohnnyAI eingestellten Python, damit das Paket in der richtigen Umgebung landet. Auf Rechnern mit NVIDIA-Grafikkarte erscheint zusätzlich die optionale Zeile „nemo (Parakeet lokal/GPU)“. „Nicht installiert“-Ergebnisse werden nur noch 5 Minuten gemerkt (vorher 24 Stunden): Nach einem „pip install“ zeigt JohnnyAI das Paket daher nach kurzer Zeit richtig an, ohne dass „Erneut prüfen“ nötig ist.</td></tr>
 </table>
 
 <details style="margin:16px 0 8px;border:1px solid #e0e0e0;border-radius:6px;overflow:hidden">
@@ -1321,7 +1325,7 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
 
 </div>
 
-<div class="footer">JohnnyAI v2.2.4 &middot; Diese Datei wird beim Start automatisch aktualisiert.</div>
+<div class="footer">JohnnyAI v2.2.5 &middot; Diese Datei wird beim Start automatisch aktualisiert.</div>
 
 <script>
 function switchTab(id,el) {
