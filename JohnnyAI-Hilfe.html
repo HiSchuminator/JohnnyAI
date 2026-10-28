@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>JohnnyAI Hilfe &amp; Einrichtung v2.2.3</title>
+<title>JohnnyAI Hilfe &amp; Einrichtung v2.2.4</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;line-height:1.6;color:#1a1a1a;background:#fff;max-width:860px;margin:0 auto;padding:24px 20px 60px}
@@ -34,7 +34,7 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
 </style>
 </head>
 <body>
-<h1>JohnnyAI Hilfe &amp; Einrichtung <span style="font-size:13px;font-weight:400;color:#888">v2.2.3</span></h1>
+<h1>JohnnyAI Hilfe &amp; Einrichtung <span style="font-size:13px;font-weight:400;color:#888">v2.2.4</span></h1>
 <div class="subtitle">Bedienungshinweise und Schritt-f&#252;r-Schritt-Einrichtung</div>
 
 <div class="tabs">
@@ -1067,7 +1067,7 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
   <tr>
     <td><strong>Installer (.exe)</strong> <span class="badge">Empfohlen</span></td>
     <td>Neuer Rechner, kein vorheriges JohnnyAI</td>
-    <td><code>JohnnyAI-Setup-v2.2.3.exe</code> starten, dem Assistenten folgen. .NET&#8202;8 Desktop Runtime wird automatisch gepr&#252;ft.</td>
+    <td><code>JohnnyAI-Setup-v2.2.4.exe</code> starten, dem Assistenten folgen. .NET&#8202;8 Desktop Runtime wird automatisch gepr&#252;ft.</td>
   </tr>
   <tr>
     <td><strong>Portabel (ZIP)</strong></td>
@@ -1154,10 +1154,12 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
 <!-- NEUERUNGEN -->
 <div id="tab-neuerungen" class="tab-content">
 
-<h2>v2.2.3 — Build 20261027</h2>
+<h2>v2.2.4 — Build 20261028</h2>
 <table>
   <tr><th style="width:220px">Bereich</th><th>Was ist neu</th></tr>
-  <tr><td><strong>Installation nach „C:\Program Files“ möglich</strong></td><td>Beim Start des Installers erscheint jetzt die Wahl „Für alle Benutzer“ (Administratorrechte nötig, Standardordner <code>C:\Program Files\JohnnyAI</code>) oder „Nur für mich“ (ohne Administratorrechte, wie bisher im Benutzerordner). Einstellungen, Stimmprofile und Meetings bleiben unabhängig davon im Benutzerprofil bzw. in OneDrive. Eine schon vorhandene Benutzer-Installation wird dabei nicht ersetzt — bitte vorher deinstallieren, sonst gibt es zwei Kopien. Für automatische Installationen: <code>/ALLUSERS</code> bzw. <code>/CURRENTUSER</code>.</td></tr>
+  <tr><td><strong>Fenster-Schutz nur noch während Meetings (Screenshots wieder möglich)</strong></td><td>Die Funktion „Vor Bildschirmfreigabe schützen“ (seit 2.2.2) macht JohnnyAI-Fenster für Bildschirmfreigaben unsichtbar — Windows kann das aber nicht von einem Screenshot unterscheiden, sodass auch Screenshots von JohnnyAI leer waren (z. B. beim Melden von Fehlern). Jetzt gibt es drei Einstellungen (Einstellungen → Speicher → System): „Automatisch“ (neuer Standard: Schutz nur, solange ein Meeting oder Videoanruf läuft — Teams, Zoom, Webex und andere Programme mit aktivem Mikrofon, auch Browser-Meetings — und noch zwei Minuten danach), „Immer“ und „Aus“. Der alte Schalter wird übernommen („an“ wird zu „Automatisch“). Im Infobereich-Menü zeigt der Eintrag „Fenster-Schutz …“ den Zustand und schaltet ihn von Hand um, z. B. für einen Screenshot mitten im Meeting. Ein Meeting ohne Mikrofon (reine Präsentation) wird nicht erkannt — dafür „Immer“ wählen oder den Schutz im Infobereich-Menü einschalten. Hinweis: Solange der Schutz an ist (auch im Meeting), kann Windows das Symbol von JohnnyAI in der Taskleiste leer darstellen — das ist nur kosmetisch und lässt sich im Infobereich-Menü („Fenster-Schutz“) oder in den Einstellungen abschalten. In den Versionen 2.2.2 und 2.2.3, in denen der Schutz immer an war, trat das auf manchen Rechnern auf.</td></tr>
+  <tr><td><strong>Installer: JohnnyAI startet nach der Installation als normaler Benutzer</strong></td><td>Wurde der Installer „als Administrator“ gestartet, lief JohnnyAI am Ende ebenfalls mit Administratorrechten. Eine so gestartete, erhöhte Kopie blockierte den normalen Start (es erschien kein Fenster) und hatte ein eigenes Infobereich-Symbol. Jetzt startet das Programm nach der Installation immer mit den Rechten des angemeldeten Benutzers.</td></tr>
+  <tr><td><strong>Installer: Hinweis bei einem Ordner unter „Programme“ ohne Administratorrechte</strong></td><td>Wählt jemand ohne Administratorrechte einen Zielordner unter „C:\Program Files“, scheiterte die Installation erst beim Kopieren mit „Fehler 5“. Jetzt erscheint schon bei der Ordnerauswahl ein Hinweis, den Installer neu zu starten und „Für alle Benutzer“ zu wählen oder einen Ordner im Benutzerprofil zu nehmen.</td></tr>
 </table>
 
 <details style="margin:16px 0 8px;border:1px solid #e0e0e0;border-radius:6px;overflow:hidden">
@@ -1319,7 +1321,7 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
 
 </div>
 
-<div class="footer">JohnnyAI v2.2.3 &middot; Diese Datei wird beim Start automatisch aktualisiert.</div>
+<div class="footer">JohnnyAI v2.2.4 &middot; Diese Datei wird beim Start automatisch aktualisiert.</div>
 
 <script>
 function switchTab(id,el) {
