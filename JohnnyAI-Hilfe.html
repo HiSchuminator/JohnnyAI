@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>JohnnyAI Hilfe &amp; Einrichtung v2.2.6</title>
+<title>JohnnyAI Hilfe &amp; Einrichtung v2.2.7</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;line-height:1.6;color:#1a1a1a;background:#fff;max-width:860px;margin:0 auto;padding:24px 20px 60px}
@@ -34,7 +34,7 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
 </style>
 </head>
 <body>
-<h1>JohnnyAI Hilfe &amp; Einrichtung <span style="font-size:13px;font-weight:400;color:#888">v2.2.6</span></h1>
+<h1>JohnnyAI Hilfe &amp; Einrichtung <span style="font-size:13px;font-weight:400;color:#888">v2.2.7</span></h1>
 <div class="subtitle">Bedienungshinweise und Schritt-f&#252;r-Schritt-Einrichtung</div>
 
 <div class="tabs">
@@ -138,7 +138,7 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
 <div class="row"><span class="label">&#128465; L&#246;schen</span><span class="value">L&#246;scht Meeting dauerhaft inkl. Audio, Transkript und Zusammenfassung. Sicherheitsabfrage erforderlich.</span></div>
 
 <h2>Zusammenfassung (Tab)</h2>
-<div class="row"><span class="label">Zusammenfassung: &#9660; (Versionen)</span><span class="value">Wird ein Meeting erneut zusammengefasst, bleibt die bisherige Zusammenfassung als <strong>Version</strong> erhalten (Ordner <code>summaries</code> im Meeting-Ordner). Sobald es eine weitere Version gibt, erscheint neben dem Meeting-Typ das Auswahlfeld <strong>Zusammenfassung:</strong> mit Typ, Zeitpunkt und KI-Modell jeder Version; &#8222;&#9679;&#8220; markiert die angezeigte. Eine andere Version auszuw&#228;hlen macht sie zur angezeigten Zusammenfassung (nach R&#252;ckfrage) &#8212; der Meeting-Typ wird passend gesetzt und die ToDos-Liste folgt; Titel und Tags bleiben. &Auml;ndert man den Meeting-Typ auf einen, f&#252;r den es schon eine Zusammenfassung gibt, fragt JohnnyAI, ob diese angezeigt werden soll, statt neu zusammenzufassen. Versionen entstehen ab dieser Funktion; fr&#252;here Zusammenfassungen werden erst beim n&#228;chsten Neu-Zusammenfassen gesichert (ihr Typ ist dann &#8222;Typ unbekannt&#8220;).</span></div>
+<div class="row"><span class="label">Zusammenfassung: &#9660; (Versionen)</span><span class="value">Wird ein Meeting erneut zusammengefasst, bleibt die bisherige Zusammenfassung als <strong>Version</strong> erhalten (Ordner <code>summaries</code> im Meeting-Ordner). Sobald es eine weitere Version gibt, erscheint neben dem Meeting-Typ das Auswahlfeld <strong>Zusammenfassung:</strong> mit Typ, Zeitpunkt und KI-Modell jeder Version; &#8222;&#9679;&#8220; markiert die angezeigte. Eine andere Version auszuw&#228;hlen macht sie zur angezeigten Zusammenfassung (nach R&#252;ckfrage) &#8212; der Meeting-Typ wird passend gesetzt (bei &#8222;Typ unbekannt&#8220; bleibt er), die ToDos-Liste folgt und &#8212; bei eingeschaltetem automatischem Markdown-Export &#8212; auch die Notiz auf der Festplatte; Titel und Tags bleiben. Das M&#252;lleimer-Symbol <strong>&#128465;</strong> daneben verwirft die angezeigte Zusammenfassung endg&#252;ltig (nach R&#252;ckfrage) und zeigt die n&#228;chstneuere; die letzte verbleibende Zusammenfassung l&#228;sst sich nicht verwerfen. &Auml;ndert man den Meeting-Typ auf einen, f&#252;r den es schon eine Zusammenfassung gibt, fragt JohnnyAI, ob diese angezeigt werden soll, statt neu zusammenzufassen. Versionen entstehen ab dieser Funktion; fr&#252;here Zusammenfassungen werden erst beim n&#228;chsten Neu-Zusammenfassen gesichert (ihr Typ ist dann &#8222;Typ unbekannt&#8220;).</span></div>
 <div class="row"><span class="label">Agenda</span><span class="value">Automatisch erkannte Themen-Struktur des Meetings (erscheint nach &#8222;&#10022;&nbsp;Agenda erkennen&#8220;) &#8212; mit Zeitstempel und Kurzzusammenfassung je Thema</span></div>
 <div class="row"><span class="label">Entscheidungen</span><span class="value">Im Meeting getroffene Entscheidungen (gr&#252;ner Bereich, &#10003;). Klick auf <strong>&#128203;&nbsp;Kopieren</strong> im Bereichs-Header kopiert alle Entscheidungen als Aufz&#228;hlungsliste in die Zwischenablage.</span></div>
 <div class="row"><span class="label">Zusammenfassung</span><span class="value">KI-generierter Gesamt&#252;berblick mit Modell und Zeitstempel. Klick auf <strong>&#128203;&nbsp;Kopieren</strong> im Bereichs-Header kopiert den vollst&#228;ndigen Text in die Zwischenablage.</span></div>
@@ -803,7 +803,7 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
 
 <h2>Zuverl&#228;ssigkeit &#8212; Fallback &amp; Auto-Retry</h2>
 <p style="padding:4px 12px 8px;color:#333">Einstellungen &#8594; Modelle</p>
-<div class="row"><span class="label">Bei Cloud-Fehler auf lokales Whisper.net zur&#252;ckfallen</span><span class="value">Schl&#228;gt die gew&#228;hlte Cloud-Transkription fehl (z.&nbsp;B. Netzwerkproblem, abgelaufener Key), wird automatisch die eingebettete lokale Whisper.net-Transkription verwendet, statt die Verarbeitung abzubrechen</span></div>
+<div class="row"><span class="label">Bei Cloud-Fehler auf lokale Transkription zur&#252;ckfallen</span><span class="value">Schl&#228;gt die gew&#228;hlte Cloud-Transkription fehl (z.&nbsp;B. Netzwerkproblem, abgelaufener Key), transkribiert JohnnyAI lokal weiter, statt die Verarbeitung abzubrechen: mit faster-whisper (auf der Grafikkarte, falls eine nutzbare vorhanden ist, sonst auf der CPU mit der Startgr&#246;&#223;e aus den Einstellungen), nur ohne faster-whisper mit dem eingebetteten Whisper.net. Bei Groq werden vorher Verbindungsabbr&#252;che bis zu drei Mal wiederholt; bereits fertig transkribierte Teile bleiben erhalten. Im Meeting steht, womit tats&#228;chlich transkribiert wurde.</span></div>
 <div class="row"><span class="label">Auto-Retry bei Verbindungsfehlern (Minuten)</span><span class="value">Bei vor&#252;bergehenden Netzwerkfehlern wartet JohnnyAI die eingestellte Zeit und versucht es automatisch erneut &#8212; maximal 3&nbsp;Versuche. Wert 0 deaktiviert Auto-Retry.</span></div>
 <div class="tip">&#128161; Beide Optionen greifen nur bei tats&#228;chlichen Fehlern (Netzwerk, Server, Timeout) &#8212; eine erfolgreiche Verarbeitung wird davon nicht beeinflusst.</div>
 
@@ -1068,7 +1068,7 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
   <tr>
     <td><strong>Installer (.exe)</strong> <span class="badge">Empfohlen</span></td>
     <td>Neuer Rechner, kein vorheriges JohnnyAI</td>
-    <td><code>JohnnyAI-Setup-v2.2.6.exe</code> starten, dem Assistenten folgen. .NET&#8202;8 Desktop Runtime wird automatisch gepr&#252;ft.</td>
+    <td><code>JohnnyAI-Setup-v2.2.7.exe</code> starten, dem Assistenten folgen. .NET&#8202;8 Desktop Runtime wird automatisch gepr&#252;ft.</td>
   </tr>
   <tr>
     <td><strong>Portabel (ZIP)</strong></td>
@@ -1155,10 +1155,15 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
 <!-- NEUERUNGEN -->
 <div id="tab-neuerungen" class="tab-content">
 
-<h2>v2.2.6 — Build 20261103</h2>
+<h2>v2.2.7 — Build 20261103</h2>
 <table>
   <tr><th style="width:220px">Bereich</th><th>Was ist neu</th></tr>
-  <tr><td><strong>Zusammenfassungen gehen beim Neu-Zusammenfassen nicht mehr verloren — Versionen je Meeting-Typ</strong></td><td>Bisher überschrieb „Zusammenfassung neu erstellen“ (Knopf „Neu zusammenfassen“, „Neu verarbeiten“ oder Rechtsklick in der Liste) die vorhandene Zusammenfassung ohne Sicherung. Jetzt bleibt die bisherige als Version erhalten, und die neue wird mit dem Meeting-Typ gespeichert, für den sie geschrieben wurde. Sobald ein Meeting mehrere Zusammenfassungen hat, erscheint neben dem Meeting-Typ das Feld „Zusammenfassung:“: Eine andere Version auszuwählen zeigt sie wieder an (nach Rückfrage; der Meeting-Typ wird passend gesetzt, die ToDos-Liste folgt, Titel und Tags bleiben). Wechselt man den Meeting-Typ auf einen, für den es schon eine Zusammenfassung gibt, fragt JohnnyAI, ob diese angezeigt werden soll, statt neu zu rechnen. Zusammenfassungen aus der Zeit davor werden erst beim nächsten Neu-Zusammenfassen gesichert und tragen dann „Typ unbekannt“.</td></tr>
+  <tr><td><strong>Fragen zum Meeting: keine endlosen Wiederholungen mehr</strong></td><td>Kleine lokale Modelle (z. B. llama3.2:1b) gerieten bei „Fragen“ teils in eine Schleife und schrieben dieselben Zeilen immer wieder, bis die Obergrenze erreicht war (im Beispiel nach knapp vier Minuten). Jetzt verhindert eine längere Wiederholungssperre die meisten Schleifen, und erkennt JohnnyAI dennoch eine, bricht es die Antwort ab, behält jede Zeile nur einmal und hängt einen Hinweis an, ein größeres Modell (Einstellungen → Fragen) oder „Antworten mit“ → Cloud zu verwenden.</td></tr>
+  <tr><td><strong>Zusammenfassungs-Versionen: verwerfen, Notiz folgt dem Umschalten</strong></td><td>Neben dem Feld „Zusammenfassung:“ gibt es jetzt ein Papierkorb-Symbol: Es verwirft die angezeigte Zusammenfassung endgültig (nach Rückfrage) und zeigt die nächstneuere; die letzte verbleibende lässt sich nicht verwerfen. Beim Umschalten einer Version wird außerdem die Markdown-Notiz im Meeting-Ordner neu geschrieben (bei eingeschaltetem automatischem Export), damit sie nicht die vorherige Zusammenfassung zeigt. Der Rückfrage-Text sagt bei einer Version mit „Typ unbekannt“ jetzt richtig, dass der Meeting-Typ unverändert bleibt.</td></tr>
+  <tr><td><strong>Hinweis, wenn keine Teilnehmerliste vorliegt</strong></td><td>Hat ein Meeting mehrere unbenannte Sprecher („Remote 1“, „Remote 2“ …) und keinen zugeordneten Kalendertermin, erscheint in der Meeting-Ansicht ein Hinweis, warum die Namen fehlen, und dass sich über die Stift-Symbole im Transkript Namen eintragen lassen — diese Stimmen werden bei späteren Meetings wiedererkannt.</td></tr>
+  <tr><td><strong>Zeitschätzung lernt vom tatsächlich genutzten Backend</strong></td><td>Die geschätzte Dauer der Transkription lernt aus früheren Läufen. Bisher landeten dabei auch Läufe mit „Auto“ oder Groq unter dem Wert für das eingebettete Whisper.net (z. B. „31,7× Echtzeit“) und verfälschten dessen Schätzung. Jetzt wird die Geschwindigkeit unter dem Backend gespeichert, das wirklich gearbeitet hat (Groq, faster-whisper je Modellgröße, auf Grafikkarte getrennt von CPU …). Läufe, bei denen ein Cloud-Fehler und der lokale Ersatz vermischt waren, fließen nicht mehr ein. Bereits gespeicherte Werte bleiben und werden mit der Zeit korrigiert.</td></tr>
+  <tr><td><strong>Setup-Check: Überschrift bricht um</strong></td><td>Der Hinweis „Python-Prüfung von … Uhr“ in der Überschrift des Setup-Checks war am rechten Rand abgeschnitten. Er steht jetzt in einer eigenen Zeile und bricht bei Bedarf um.</td></tr>
+  <tr><td><strong>Groq-Upload robuster, lokaler Ersatz deutlich schneller</strong></td><td>Bisher brach bei einem Verbindungsabbruch während des Groq-Uploads (z. B. „Verbindung vom Remotehost geschlossen“) sofort alles ab, und JohnnyAI transkribierte das ganze Meeting neu mit dem eingebetteten Whisper.net — auf einer CPU mit dem großen Modell oft stundenlang. Jetzt wird das Audio als FLAC gesendet (etwa halb so groß wie WAV, weniger Abbrüche bei langen Uploads), und Verbindungsabbrüche, Zeitüberschreitungen und Serverfehler (5xx) werden bis zu drei Mal mit wachsenden Pausen wiederholt. Bei langen Meetings bleiben bereits transkribierte Teile erhalten; nur der Rest läuft über die Ausweichkette weiter. Wenn alle Cloud-Anbieter ausfallen, transkribiert JohnnyAI lokal mit faster-whisper — auf der Grafikkarte, falls eine nutzbare da ist, sonst auf der CPU mit der Startgröße aus Einstellungen → Modelle → Auto (Standard „small“) — und nur ohne faster-whisper mit Whisper.net. Das kleinste faster-whisper-Modell wird nicht wegen „zu langsam“ verworfen, weil Whisper.net noch langsamer wäre. Im Meeting steht dann z. B. „faster-whisper small (CPU) · Auto · Ersatz nach Cloud-Fehler“.</td></tr>
 </table>
 
 <details style="margin:16px 0 8px;border:1px solid #e0e0e0;border-radius:6px;overflow:hidden">
@@ -1320,7 +1325,7 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
 
 </div>
 
-<div class="footer">JohnnyAI v2.2.6 &middot; Diese Datei wird beim Start automatisch aktualisiert.</div>
+<div class="footer">JohnnyAI v2.2.7 &middot; Diese Datei wird beim Start automatisch aktualisiert.</div>
 
 <script>
 function switchTab(id,el) {
