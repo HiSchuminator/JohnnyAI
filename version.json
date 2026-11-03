@@ -1,5 +1,5 @@
 {
-  "Version": "2.2.5",
-  "DownloadUrl": "https://github.com/HiSchuminator/JohnnyAI/releases/download/2.2.5/JohnnyAI-2.2.5-build.20261028-portable.zip",
-  "ReleaseNotes": "Neu: Leistungscheck (passende Modelle und Einstellungen für diesen Rechner), „Auto“ nutzt eine NVIDIA-Grafikkarte, Hinweis im Meeting wenn die Sprechererkennung nicht laufen konnte, aktuellere Anzeigen im Setup-Check, Korrektur der Hilfe zur .NET-Runtime (auch die portable Version braucht sie)."
+  "Version": "2.2.6",
+  "DownloadUrl": "https://github.com/HiSchuminator/JohnnyAI/releases/download/2.2.6/JohnnyAI-2.2.6-build.20261103-portable.zip",
+  "ReleaseNotes": "Neu: Zusammenfassungen gehen beim Neu-Zusammenfassen nicht mehr verloren – die bisherige bleibt als Version erhalten, je Meeting-Typ umschaltbar (Feld „Zusammenfassung:“ neben dem Meeting-Typ)."
 }
