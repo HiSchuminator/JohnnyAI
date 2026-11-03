@@ -1,5 +1,5 @@
 {
-  "Version": "2.2.6",
-  "DownloadUrl": "https://github.com/HiSchuminator/JohnnyAI/releases/download/2.2.6/JohnnyAI-2.2.6-build.20261103-portable.zip",
-  "ReleaseNotes": "Neu: Zusammenfassungen gehen beim Neu-Zusammenfassen nicht mehr verloren – die bisherige bleibt als Version erhalten, je Meeting-Typ umschaltbar (Feld „Zusammenfassung:“ neben dem Meeting-Typ)."
+  "Version": "2.2.7",
+  "DownloadUrl": "https://github.com/HiSchuminator/JohnnyAI/releases/download/2.2.7/JohnnyAI-2.2.7-build.20261103-portable.zip",
+  "ReleaseNotes": "Neu: Groq-Upload robuster (FLAC, Wiederholungen), schnellerer lokaler Ersatz bei Cloud-Ausfall (faster-whisper statt großem Whisper.net), Zusammenfassungs-Versionen verwerfen, Hinweis bei fehlender Teilnehmerliste, bessere Zeitschätzung."
 }
