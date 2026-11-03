@@ -1,5 +1,5 @@
 {
-  "Version": "2.2.7",
-  "DownloadUrl": "https://github.com/HiSchuminator/JohnnyAI/releases/download/2.2.7/JohnnyAI-2.2.7-build.20261103-portable.zip",
-  "ReleaseNotes": "Neu: Groq-Upload robuster (FLAC, Wiederholungen), schnellerer lokaler Ersatz bei Cloud-Ausfall (faster-whisper statt großem Whisper.net), Zusammenfassungs-Versionen verwerfen, Hinweis bei fehlender Teilnehmerliste, bessere Zeitschätzung."
+  "Version": "2.2.8",
+  "DownloadUrl": "https://github.com/HiSchuminator/JohnnyAI/releases/download/2.2.8/JohnnyAI-2.2.8-build.20261103-portable.zip",
+  "ReleaseNotes": "Neu: Leistungscheck mit echtem GPU-Rechentest, Versionsnummer im Tooltip des Infobereich-Symbols, beschädigte oder halbe Modell-Downloads werden repariert (mit Wiederholungen bei Netzwerkfehlern), Installer-Hinweis „Als Administrator ausführen“ auch beim Update."
 }
