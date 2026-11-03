@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>JohnnyAI Hilfe &amp; Einrichtung v2.2.7</title>
+<title>JohnnyAI Hilfe &amp; Einrichtung v2.2.8</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;line-height:1.6;color:#1a1a1a;background:#fff;max-width:860px;margin:0 auto;padding:24px 20px 60px}
@@ -34,7 +34,7 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
 </style>
 </head>
 <body>
-<h1>JohnnyAI Hilfe &amp; Einrichtung <span style="font-size:13px;font-weight:400;color:#888">v2.2.7</span></h1>
+<h1>JohnnyAI Hilfe &amp; Einrichtung <span style="font-size:13px;font-weight:400;color:#888">v2.2.8</span></h1>
 <div class="subtitle">Bedienungshinweise und Schritt-f&#252;r-Schritt-Einrichtung</div>
 
 <div class="tabs">
@@ -1068,7 +1068,7 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
   <tr>
     <td><strong>Installer (.exe)</strong> <span class="badge">Empfohlen</span></td>
     <td>Neuer Rechner, kein vorheriges JohnnyAI</td>
-    <td><code>JohnnyAI-Setup-v2.2.7.exe</code> starten, dem Assistenten folgen. .NET&#8202;8 Desktop Runtime wird automatisch gepr&#252;ft.</td>
+    <td><code>JohnnyAI-Setup-v2.2.8.exe</code> starten, dem Assistenten folgen. .NET&#8202;8 Desktop Runtime wird automatisch gepr&#252;ft.</td>
   </tr>
   <tr>
     <td><strong>Portabel (ZIP)</strong></td>
@@ -1076,6 +1076,7 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
     <td>ZIP entpacken, gesamten Ordner kopieren, <code>JohnnyAI.exe</code> starten.</td>
   </tr>
 </table>
+<div class="warn">&#9888; <strong>Update einer vorhandenen Installation unter &#8222;C:\Programme&#8220;:</strong> Den Installer per Rechtsklick &#8594; <strong>&#8222;Als Administrator ausf&#252;hren&#8220;</strong> starten und beim Start <strong>&#8222;F&#252;r alle Benutzer&#8220;</strong> w&#228;hlen. Ohne Administratorrechte endet die Installation sonst mit &#8222;Fehler beim Erstellen einer Datei im Zielordner: Zugriff verweigert&#8220; (Fehler&nbsp;5). Ohne Administratorrechte: &#8222;Nur f&#252;r mich&#8220; mit einem Ordner im Benutzerprofil w&#228;hlen und die alte Version danach &#252;ber die Windows-Einstellungen deinstallieren. JohnnyAI vorher beenden (auch im Infobereich).</div>
 <div class="tip">&#128161; Beim ersten Start &#246;ffnet sich automatisch der <strong>Erststart-Assistent</strong> &mdash; er f&#252;hrt durch Whisper-Modell-Wahl und LLM-Einrichtung in zwei Schritten.</div>
 
 <h2>Portabel &mdash; Dieser Ordner</h2>
@@ -1155,15 +1156,13 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
 <!-- NEUERUNGEN -->
 <div id="tab-neuerungen" class="tab-content">
 
-<h2>v2.2.7 — Build 20261103</h2>
+<h2>v2.2.8 — Build 20261103</h2>
 <table>
   <tr><th style="width:220px">Bereich</th><th>Was ist neu</th></tr>
-  <tr><td><strong>Fragen zum Meeting: keine endlosen Wiederholungen mehr</strong></td><td>Kleine lokale Modelle (z. B. llama3.2:1b) gerieten bei „Fragen“ teils in eine Schleife und schrieben dieselben Zeilen immer wieder, bis die Obergrenze erreicht war (im Beispiel nach knapp vier Minuten). Jetzt verhindert eine längere Wiederholungssperre die meisten Schleifen, und erkennt JohnnyAI dennoch eine, bricht es die Antwort ab, behält jede Zeile nur einmal und hängt einen Hinweis an, ein größeres Modell (Einstellungen → Fragen) oder „Antworten mit“ → Cloud zu verwenden.</td></tr>
-  <tr><td><strong>Zusammenfassungs-Versionen: verwerfen, Notiz folgt dem Umschalten</strong></td><td>Neben dem Feld „Zusammenfassung:“ gibt es jetzt ein Papierkorb-Symbol: Es verwirft die angezeigte Zusammenfassung endgültig (nach Rückfrage) und zeigt die nächstneuere; die letzte verbleibende lässt sich nicht verwerfen. Beim Umschalten einer Version wird außerdem die Markdown-Notiz im Meeting-Ordner neu geschrieben (bei eingeschaltetem automatischem Export), damit sie nicht die vorherige Zusammenfassung zeigt. Der Rückfrage-Text sagt bei einer Version mit „Typ unbekannt“ jetzt richtig, dass der Meeting-Typ unverändert bleibt.</td></tr>
-  <tr><td><strong>Hinweis, wenn keine Teilnehmerliste vorliegt</strong></td><td>Hat ein Meeting mehrere unbenannte Sprecher („Remote 1“, „Remote 2“ …) und keinen zugeordneten Kalendertermin, erscheint in der Meeting-Ansicht ein Hinweis, warum die Namen fehlen, und dass sich über die Stift-Symbole im Transkript Namen eintragen lassen — diese Stimmen werden bei späteren Meetings wiedererkannt.</td></tr>
-  <tr><td><strong>Zeitschätzung lernt vom tatsächlich genutzten Backend</strong></td><td>Die geschätzte Dauer der Transkription lernt aus früheren Läufen. Bisher landeten dabei auch Läufe mit „Auto“ oder Groq unter dem Wert für das eingebettete Whisper.net (z. B. „31,7× Echtzeit“) und verfälschten dessen Schätzung. Jetzt wird die Geschwindigkeit unter dem Backend gespeichert, das wirklich gearbeitet hat (Groq, faster-whisper je Modellgröße, auf Grafikkarte getrennt von CPU …). Läufe, bei denen ein Cloud-Fehler und der lokale Ersatz vermischt waren, fließen nicht mehr ein. Bereits gespeicherte Werte bleiben und werden mit der Zeit korrigiert.</td></tr>
-  <tr><td><strong>Setup-Check: Überschrift bricht um</strong></td><td>Der Hinweis „Python-Prüfung von … Uhr“ in der Überschrift des Setup-Checks war am rechten Rand abgeschnitten. Er steht jetzt in einer eigenen Zeile und bricht bei Bedarf um.</td></tr>
-  <tr><td><strong>Groq-Upload robuster, lokaler Ersatz deutlich schneller</strong></td><td>Bisher brach bei einem Verbindungsabbruch während des Groq-Uploads (z. B. „Verbindung vom Remotehost geschlossen“) sofort alles ab, und JohnnyAI transkribierte das ganze Meeting neu mit dem eingebetteten Whisper.net — auf einer CPU mit dem großen Modell oft stundenlang. Jetzt wird das Audio als FLAC gesendet (etwa halb so groß wie WAV, weniger Abbrüche bei langen Uploads), und Verbindungsabbrüche, Zeitüberschreitungen und Serverfehler (5xx) werden bis zu drei Mal mit wachsenden Pausen wiederholt. Bei langen Meetings bleiben bereits transkribierte Teile erhalten; nur der Rest läuft über die Ausweichkette weiter. Wenn alle Cloud-Anbieter ausfallen, transkribiert JohnnyAI lokal mit faster-whisper — auf der Grafikkarte, falls eine nutzbare da ist, sonst auf der CPU mit der Startgröße aus Einstellungen → Modelle → Auto (Standard „small“) — und nur ohne faster-whisper mit Whisper.net. Das kleinste faster-whisper-Modell wird nicht wegen „zu langsam“ verworfen, weil Whisper.net noch langsamer wäre. Im Meeting steht dann z. B. „faster-whisper small (CPU) · Auto · Ersatz nach Cloud-Fehler“.</td></tr>
+  <tr><td><strong>Leistungscheck: echter GPU-Rechentest statt nur „Karte sichtbar“</strong></td><td>Bisher prüfte „Messung starten“ nur, ob faster-whisper eine CUDA-Karte zählt. Fehlt aber eine Bibliothek wie „cublas64_12.dll“, zeigt sich das erst, wenn wirklich gerechnet wird — die Karte wurde gesehen, die Transkription lief trotzdem auf der CPU (oder brach ab). Jetzt lässt der Leistungscheck das kleinste bereits heruntergeladene faster-whisper-Modell kurz (3 Sekunden Stille) auf der Grafikkarte rechnen, in einem eigenen Prozess, sodass auch ein Absturz im Treiber sauber gemeldet wird. Das Ergebnis steht unter „Transkription“: „hat auf der Grafikkarte gerechnet ✓“ mit der Zeit, oder der Grund (fehlende CUDA-Bibliothek, Absturz mit Exit-Code, Zeitüberschreitung, beschädigtes Modell). Ist noch kein Modell heruntergeladen, wird der Test übersprungen.</td></tr>
+  <tr><td><strong>Versionsnummer im Tooltip des Infobereich-Symbols</strong></td><td>Fährt man mit der Maus über das JohnnyAI-Symbol im Infobereich, steht dort jetzt „JohnnyAI 2.2.8“ (bzw. die laufende Version) statt nur „JohnnyAI“ — auch bei Aufnahme und Verarbeitung („JohnnyAI 2.2.8 — Aufnahme läuft“). Beim Fortschritt wird bei Platzmangel der Statustext gekürzt, nie die Prozentzahl.</td></tr>
+  <tr><td><strong>faster-whisper-Modelle: beschädigte oder halbe Downloads werden repariert</strong></td><td>Das Modell (z. B. „medium“, ca. 1,5 GB) wurde bisher direkt unter dem endgültigen Namen geladen. Brach der Download ab (Netzwerk, Neustart, Abbruch), blieb eine unvollständige Datei liegen, die als fertiges Modell galt — jede Transkription mit dieser Größe scheiterte dann dauerhaft mit „Variable 'decoder/embeddings/weight' has an invalid payload size“, bis jemand den Ordner unter „%LOCALAPPDATA%\JohnnyAI\faster_whisper_models“ von Hand löschte. Jetzt wird zuerst in eine „.part“-Datei geladen und erst nach Größenprüfung umbenannt; erkennt JohnnyAI beim Laden ein beschädigtes Modell, löscht es den Ordner selbst und lädt einmal neu. Netzwerkfehler beim Download („getaddrinfo failed“, Verbindungsabbruch, Zeitüberschreitung, 5xx) werden bis zu drei Mal mit wachsenden Pausen wiederholt; scheitert es trotzdem, steht statt des rohen Fehlertextes „Das Modell konnte nicht geladen werden: huggingface.co ist nicht erreichbar … Netzwerk, VPN oder Proxy prüfen“ im Meeting. Ein Download, der nach der Modelldatei abbrach (Tokenizer fehlt), wird beim nächsten Mal fortgesetzt. Außerdem wird das Runner-Skript nur noch geschrieben, wenn es sich geändert hat (weniger Warnungen „Could not write faster-whisper runner script“).</td></tr>
+  <tr><td><strong>Installer: Hinweis „Als Administrator ausführen“ auch beim Update</strong></td><td>Liegt JohnnyAI schon unter „C:\Programme“, nimmt das Update diesen Ordner wieder als Ziel und überspringt die Ordnerauswahl — ohne Administratorrechte brach es dann mit „Fehler beim Erstellen einer Datei im Zielordner: Zugriff verweigert“ ab, ohne Hinweis. Jetzt erscheint der Hinweis auch auf der Seite „Bereit zur Installation“: Setup abbrechen, den Installer per Rechtsklick → „Als Administrator ausführen“ starten und „Für alle Benutzer“ wählen (oder ohne Administratorrechte einen Ordner im Benutzerprofil nehmen). Die Hilfe (Erste Schritte) nennt diesen Weg ebenfalls.</td></tr>
 </table>
 
 <details style="margin:16px 0 8px;border:1px solid #e0e0e0;border-radius:6px;overflow:hidden">
@@ -1325,7 +1324,7 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
 
 </div>
 
-<div class="footer">JohnnyAI v2.2.7 &middot; Diese Datei wird beim Start automatisch aktualisiert.</div>
+<div class="footer">JohnnyAI v2.2.8 &middot; Diese Datei wird beim Start automatisch aktualisiert.</div>
 
 <script>
 function switchTab(id,el) {
