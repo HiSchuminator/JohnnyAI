@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>JohnnyAI Hilfe &amp; Einrichtung v2.2.5</title>
+<title>JohnnyAI Hilfe &amp; Einrichtung v2.2.6</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;line-height:1.6;color:#1a1a1a;background:#fff;max-width:860px;margin:0 auto;padding:24px 20px 60px}
@@ -34,7 +34,7 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
 </style>
 </head>
 <body>
-<h1>JohnnyAI Hilfe &amp; Einrichtung <span style="font-size:13px;font-weight:400;color:#888">v2.2.5</span></h1>
+<h1>JohnnyAI Hilfe &amp; Einrichtung <span style="font-size:13px;font-weight:400;color:#888">v2.2.6</span></h1>
 <div class="subtitle">Bedienungshinweise und Schritt-f&#252;r-Schritt-Einrichtung</div>
 
 <div class="tabs">
@@ -138,6 +138,7 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
 <div class="row"><span class="label">&#128465; L&#246;schen</span><span class="value">L&#246;scht Meeting dauerhaft inkl. Audio, Transkript und Zusammenfassung. Sicherheitsabfrage erforderlich.</span></div>
 
 <h2>Zusammenfassung (Tab)</h2>
+<div class="row"><span class="label">Zusammenfassung: &#9660; (Versionen)</span><span class="value">Wird ein Meeting erneut zusammengefasst, bleibt die bisherige Zusammenfassung als <strong>Version</strong> erhalten (Ordner <code>summaries</code> im Meeting-Ordner). Sobald es eine weitere Version gibt, erscheint neben dem Meeting-Typ das Auswahlfeld <strong>Zusammenfassung:</strong> mit Typ, Zeitpunkt und KI-Modell jeder Version; &#8222;&#9679;&#8220; markiert die angezeigte. Eine andere Version auszuw&#228;hlen macht sie zur angezeigten Zusammenfassung (nach R&#252;ckfrage) &#8212; der Meeting-Typ wird passend gesetzt und die ToDos-Liste folgt; Titel und Tags bleiben. &Auml;ndert man den Meeting-Typ auf einen, f&#252;r den es schon eine Zusammenfassung gibt, fragt JohnnyAI, ob diese angezeigt werden soll, statt neu zusammenzufassen. Versionen entstehen ab dieser Funktion; fr&#252;here Zusammenfassungen werden erst beim n&#228;chsten Neu-Zusammenfassen gesichert (ihr Typ ist dann &#8222;Typ unbekannt&#8220;).</span></div>
 <div class="row"><span class="label">Agenda</span><span class="value">Automatisch erkannte Themen-Struktur des Meetings (erscheint nach &#8222;&#10022;&nbsp;Agenda erkennen&#8220;) &#8212; mit Zeitstempel und Kurzzusammenfassung je Thema</span></div>
 <div class="row"><span class="label">Entscheidungen</span><span class="value">Im Meeting getroffene Entscheidungen (gr&#252;ner Bereich, &#10003;). Klick auf <strong>&#128203;&nbsp;Kopieren</strong> im Bereichs-Header kopiert alle Entscheidungen als Aufz&#228;hlungsliste in die Zwischenablage.</span></div>
 <div class="row"><span class="label">Zusammenfassung</span><span class="value">KI-generierter Gesamt&#252;berblick mit Modell und Zeitstempel. Klick auf <strong>&#128203;&nbsp;Kopieren</strong> im Bereichs-Header kopiert den vollst&#228;ndigen Text in die Zwischenablage.</span></div>
@@ -1067,7 +1068,7 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
   <tr>
     <td><strong>Installer (.exe)</strong> <span class="badge">Empfohlen</span></td>
     <td>Neuer Rechner, kein vorheriges JohnnyAI</td>
-    <td><code>JohnnyAI-Setup-v2.2.5.exe</code> starten, dem Assistenten folgen. .NET&#8202;8 Desktop Runtime wird automatisch gepr&#252;ft.</td>
+    <td><code>JohnnyAI-Setup-v2.2.6.exe</code> starten, dem Assistenten folgen. .NET&#8202;8 Desktop Runtime wird automatisch gepr&#252;ft.</td>
   </tr>
   <tr>
     <td><strong>Portabel (ZIP)</strong></td>
@@ -1154,16 +1155,10 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
 <!-- NEUERUNGEN -->
 <div id="tab-neuerungen" class="tab-content">
 
-<h2>v2.2.5 — Build 20261028</h2>
+<h2>v2.2.6 — Build 20261103</h2>
 <table>
   <tr><th style="width:220px">Bereich</th><th>Was ist neu</th></tr>
-  <tr><td><strong>„Auto“ nutzt die Grafikkarte und erklärt seine Wahl</strong></td><td>Bisher gewann beim lokalen Transkribieren immer „faster-whisper small (CPU)“ — auch auf Rechnern mit NVIDIA-Grafikkarte, weil „Auto“ eine feste Reihenfolge abarbeitet und die Karte nicht berücksichtigt. Jetzt prüft JohnnyAI beim Start, ob faster-whisper eine CUDA-Karte sieht, und wählt dann das größte Modell, das in ihren Speicher passt (large-v3 ab 6 GB, medium ab 3,5 GB, sonst small). Ohne Grafikkarte gilt die neue Einstellung „Startgröße ohne Grafikkarte“ (Einstellungen → Modelle → Auto): „Schnell — small“ (Standard), „Ausgewogen — medium“ oder „Qualität zuerst — large-v3“; läuft ein Modell nach 3 Minuten langsamer als das Meeting dauert, wechselt JohnnyAI wie bisher selbstständig eine Stufe kleiner. Die Einstellungen erklären jetzt, wie „Auto“ entscheidet (feste Reihenfolge, keine Messung). In der Prüf-Historie und im Meeting steht, womit tatsächlich transkribiert wurde — z. B. „faster-whisper large-v3 (GPU) · Auto“; bisher stand bei „Auto“ dort nur „Whisper.net“.</td></tr>
-  <tr><td><strong>faster-whisper fällt bei GPU-Problemen auf die CPU zurück</strong></td><td>Fehlen die CUDA-Bibliotheken (cuBLAS/cuDNN) oder reicht der Grafikspeicher nicht, brach die Transkription bisher mit einem Fehler ab. Jetzt läuft sie in diesem Fall auf der CPU weiter und schreibt den Grund ins Log. Der Leistungscheck zeigt, ob faster-whisper die Grafikkarte sieht, und warnt, wenn „Auto“ trotz nutzbarer Karte ein CPU-Modell gewählt hatte.</td></tr>
-  <tr><td><strong>Hinweis im Meeting, wenn die Sprechererkennung nicht laufen konnte</strong></td><td>Fehlt ein Python-Paket (z. B. „soundfile“) oder bricht das Skript der Sprechererkennung ab, blieb das bisher unbemerkt: alle Sprecher hießen einfach „Remote“, und nur das Log nannte den Grund. Jetzt erscheint in der Meeting-Ansicht ein Hinweis mit dem Grund und, bei einem fehlenden Paket, dem Installationsbefehl. Auch Fehler wie fehlender Arbeitsspeicher, nicht ladbare Modelle (Netzwerk/Proxy) oder CUDA-Probleme werden in verständlichen Sätzen erklärt.</td></tr>
-  <tr><td><strong>Prüfungen zeigen den aktuellen Stand</strong></td><td>In den Einstellungen wird die Liste der geprüften Backends beim Öffnen neu geprüft, wenn sie älter als 10 Minuten ist — ein später gestartetes Ollama wurde bisher weiter als „nicht erreichbar“ angezeigt. Im Setup-Check werden als „nicht installiert“ gemeldete Python-Pakete beim Öffnen erneut geprüft, und die Überschrift nennt, wann die Python-Prüfung lief. pyannote.audio und das HuggingFace-Token zählen dort nicht mehr als „fehlt“, weil die aktuellen Verfahren der Sprechererkennung sie nicht brauchen.</td></tr>
-  <tr><td><strong>Klarere Texte zu NVIDIA, .NET und Rechnerwechsel</strong></td><td>Die Meldungen zum NVIDIA-API-Key sagen jetzt, dass es um den NVIDIA-Cloud-Dienst (NIM) geht und nicht um die lokale Grafikkarte. Die Hilfe stellt richtig, dass auch die portable Version die .NET-8-Desktop-Runtime (64-Bit) braucht — sie ist nicht eingebettet. Neu: Hinweis, dass API-Schlüssel (und, falls die Option aktiv war, verschlüsselte Transkripte) mit Windows DPAPI an Rechner und Benutzerkonto gebunden sind und nach einem Rechnerwechsel neu eingetragen werden müssen bzw. nicht lesbar sind.</td></tr>
-  <tr><td><strong>Leistungscheck: welche Modelle und Einstellungen passen zu diesem Rechner?</strong></td><td>Im Setup-Check (Start → Abhängigkeiten prüfen) gibt es den Knopf „Leistungscheck …“. Er liest Prozessor, Arbeitsspeicher und NVIDIA-Grafikkarte und bewertet die installierten Ollama-Modelle (✓ passt, ◐ passt nur bedingt, ✗ zu groß). Daraus entstehen Empfehlungen für die Transkription (faster-whisper-Modellgröße, Grafikkarte oder CPU), das Modell für Zusammenfassungen, das Modell für Fragen zu einem Meeting und die Sprechererkennung — auf Wunsch mit Befehl zum Kopieren, z. B. „ollama pull …“ für ein passendes Modell. Der Knopf „Messung starten“ (1–3 Minuten) prüft zusätzlich, ob faster-whisper die Grafikkarte wirklich sieht, und misst die Geschwindigkeit der eingestellten Ollama-Modelle in Token pro Sekunde; er ist während einer Aufnahme, Verarbeitung oder Frage gesperrt. Es wird nichts automatisch umgestellt — die Empfehlungen sind Vorschläge.</td></tr>
-  <tr><td><strong>Setup-Check: fehlende Python-Pakete der Sprechererkennung und aktuellere Anzeige</strong></td><td>Eine neue Zeile „Sprechererkennung (Python-Pakete)“ nennt die Pakete, die dem eingestellten Verfahren fehlen (z. B. „soundfile“ — ohne es bricht die Sprechererkennung mit „ModuleNotFoundError“ ab), samt Installationsbefehl. Die Befehle verwenden jetzt „python -m pip install …“ mit dem in JohnnyAI eingestellten Python, damit das Paket in der richtigen Umgebung landet. Auf Rechnern mit NVIDIA-Grafikkarte erscheint zusätzlich die optionale Zeile „nemo (Parakeet lokal/GPU)“. „Nicht installiert“-Ergebnisse werden nur noch 5 Minuten gemerkt (vorher 24 Stunden): Nach einem „pip install“ zeigt JohnnyAI das Paket daher nach kurzer Zeit richtig an, ohne dass „Erneut prüfen“ nötig ist.</td></tr>
+  <tr><td><strong>Zusammenfassungen gehen beim Neu-Zusammenfassen nicht mehr verloren — Versionen je Meeting-Typ</strong></td><td>Bisher überschrieb „Zusammenfassung neu erstellen“ (Knopf „Neu zusammenfassen“, „Neu verarbeiten“ oder Rechtsklick in der Liste) die vorhandene Zusammenfassung ohne Sicherung. Jetzt bleibt die bisherige als Version erhalten, und die neue wird mit dem Meeting-Typ gespeichert, für den sie geschrieben wurde. Sobald ein Meeting mehrere Zusammenfassungen hat, erscheint neben dem Meeting-Typ das Feld „Zusammenfassung:“: Eine andere Version auszuwählen zeigt sie wieder an (nach Rückfrage; der Meeting-Typ wird passend gesetzt, die ToDos-Liste folgt, Titel und Tags bleiben). Wechselt man den Meeting-Typ auf einen, für den es schon eine Zusammenfassung gibt, fragt JohnnyAI, ob diese angezeigt werden soll, statt neu zu rechnen. Zusammenfassungen aus der Zeit davor werden erst beim nächsten Neu-Zusammenfassen gesichert und tragen dann „Typ unbekannt“.</td></tr>
 </table>
 
 <details style="margin:16px 0 8px;border:1px solid #e0e0e0;border-radius:6px;overflow:hidden">
@@ -1325,7 +1320,7 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
 
 </div>
 
-<div class="footer">JohnnyAI v2.2.5 &middot; Diese Datei wird beim Start automatisch aktualisiert.</div>
+<div class="footer">JohnnyAI v2.2.6 &middot; Diese Datei wird beim Start automatisch aktualisiert.</div>
 
 <script>
 function switchTab(id,el) {
