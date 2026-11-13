@@ -1,0 +1,4 @@
+{
+  "_hinweis": "Nur diese Modellfamilien der offiziellen Ollama-Bibliothek duerfen in models.json landen. Neue Familie = hier bewusst eintragen.",
+  "families": ["gemma4", "gemma3", "qwen2.5", "llama3.1", "llama3.2"]
+}
