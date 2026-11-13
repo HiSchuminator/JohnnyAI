@@ -1,0 +1,5 @@
+{
+  "Version": "2.2.9",
+  "DownloadUrl": "https://github.com/HiSchuminator/JohnnyAI/releases/download/2.2.9/JohnnyAI-2.2.9-build.20261113-portable.zip",
+  "ReleaseNotes": "Sprechererkennung liefert bei jedem Lauf dasselbe Ergebnis und bricht nicht mehr ab, Wechsel der Sprecher mitten im Absatz werden erkannt, lokales Parakeet nutzt das mehrsprachige Modell (deutsche Gespräche kamen vorher als englischer Text), veraltete Zusammenfassungen werden erkannt, das kleine Notfall-Modell fasst lange Meetings nicht mehr ungefragt zusammen, Favoriten-Filter entfernt, keine personenbezogenen Angaben mehr im Programm."
+}
