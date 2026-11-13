@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "updated": "2026-11-13",
+  "models": [
+    { "tag": "qwen2.5:14b", "gb": 8.4 },
+    { "tag": "gemma3:12b",  "gb": 7.6 },
+    { "tag": "llama3.1:8b", "gb": 4.6 },
+    { "tag": "qwen2.5:7b",  "gb": 4.4 },
+    { "tag": "gemma4:e2b",  "gb": 4.3 },
+    { "tag": "gemma3:4b",   "gb": 3.1 },
+    { "tag": "llama3.2:3b", "gb": 1.9 }
+  ]
+}
