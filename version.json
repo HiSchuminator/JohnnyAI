@@ -1,5 +1,5 @@
 {
-  "Version": "2.2.9",
-  "DownloadUrl": "https://github.com/HiSchuminator/JohnnyAI/releases/download/2.2.9/JohnnyAI-2.2.9-build.20261113-portable.zip",
-  "ReleaseNotes": "Sprechererkennung liefert bei jedem Lauf dasselbe Ergebnis und bricht nicht mehr ab, Wechsel der Sprecher mitten im Absatz werden erkannt, lokales Parakeet nutzt das mehrsprachige Modell (deutsche Gespräche kamen vorher als englischer Text), veraltete Zusammenfassungen werden erkannt, das kleine Notfall-Modell fasst lange Meetings nicht mehr ungefragt zusammen, Favoriten-Filter entfernt, keine personenbezogenen Angaben mehr im Programm."
+  "Version": "2.2.10",
+  "DownloadUrl": "https://github.com/HiSchuminator/JohnnyAI/releases/download/2.2.10/JohnnyAI-2.2.10-build.20261125-portable.zip",
+  "ReleaseNotes": "Einstellungen (Meeting-Typen, Sprecherprofile) werden täglich gesichert und bei leerer oder zurückgesetzter Datei automatisch wiederhergestellt; Speichern der Einstellungen ist abbruchsicher. Antworten im Reiter Fragen und die Zusammenfassung lassen sich mit den Meeting-Daten (Titel, Datum, Dauer, Typ, Teilnehmer) kopieren. Fragen können wahlweise mit Groq, Claude oder einem eigenen Anbieter beantwortet werden. Der Leistungscheck übernimmt die Modell-Empfehlung, installiert fehlende Modelle und aktualisiert die Modellliste selbst. Klarere Hinweise bei Fehlern der Sprechererkennung, Termin-Zuordnung zeigt die aktuelle Zuordnung, Desktop-Symbol im Installer ohne Administratorrechte."
 }
