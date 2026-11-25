@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>JohnnyAI Hilfe &amp; Einrichtung v2.2.10</title>
+<title>JohnnyAI Hilfe &amp; Einrichtung v2.2.11</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;line-height:1.6;color:#1a1a1a;background:#fff;max-width:860px;margin:0 auto;padding:24px 20px 60px}
@@ -34,7 +34,7 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
 </style>
 </head>
 <body>
-<h1>JohnnyAI Hilfe &amp; Einrichtung <span style="font-size:13px;font-weight:400;color:#888">v2.2.10</span></h1>
+<h1>JohnnyAI Hilfe &amp; Einrichtung <span style="font-size:13px;font-weight:400;color:#888">v2.2.11</span></h1>
 <div class="subtitle">Bedienungshinweise und Schritt-f&#252;r-Schritt-Einrichtung</div>
 
 <div class="tabs">
@@ -1068,7 +1068,7 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
   <tr>
     <td><strong>Installer (.exe)</strong> <span class="badge">Empfohlen</span></td>
     <td>Neuer Rechner, kein vorheriges JohnnyAI</td>
-    <td><code>JohnnyAI-Setup-v2.2.10.exe</code> starten, dem Assistenten folgen. .NET&#8202;8 Desktop Runtime wird automatisch gepr&#252;ft.</td>
+    <td><code>JohnnyAI-Setup-v2.2.11.exe</code> starten, dem Assistenten folgen. .NET&#8202;8 Desktop Runtime wird automatisch gepr&#252;ft.</td>
   </tr>
   <tr>
     <td><strong>Portabel (ZIP)</strong></td>
@@ -1156,7 +1156,7 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
 <!-- NEUERUNGEN -->
 <div id="tab-neuerungen" class="tab-content">
 
-<h2>v2.2.10 — Build 20261125</h2>
+<h2>v2.2.11 — Build 20261125</h2>
 <table>
   <tr><th style="width:220px">Bereich</th><th>Was ist neu</th></tr>
   <tr><td><strong>Einstellungen gehen beim Beenden nicht mehr verloren</strong></td><td>Wurde JohnnyAI beim Speichern der Einstellungen unterbrochen, konnte die Datei leer zurückbleiben; beim nächsten Start liefen dann Meeting-Typen, Sprecherprofile und alle Einstellungen auf Standardwerten. Jetzt wird zuerst in eine Zwischendatei geschrieben und diese ausgetauscht, die vorherige Fassung bleibt als Sicherheitskopie (settings.json.bak). Ist die Datei beim Start leer oder beschädigt, stellt JohnnyAI sie aus der Sicherheitskopie wieder her und legt eine Kopie der defekten Datei daneben.</td></tr>
@@ -1165,9 +1165,7 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
   <tr><td><strong>„Termin zuordnen“ zeigt die aktuelle Zuordnung und erklärt leere Listen</strong></td><td>Das Fenster listet nur echte Kalendertermine. Stammt der Titel eines Meetings aus dem Teams-Fenster (Anruf ohne Kalendertermin), stand er bisher als „Termin“ im Kopf, war aber im Fenster nicht zu finden und nicht zu entfernen. Jetzt steht oben „Aktuell zugeordnet“ (mit dem Hinweis, wenn es nur aus dem Teams-Fenster abgeleitet ist) samt Knopf „Diese Zuordnung entfernen“; bei einer leeren Liste steht, welche Kalenderquellen es gibt (Kalenderlink, klassisches Outlook, Graph) und ein Knopf zu den Kalender-Einstellungen. Das graue Kennzeichen im Meeting-Kopf trägt einen Tooltip. Außerdem zählt der Titel aus dem Teams-Fenster nicht mehr als „Eingeladener“: Er verhinderte die Zuordnung von Sprechern durch Ausschluss („1 nicht zugeordneter Eingeladener — das wäre geraten“), und die Meldung „Keine Teilnehmerliste“ erscheint jetzt auch bei solchen Meetings.</td></tr>
   <tr><td><strong>Fragen: Antworten mit lokal, Groq, Claude oder eigenem Anbieter</strong></td><td>Im Reiter „Fragen“ wählst du jetzt unter „Antworten mit“, wer die Frage beantwortet: „Lokal (Ollama)“ wie bisher (nichts verlässt den Rechner) oder einen eingerichteten Cloud-Anbieter. Angeboten werden Groq, Claude und der „Eigene Anbieter“; Einträge ohne Schlüssel, ohne Freigabe auf der Datenschutz-Liste oder bei eingeschaltetem Offline-Modus sind ausgegraut, der Tooltip nennt den Grund. Vor der ersten Cloud-Frage zu einem Meeting fragt JohnnyAI einmal nach (je Meeting und Anbieter), denn der Inhalt der Zusammenfassung und Auszüge aus dem Transkript werden an den Anbieter gesendet. Bei Cloud-Anbietern wartet die Frage nicht auf die laufende Verarbeitung. Unter der Antwort stehen Anbieter, Modell, Dauer, Token und (wenn der Preis bekannt ist) die Kosten; die Aufrufe erscheinen mit dem Zweck „Frage“ in der Token-Auswertung. Groq bekommt bei langen Meetings nur die passenden Abschnitte (Minutenlimit), Claude das ganze Transkript. Die Wahl wird gemerkt, Standard bleibt „Lokal“. Texte im Transkript gelten für die KI als Material und nicht als Anweisung.</td></tr>
   <tr><td><strong>Hinweise mit eigenen Schaltflächen und Klartext</strong></td><td>Der blaue Hinweis über der Zusammenfassung hatte immer denselben Titel und nur „Einstellungen öffnen“. Jetzt passt er sich an: Bei einer nicht gelaufenen Sprechererkennung steht dort die Ursache in Klartext (zum Beispiel der Name des Python-Fehlers statt „Skript abgebrochen“), dazu die Schaltflächen „Sprecher neu erkennen“, „Log öffnen“, „Fehlertext kopieren“ und bei fehlendem Paket „Abhängigkeiten prüfen“; unter „Technische Details“ stehen die letzten Zeilen der Fehlerausgabe. Bei fehlender Teilnehmerliste und bei Cloud-Fehlern gibt es passende eigene Knöpfe. Der bekannte Fehler „Number of labels is 1“ der Sprecherzahl-Bewertung wird erklärt.</td></tr>
-  <tr><td><strong>Einstellungen: Tagessicherung und automatische Wiederherstellung</strong></td><td>Meeting-Typen, Sprecherprofile und alle Einstellungen stehen in einer Datei (settings.json). JohnnyAI legt jetzt einmal täglich beim Speichern eine Kopie im Ordner „backup“ neben der Datei ab (settings.auto.JJJJMMTT.json, die letzten 14 Tage). Ist die Datei beim Start leer, beschädigt oder auf Standardwerte zurückgesetzt (keine Meeting-Typen und keine Sprecherprofile mehr), stellt JohnnyAI sie aus der Sicherheitskopie oder der jüngsten Tagessicherung wieder her und sagt es dir in einem Hinweis. Die defekte Datei bleibt als Kopie daneben liegen.</td></tr>
-  <tr><td><strong>Kopieren mit Meeting-Daten (Fragen und Zusammenfassung)</strong></td><td>Jede Antwort im Reiter „Fragen“ hat oben rechts den Knopf „📋 Kopieren“ (Rechtsklick auf die Antwort: „Antwort kopieren“, dann ohne Meeting-Daten). Der kopierte Text beginnt mit den Daten des Gesprächs: Meeting, Datum, Dauer, Meeting-Typ, Organisator und Teilnehmer (was bekannt ist), danach folgen Frage und Antwort. Dasselbe gilt für „📋 Zusammenfassung“ in der Kopfleiste und „Kopieren“ im Bereich Zusammenfassung. Die Listen „Entscheidungen“, „Offene Fragen“ und „Action Items“ bleiben reine Listen.</td></tr>
-  <tr><td><strong>Aufgeräumt: Fehler im Log, Desktop-Symbol ohne Administratorrechte</strong></td><td>Fehler, die bisher still ignoriert wurden (z. B. beim Löschen temporärer Dateien oder beim Lesen von Systeminformationen), stehen jetzt im Log. Der Installer legt das Desktop-Symbol nach Möglichkeit für den aktuellen Benutzer an und scheitert nicht mehr ohne Administratorrechte.</td></tr>
+  <tr><td><strong>Fragen: „Nur lokal“, Auto-Modus und Auswahl nach einem Fehler</strong></td><td>Im Reiter „Fragen“ gibt es neben „Antworten mit“ das Häkchen „🔒 Nur lokal“: Ist es gesetzt, werden Fragen zu diesem Meeting nur auf diesem Rechner beantwortet, Groq, Claude und der eigene Anbieter sind gesperrt (auch das Programm selbst lehnt Cloud-Fragen dann ab). Für Meeting-Typen, deren Name „1:1“, „1-zu-1“, „1on1“, „one-on-one“ oder „Einzelgespräch“ enthält, ist es automatisch an; die Liste ändert sich unter Einstellungen → Fragen („Nur lokal: Meeting-Typen“, leer = keine Regel). Das Häkchen im Meeting hat Vorrang vor der Regel. Neu unter „Antworten mit“: „Auto (JohnnyAI wählt)“. Im Offline-Modus oder bei „nur lokal“ wird lokal geantwortet; bei einem kurzen Meeting (bis ca. 3.500 Wörter) über den bevorzugten Cloud-Anbieter (der für Zusammenfassungen gewählte, sonst Groq vor Claude), bei einem langen Meeting über Claude (ganzes Meeting in einer Anfrage), sonst Groq mit den passenden Stellen, sonst lokal. Die übliche Bestätigung je Meeting und Anbieter bleibt; die Standardwahl bleibt „Lokal“. Antwortet ein Cloud-Anbieter nicht (Limit erreicht, Anfrage zu groß, Serverfehler), schaltet JohnnyAI nicht still um, sondern fragt: mit einem anderen freigegebenen Anbieter weitermachen, lokal weitermachen oder abbrechen. Bei einem falschen Schlüssel erscheint nur die bekannte Meldung.</td></tr>
 </table>
 
 <details style="margin:16px 0 8px;border:1px solid #e0e0e0;border-radius:6px;overflow:hidden">
@@ -1329,7 +1327,7 @@ td{padding:4px 8px;border-bottom:1px solid #f0f0f0;word-break:normal;overflow-wr
 
 </div>
 
-<div class="footer">JohnnyAI v2.2.10 &middot; Diese Datei wird beim Start automatisch aktualisiert.</div>
+<div class="footer">JohnnyAI v2.2.11 &middot; Diese Datei wird beim Start automatisch aktualisiert.</div>
 
 <script>
 function switchTab(id,el) {

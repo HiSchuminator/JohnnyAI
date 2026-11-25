@@ -1,5 +1,5 @@
 {
-  "Version": "2.2.10",
-  "DownloadUrl": "https://github.com/HiSchuminator/JohnnyAI/releases/download/2.2.10/JohnnyAI-2.2.10-build.20261125-portable.zip",
-  "ReleaseNotes": "Einstellungen (Meeting-Typen, Sprecherprofile) werden täglich gesichert und bei leerer oder zurückgesetzter Datei automatisch wiederhergestellt; Speichern der Einstellungen ist abbruchsicher. Antworten im Reiter Fragen und die Zusammenfassung lassen sich mit den Meeting-Daten (Titel, Datum, Dauer, Typ, Teilnehmer) kopieren. Fragen können wahlweise mit Groq, Claude oder einem eigenen Anbieter beantwortet werden. Der Leistungscheck übernimmt die Modell-Empfehlung, installiert fehlende Modelle und aktualisiert die Modellliste selbst. Klarere Hinweise bei Fehlern der Sprechererkennung, Termin-Zuordnung zeigt die aktuelle Zuordnung, Desktop-Symbol im Installer ohne Administratorrechte."
+  "Version": "2.2.11",
+  "DownloadUrl": "https://github.com/HiSchuminator/JohnnyAI/releases/download/2.2.11/JohnnyAI-2.2.11-build.20261125-portable.zip",
+  "ReleaseNotes": "Fragen zum Meeting: Neues Häkchen „Nur lokal“ je Meeting sperrt Cloud-Anbieter (für 1:1-Meeting-Typen automatisch, Liste in den Einstellungen änderbar). Neuer Eintrag „Auto“ wählt den Anbieter nach Offline-Modus, „nur lokal“ und Länge des Meetings. Antwortet ein Cloud-Anbieter nicht (Limit, zu groß, Serverfehler), fragt JohnnyAI, ob mit einem anderen Anbieter oder lokal weitergemacht werden soll. Der Standard bleibt „Lokal“."
 }
